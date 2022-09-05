@@ -1,0 +1,344 @@
+export type MarginType = 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+
+export type PaddingType = 0 | 1 | 2 | 3 | 4 | 5 | 'auto';
+
+export type ThemeType =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'danger'
+  | 'warning'
+  | 'info'
+  | 'dark'
+  | 'light'
+  | 'transparent'
+  | 'body'
+  | 'white';
+
+export type OpacityType = 0 | 25 | 50 | 75 | 100;
+
+export type ColorOpacityType = 10 | 25 | 50 | 75;
+
+export type BorderType = 1 | 2 | 3 | 4 | 5;
+
+export type RoundedType = 0 | 1 | 2 | 3 | 4 | 5;
+
+export type DisplayType =
+  | 'block'
+  | 'inline-block'
+  | 'flex'
+  | 'inline-flex'
+  | 'inline'
+  | 'none'
+  | 'table'
+  | 'table-cell'
+  | 'table-row'
+  | 'grid';
+
+export type FlexType = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+
+export type FlexGrowType = 0 | 1;
+
+export type FlexShrinkType = 0 | 1;
+
+export type FlexWrapType = 'wrap' | 'nowrap' | 'wrap-reverse';
+
+export type OrderType = 0 | 1 | 2 | 3 | 4 | 5 | 'first' | 'last';
+
+export type JustifyContent =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly';
+
+export type AlignContentType =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'stretch';
+
+export type AlignItems =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly';
+
+export type OverflowType = 'auto' | 'hidden' | 'visible' | 'scroll';
+
+export type ShadowType = 'none' | 'sm' | 'lg' | true;
+
+export type SizeType = 25 | 50 | 75 | 100 | 'auto';
+
+export type PositionType = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
+
+export type PositionAxisType = 0 | 50 | 100;
+
+export type TranslateMiddleType = 'x' | 'y' | true;
+
+export interface MarginInterface {
+  m?: MarginType;
+  mSm?: MarginType;
+  mMd?: MarginType;
+  mLg?: MarginType;
+  mXl?: MarginType;
+  mXxl?: MarginType;
+
+  my?: MarginType;
+  mySm?: MarginType;
+  myMd?: MarginType;
+  myLg?: MarginType;
+  myXl?: MarginType;
+  myXxl?: MarginType;
+
+  mx?: MarginType;
+  mxSm?: MarginType;
+  mxMd?: MarginType;
+  mxLg?: MarginType;
+  mxXl?: MarginType;
+  mxXxl?: MarginType;
+
+  mt?: MarginType;
+  mtSm?: MarginType;
+  mtMd?: MarginType;
+  mtLg?: MarginType;
+  mtXl?: MarginType;
+  mtXxl?: MarginType;
+
+  mb?: MarginType;
+  mbSm?: MarginType;
+  mbMd?: MarginType;
+  mbLg?: MarginType;
+  mbXl?: MarginType;
+  mbXxl?: MarginType;
+
+  ms?: MarginType;
+  msSm?: MarginType;
+  msMd?: MarginType;
+  msLg?: MarginType;
+  msXl?: MarginType;
+  msXxl?: MarginType;
+
+  me?: MarginType;
+  meSm?: MarginType;
+  meMd?: MarginType;
+  meLg?: MarginType;
+  meXl?: MarginType;
+  meXxl?: MarginType;
+}
+
+export interface PaddingInterface {
+  p?: PaddingType;
+  pSm?: PaddingType;
+  pMd?: PaddingType;
+  pLg?: PaddingType;
+  pXl?: PaddingType;
+  pXxl?: PaddingType;
+
+  py?: PaddingType;
+  pySm?: PaddingType;
+  pyMd?: PaddingType;
+  pyLg?: PaddingType;
+  pyXl?: PaddingType;
+  pyXxl?: PaddingType;
+
+  px?: PaddingType;
+  pxSm?: PaddingType;
+  pxMd?: PaddingType;
+  pxLg?: PaddingType;
+  pxXl?: PaddingType;
+  pxXxl?: PaddingType;
+
+  pt?: PaddingType;
+  ptSm?: PaddingType;
+  ptMd?: PaddingType;
+  ptLg?: PaddingType;
+  ptXl?: PaddingType;
+  ptXxl?: PaddingType;
+
+  pb?: PaddingType;
+  pbSm?: PaddingType;
+  pbMd?: PaddingType;
+  pbLg?: PaddingType;
+  pbXl?: PaddingType;
+  pbXxl?: PaddingType;
+
+  ps?: PaddingType;
+  psSm?: PaddingType;
+  psMd?: PaddingType;
+  psLg?: PaddingType;
+  psXl?: PaddingType;
+  psXxl?: PaddingType;
+
+  pe?: PaddingType;
+  peSm?: PaddingType;
+  peMd?: PaddingType;
+  peLg?: PaddingType;
+  peXl?: PaddingType;
+  peXxl?: PaddingType;
+}
+
+export interface BackgroundInterface {
+  bgColor?: ThemeType;
+  bgOpacity?: ColorOpacityType;
+}
+
+export interface BorderInterface {
+  border?: boolean;
+  borderTop?: boolean;
+  borderBottom?: boolean;
+  borderStart?: boolean;
+  borderEnd?: boolean;
+
+  border0?: boolean;
+  borderTop0?: boolean;
+  borderBottom0?: boolean;
+  borderStart0?: boolean;
+  borderEnd0?: boolean;
+
+  borderColor?: ThemeType;
+  borderOpacity?: ColorOpacityType;
+  borderWidth?: BorderType;
+
+  rounded?: boolean;
+  roundedTop?: boolean;
+  roundedBottom?: boolean;
+  roundedStart?: boolean;
+  roundedEnd?: boolean;
+  roundedCircle?: boolean;
+  roundedPill?: boolean;
+
+  roundedSize?: RoundedType;
+}
+
+export interface DisplayInterface {
+  d?: DisplayType;
+  dSm?: DisplayType;
+  dMd?: DisplayType;
+  dLg?: DisplayType;
+  dXl?: DisplayType;
+  dXxl?: DisplayType;
+}
+
+export interface FlexInterface {
+  flex?: FlexType;
+  flexSm?: FlexType;
+  flexMd?: FlexType;
+  flexLg?: FlexType;
+  flexXl?: FlexType;
+  flexXxl?: FlexType;
+
+  justifyContent?: JustifyContent;
+  justifyContentSm?: JustifyContent;
+  justifyContentMd?: JustifyContent;
+  justifyContentLg?: JustifyContent;
+  justifyContentXl?: JustifyContent;
+  justifyContentXxl?: JustifyContent;
+
+  alignItems?: AlignItems;
+  alignItemsSm?: AlignItems;
+  alignItemsMd?: AlignItems;
+  alignItemsLg?: AlignItems;
+  alignItemsXl?: AlignItems;
+  alignItemsXxl?: AlignItems;
+
+  alignContent?: AlignContentType;
+  alignContentSm?: AlignContentType;
+  alignContentMd?: AlignContentType;
+  alignContentLg?: AlignContentType;
+  alignContentXl?: AlignContentType;
+  alignContentXxl?: AlignContentType;
+
+  alignSelf?: AlignItems;
+  alignSelfSm?: AlignItems;
+  alignSelfMd?: AlignItems;
+  alignSelfLg?: AlignItems;
+  alignSelfXl?: AlignItems;
+  alignSelfXxl?: AlignItems;
+
+  flexFill?: boolean;
+  flexSmFill?: boolean;
+  flexMdFill?: boolean;
+  flexLgFill?: boolean;
+  flexXlFill?: boolean;
+  flexXxlFill?: boolean;
+
+  flexGrow?: FlexGrowType;
+  flexSmGrow?: FlexGrowType;
+  flexMdGrow?: FlexGrowType;
+  flexLgGrow?: FlexGrowType;
+  flexXlGrow?: FlexGrowType;
+  flexXxlGrow?: FlexGrowType;
+
+  flexShrink?: FlexShrinkType;
+  flexSmShrink?: FlexShrinkType;
+  flexMdShrink?: FlexShrinkType;
+  flexLgShrink?: FlexShrinkType;
+  flexXlShrink?: FlexShrinkType;
+  flexXxlShrink?: FlexShrinkType;
+
+  flexWrap?: FlexWrapType;
+  flexSmWrap?: FlexWrapType;
+  flexMdWrap?: FlexWrapType;
+  flexLgWrap?: FlexWrapType;
+  flexXlWrap?: FlexWrapType;
+  flexXxlWrap?: FlexWrapType;
+
+  order?: OrderType;
+  orderSm?: OrderType;
+  orderMd?: OrderType;
+  orderLg?: OrderType;
+  orderXl?: OrderType;
+  orderXxl?: OrderType;
+}
+
+export interface OpacityInterface {
+  opacity?: OpacityType;
+}
+
+export interface OverflowInterface {
+  overflow?: OverflowType;
+}
+
+export interface ShadowInterface {
+  shadow?: ShadowType;
+}
+
+export interface SizeInterface {
+  w?: SizeType;
+  mw?: SizeType;
+  vw?: SizeType;
+  minVw?: SizeType;
+  h?: SizeType;
+  mh?: SizeType;
+  vh?: SizeType;
+  minVh?: SizeType;
+}
+
+export interface PositionInterface {
+  position?: PositionType;
+  top?: PositionAxisType;
+  bottom?: PositionAxisType;
+  start?: PositionAxisType;
+  end?: PositionAxisType;
+  translateMiddle?: TranslateMiddleType;
+}
+
+export interface BlockInterface
+  extends MarginInterface,
+    BackgroundInterface,
+    BorderInterface,
+    DisplayInterface,
+    PaddingInterface,
+    FlexInterface,
+    OpacityInterface,
+    OverflowInterface,
+    ShadowInterface,
+    SizeInterface,
+    PositionInterface,
+    React.HTMLAttributes<HTMLDivElement> {}
