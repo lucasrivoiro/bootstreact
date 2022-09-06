@@ -14,6 +14,9 @@ import {
   PositionInterface,
   ShadowInterface,
   SizeInterface,
+  TextAlignmentInterface,
+  TextColorInterface,
+  TextInterface,
 } from 'Interface/Styles';
 
 export const useMargin = (props: MarginInterface): string => {
@@ -543,6 +546,43 @@ export const usePosition = (props: PositionInterface): string => {
   return classes;
 };
 
+export const useTextColor = (props: TextColorInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`text-${props.textColor}`]: props.textColor,
+        [`text-opacity-${props.textColorOpacity}`]: props.textColorOpacity,
+      }),
+    [props.textColor, props.textColorOpacity]
+  );
+
+  return classes;
+};
+
+export const useTextAlignment = (props: TextAlignmentInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`text-${props.align}`]: props.align,
+        [`text-sm-${props.alignSm}`]: props.alignSm,
+        [`text-md-${props.alignMd}`]: props.alignMd,
+        [`text-lg-${props.alignLg}`]: props.alignLg,
+        [`text-xl-${props.alignXl}`]: props.alignXl,
+        [`text-xxl-${props.alignXxl}`]: props.alignXxl,
+      }),
+    [
+      props.align,
+      props.alignLg,
+      props.alignMd,
+      props.alignSm,
+      props.alignXl,
+      props.alignXxl,
+    ]
+  );
+
+  return classes;
+};
+
 export const useBlock = (props: BlockInterface): string => {
   const margin = useMargin(props);
   const padding = usePadding(props);
@@ -584,6 +624,22 @@ export const useBlock = (props: BlockInterface): string => {
       shadow,
       size,
     ]
+  );
+
+  return classes;
+};
+
+export const useText = (props: TextInterface): string => {
+  const margin = useMargin(props);
+  const padding = usePadding(props);
+  const background = useBackground(props);
+  const border = useBorder(props);
+  const color = useTextColor(props);
+  const align = useTextAlignment(props);
+
+  const classes = useMemo(
+    () => classNames(margin, padding, background, border, color, align),
+    [align, background, border, color, margin, padding]
   );
 
   return classes;

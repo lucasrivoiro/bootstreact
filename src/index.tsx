@@ -6,6 +6,7 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import Div from 'Component/Div';
+import P from 'Component/P';
 
 import 'Style/app.scss';
 
@@ -21,14 +22,13 @@ render(
         borderColor="success"
         borderOpacity={25}
         rounded
-        d="flex"
-        justifyContent="center"
-        justifyContentMd="end"
         shadow="lg"
         position="relative"
         mt={5}
       >
-        Teste
+        <P textColor="success" textColorOpacity={25} align="center">
+          Teste
+        </P>
         <Div
           bgColor="danger"
           roundedCircle
