@@ -7,6 +7,9 @@ import {
   BorderInterface,
   DisplayInterface,
   FlexInterface,
+  FontSizeInterface,
+  FontStyleInterface,
+  FontWeightInterface,
   MarginInterface,
   OpacityInterface,
   OverflowInterface,
@@ -15,8 +18,11 @@ import {
   ShadowInterface,
   SizeInterface,
   TextAlignmentInterface,
+  TextBreakInterface,
   TextColorInterface,
   TextInterface,
+  TextTransformInterface,
+  TextWrapInterface,
 } from 'Interface/Styles';
 
 export const useMargin = (props: MarginInterface): string => {
@@ -583,6 +589,79 @@ export const useTextAlignment = (props: TextAlignmentInterface): string => {
   return classes;
 };
 
+export const useTextWrap = (props: TextWrapInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`text${typeof props.wrap != 'boolean' ? `-${props.wrap}` : ''}`]:
+          props.wrap,
+      }),
+    [props.wrap]
+  );
+
+  return classes;
+};
+
+export const useTextBreak = (props: TextBreakInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        'text-break': props.textBreak,
+      }),
+    [props.textBreak]
+  );
+
+  return classes;
+};
+
+export const useTextTransform = (props: TextTransformInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`text-${props.textTransform}`]: props.textTransform,
+      }),
+    [props.textTransform]
+  );
+
+  return classes;
+};
+
+export const useFontSize = (props: FontSizeInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`fs-${props.fs}`]: props.fs,
+      }),
+    [props.fs]
+  );
+
+  return classes;
+};
+
+export const useFontWeight = (props: FontWeightInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`fw-${props.fw}`]: props.fw,
+      }),
+    [props.fw]
+  );
+
+  return classes;
+};
+
+export const useFontStyle = (props: FontStyleInterface): string => {
+  const classes = useMemo(
+    () =>
+      classNames({
+        [`fst-${props.fst}`]: props.fst,
+      }),
+    [props.fst]
+  );
+
+  return classes;
+};
+
 export const useBlock = (props: BlockInterface): string => {
   const margin = useMargin(props);
   const padding = usePadding(props);
@@ -636,10 +715,43 @@ export const useText = (props: TextInterface): string => {
   const border = useBorder(props);
   const color = useTextColor(props);
   const align = useTextAlignment(props);
+  const wrap = useTextWrap(props);
+  const textBreak = useTextBreak(props);
+  const transform = useTextTransform(props);
+  const size = useFontSize(props);
+  const weight = useFontWeight(props);
+  const style = useFontStyle(props);
 
   const classes = useMemo(
-    () => classNames(margin, padding, background, border, color, align),
-    [align, background, border, color, margin, padding]
+    () =>
+      classNames(
+        margin,
+        padding,
+        background,
+        border,
+        color,
+        align,
+        wrap,
+        textBreak,
+        transform,
+        size,
+        weight,
+        style
+      ),
+    [
+      align,
+      background,
+      border,
+      color,
+      margin,
+      padding,
+      wrap,
+      textBreak,
+      transform,
+      size,
+      weight,
+      style,
+    ]
   );
 
   return classes;

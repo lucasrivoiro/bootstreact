@@ -288,6 +288,30 @@ export interface TextAlignmentInterface {
   alignXxl?: TextAlignmentType;
 }
 
+export interface TextWrapInterface {
+  wrap?: true | 'nowrap';
+}
+
+export interface TextBreakInterface {
+  textBreak?: boolean;
+}
+
+export interface TextTransformInterface {
+  textTransform?: 'lowercase' | 'uppercase' | 'capitalize';
+}
+
+export interface FontSizeInterface {
+  fs?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+export interface FontWeightInterface {
+  fw?: 'bold' | 'bolder' | 'semibold' | 'normal' | 'light' | 'lighter';
+}
+
+export interface FontStyleInterface {
+  fst?: 'italic' | 'normal';
+}
+
 export interface BlockInterface
   extends MarginInterface,
     BackgroundInterface,
@@ -310,4 +334,10 @@ export interface TextInterface
     OpacityInterface,
     TextColorInterface,
     TextAlignmentInterface,
+    TextWrapInterface,
+    TextBreakInterface,
+    TextTransformInterface,
+    FontSizeInterface,
+    FontWeightInterface,
+    FontStyleInterface,
     React.HTMLAttributes<HTMLParagraphElement> {}
