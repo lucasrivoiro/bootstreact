@@ -7,9 +7,11 @@ import {
   BorderInterface,
   DisplayInterface,
   FlexInterface,
+  FontMonospaceInterface,
   FontSizeInterface,
   FontStyleInterface,
   FontWeightInterface,
+  LineHeightInterface,
   MarginInterface,
   OpacityInterface,
   OverflowInterface,
@@ -20,7 +22,9 @@ import {
   TextAlignmentInterface,
   TextBreakInterface,
   TextColorInterface,
+  TextDecorationInterface,
   TextInterface,
+  TextResetInterface,
   TextTransformInterface,
   TextWrapInterface,
 } from 'Interface/Styles';
@@ -662,6 +666,54 @@ export const useFontStyle = (props: FontStyleInterface): string => {
   return classes;
 };
 
+export const useLineHeight = (props: LineHeightInterface): string => {
+  const classes = useMemo(
+    () =>
+      cx({
+        [`lh-${props.lh}`]: props.lh,
+      }),
+    [props.lh]
+  );
+
+  return classes;
+};
+
+export const useFontMonospace = (props: FontMonospaceInterface): string => {
+  const classes = useMemo(
+    () =>
+      cx({
+        'font-monospace': props.fontMonospace,
+      }),
+    [props.fontMonospace]
+  );
+
+  return classes;
+};
+
+export const useTextReset = (props: TextResetInterface): string => {
+  const classes = useMemo(
+    () =>
+      cx({
+        'text-reset': props.textReset,
+      }),
+    [props.textReset]
+  );
+
+  return classes;
+};
+
+export const useTextDecoration = (props: TextDecorationInterface): string => {
+  const classes = useMemo(
+    () =>
+      cx({
+        [`text-decoration-${props.textDecoration}`]: props.textDecoration,
+      }),
+    [props.textDecoration]
+  );
+
+  return classes;
+};
+
 export const useBlock = (props: BlockInterface): string => {
   const margin = useMargin(props);
   const padding = usePadding(props);
@@ -721,6 +773,10 @@ export const useText = (props: TextInterface): string => {
   const size = useFontSize(props);
   const weight = useFontWeight(props);
   const style = useFontStyle(props);
+  const lineHeight = useLineHeight(props);
+  const monospace = useFontMonospace(props);
+  const textReset = useTextReset(props);
+  const textDecoration = useTextDecoration(props);
 
   const classes = useMemo(
     () =>
@@ -736,7 +792,11 @@ export const useText = (props: TextInterface): string => {
         transform,
         size,
         weight,
-        style
+        style,
+        lineHeight,
+        monospace,
+        textReset,
+        textDecoration
       ),
     [
       align,
@@ -751,6 +811,10 @@ export const useText = (props: TextInterface): string => {
       size,
       weight,
       style,
+      lineHeight,
+      monospace,
+      textReset,
+      textDecoration,
     ]
   );
 

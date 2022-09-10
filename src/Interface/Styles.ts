@@ -312,6 +312,22 @@ export interface FontStyleInterface {
   fst?: 'italic' | 'normal';
 }
 
+export interface LineHeightInterface {
+  lh?: 1 | 'sm' | 'base' | 'lg';
+}
+
+export interface FontMonospaceInterface {
+  fontMonospace?: boolean;
+}
+
+export interface TextResetInterface {
+  textReset?: boolean;
+}
+
+export interface TextDecorationInterface {
+  textDecoration?: 'none' | 'underline' | 'line-through';
+}
+
 export interface BlockInterface
   extends MarginInterface,
     BackgroundInterface,
@@ -340,4 +356,8 @@ export interface TextInterface
     FontSizeInterface,
     FontWeightInterface,
     FontStyleInterface,
+    LineHeightInterface,
+    FontMonospaceInterface,
+    TextResetInterface,
+    TextDecorationInterface,
     React.HTMLAttributes<HTMLParagraphElement> {}
