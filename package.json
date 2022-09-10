@@ -21,15 +21,18 @@
     "component"
   ],
   "author": "Lucas Rivoiro",
-  "contributors": [{
-    "name": "Lucas Rivoiro",
-    "email": "lucasrivoiro@gmail.com",
-    "url": "https://github.com/lucasrivoiro"
-  }, {
+  "contributors": [
+    {
+      "name": "Lucas Rivoiro",
+      "email": "lucasrivoiro@gmail.com",
+      "url": "https://github.com/lucasrivoiro"
+    },
+    {
       "name": "Johnny Sprone",
       "email": "johnnysprone@hotmail.com",
       "url": "https://github.com/johnnysprone"
-  }],
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -42,7 +45,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.2.0-beta1",
     "bootstrap-icons": "^1.8.1",
-    "classnames": "^2.3.1",
+    "cnbuilder": "^3.1.0",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "formik": "^2.2.9",
