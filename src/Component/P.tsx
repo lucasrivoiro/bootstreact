@@ -1,8 +1,30 @@
 import { useText } from 'Hook/Style';
-import React from 'react';
-import { cx } from 'utils';
+import React, {
+  FocusEventHandler,
+  FormEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  useMemo,
+} from 'react';
+import { cn } from 'utils';
 
 import { TextInterface } from 'Interface/Styles';
+
+interface ParagraphInterface extends TextInterface {
+  children?: ReactNode | undefined;
+  className?: string | undefined;
+  contentEditable?: boolean | 'inherit' | undefined;
+  onBlur?: FocusEventHandler<HTMLParagraphElement> | undefined;
+  onChange?: FormEventHandler<HTMLParagraphElement> | undefined;
+  onClick?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseDown?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseEnter?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseLeave?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseMove?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseOut?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseOver?: MouseEventHandler<HTMLParagraphElement> | undefined;
+  onMouseUp?: MouseEventHandler<HTMLParagraphElement> | undefined;
+}
 
 const P = ({
   children,
@@ -19,12 +41,16 @@ const P = ({
   onMouseOver,
   onMouseUp,
   ...props
-}: TextInterface): JSX.Element => {
-  const classes = useText(props);
+}: ParagraphInterface): JSX.Element => {
+  const propsClasses = useText(props);
+  const classes = useMemo(
+    () => cn(propsClasses, className),
+    [className, propsClasses]
+  );
 
   return (
     <p
-      className={cx(classes, className)}
+      className={classes}
       contentEditable={contentEditable}
       onBlur={onBlur}
       onChange={onChange}

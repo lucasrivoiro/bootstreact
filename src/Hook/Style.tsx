@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { cx } from 'utils';
+import { cn } from 'utils';
 
 import {
   BackgroundInterface,
@@ -32,7 +32,7 @@ import {
 export const useMargin = (props: MarginInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`m-${props.m}`]: props.m,
         [`m-sm-${props.mSm}`]: props.mSm,
         [`m-md-${props.mMd}`]: props.mMd,
@@ -134,7 +134,7 @@ export const useMargin = (props: MarginInterface): string => {
 export const usePadding = (props: PaddingInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`p-${props.p}`]: props.p,
         [`p-sm-${props.pSm}`]: props.pSm,
         [`p-md-${props.pMd}`]: props.pMd,
@@ -236,7 +236,7 @@ export const usePadding = (props: PaddingInterface): string => {
 export const useBackground = (props: BackgroundInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`bg-${props.bgColor}`]: props.bgColor,
         [`bg-opacity-${props.bgOpacity}`]: props.bgOpacity,
       }),
@@ -249,7 +249,7 @@ export const useBackground = (props: BackgroundInterface): string => {
 export const useBorder = (props: BorderInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         border: props.border,
         'border-top': props.borderTop,
         'border-bottom': props.borderBottom,
@@ -303,7 +303,7 @@ export const useBorder = (props: BorderInterface): string => {
 export const useDisplay = (props: DisplayInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`d-${props.d}`]: props.d,
         [`d-sm-${props.dSm}`]: props.dSm,
         [`d-md-${props.dMd}`]: props.dMd,
@@ -320,7 +320,7 @@ export const useDisplay = (props: DisplayInterface): string => {
 export const useFlex = (props: FlexInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`flex-${props.flex}`]: props.flex,
         [`flex-sm-${props.flexSm}`]: props.flexSm,
         [`flex-md-${props.flexMd}`]: props.flexMd,
@@ -466,7 +466,7 @@ export const useFlex = (props: FlexInterface): string => {
 export const useOpacity = (props: OpacityInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`opacity-${props.opacity}`]: props.opacity,
       }),
     [props.opacity]
@@ -478,7 +478,7 @@ export const useOpacity = (props: OpacityInterface): string => {
 export const useOverflow = (props: OverflowInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`overflow-${props.overflow}`]: props.overflow,
       }),
     [props.overflow]
@@ -490,7 +490,7 @@ export const useOverflow = (props: OverflowInterface): string => {
 export const useShadow = (props: ShadowInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`shadow${typeof props.shadow != 'boolean' ? `-${props.shadow}` : ''}`]:
           props.shadow,
       }),
@@ -503,7 +503,7 @@ export const useShadow = (props: ShadowInterface): string => {
 export const useSize = (props: SizeInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`w-${props.w}`]: props.w,
         [`mw-${props.mw}`]: props.mw,
         [`vw-${props.vw}`]: props.vw,
@@ -531,7 +531,7 @@ export const useSize = (props: SizeInterface): string => {
 export const usePosition = (props: PositionInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`position-${props.position}`]: props.position,
         [`top-${props.top}`]: typeof props.top == 'number',
         [`bottom-${props.bottom}`]: typeof props.bottom == 'number',
@@ -559,7 +559,7 @@ export const usePosition = (props: PositionInterface): string => {
 export const useTextColor = (props: TextColorInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`text-${props.textColor}`]: props.textColor,
         [`text-opacity-${props.textColorOpacity}`]: props.textColorOpacity,
       }),
@@ -572,7 +572,7 @@ export const useTextColor = (props: TextColorInterface): string => {
 export const useTextAlignment = (props: TextAlignmentInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`text-${props.align}`]: props.align,
         [`text-sm-${props.alignSm}`]: props.alignSm,
         [`text-md-${props.alignMd}`]: props.alignMd,
@@ -596,7 +596,7 @@ export const useTextAlignment = (props: TextAlignmentInterface): string => {
 export const useTextWrap = (props: TextWrapInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`text${typeof props.wrap != 'boolean' ? `-${props.wrap}` : ''}`]:
           props.wrap,
       }),
@@ -609,7 +609,7 @@ export const useTextWrap = (props: TextWrapInterface): string => {
 export const useTextBreak = (props: TextBreakInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         'text-break': props.textBreak,
       }),
     [props.textBreak]
@@ -621,7 +621,7 @@ export const useTextBreak = (props: TextBreakInterface): string => {
 export const useTextTransform = (props: TextTransformInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`text-${props.textTransform}`]: props.textTransform,
       }),
     [props.textTransform]
@@ -633,7 +633,7 @@ export const useTextTransform = (props: TextTransformInterface): string => {
 export const useFontSize = (props: FontSizeInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`fs-${props.fs}`]: props.fs,
       }),
     [props.fs]
@@ -645,7 +645,7 @@ export const useFontSize = (props: FontSizeInterface): string => {
 export const useFontWeight = (props: FontWeightInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`fw-${props.fw}`]: props.fw,
       }),
     [props.fw]
@@ -657,7 +657,7 @@ export const useFontWeight = (props: FontWeightInterface): string => {
 export const useFontStyle = (props: FontStyleInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`fst-${props.fst}`]: props.fst,
       }),
     [props.fst]
@@ -669,7 +669,7 @@ export const useFontStyle = (props: FontStyleInterface): string => {
 export const useLineHeight = (props: LineHeightInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`lh-${props.lh}`]: props.lh,
       }),
     [props.lh]
@@ -681,7 +681,7 @@ export const useLineHeight = (props: LineHeightInterface): string => {
 export const useFontMonospace = (props: FontMonospaceInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         'font-monospace': props.fontMonospace,
       }),
     [props.fontMonospace]
@@ -693,7 +693,7 @@ export const useFontMonospace = (props: FontMonospaceInterface): string => {
 export const useTextReset = (props: TextResetInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         'text-reset': props.textReset,
       }),
     [props.textReset]
@@ -705,7 +705,7 @@ export const useTextReset = (props: TextResetInterface): string => {
 export const useTextDecoration = (props: TextDecorationInterface): string => {
   const classes = useMemo(
     () =>
-      cx({
+      cn({
         [`text-decoration-${props.textDecoration}`]: props.textDecoration,
       }),
     [props.textDecoration]
@@ -729,7 +729,7 @@ export const useBlock = (props: BlockInterface): string => {
 
   const classes = useMemo(
     () =>
-      cx(
+      cn(
         margin,
         padding,
         background,
@@ -780,7 +780,7 @@ export const useText = (props: TextInterface): string => {
 
   const classes = useMemo(
     () =>
-      cx(
+      cn(
         margin,
         padding,
         background,

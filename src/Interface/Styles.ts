@@ -339,8 +339,7 @@ export interface BlockInterface
     OverflowInterface,
     ShadowInterface,
     SizeInterface,
-    PositionInterface,
-    React.HTMLAttributes<HTMLDivElement> {}
+    PositionInterface {}
 
 export interface TextInterface
   extends MarginInterface,
@@ -359,5 +358,4 @@ export interface TextInterface
     LineHeightInterface,
     FontMonospaceInterface,
     TextResetInterface,
-    TextDecorationInterface,
-    React.HTMLAttributes<HTMLParagraphElement> {}
+    TextDecorationInterface {}

@@ -1,32 +1,32 @@
-import { useBlock } from 'Hook/Style';
+import { useText } from 'Hook/Style';
 import React, {
   FocusEventHandler,
   FormEventHandler,
   MouseEventHandler,
   ReactNode,
+  useMemo,
 } from 'react';
-import { useMemo } from 'react';
 import { cn } from 'utils';
 
-import { BlockInterface } from 'Interface/Styles';
+import { TextInterface } from 'Interface/Styles';
 
-interface DivInterface extends BlockInterface {
+interface HeadingInterface extends TextInterface {
   children?: ReactNode | undefined;
   className?: string | undefined;
   contentEditable?: boolean | 'inherit' | undefined;
-  onBlur?: FocusEventHandler<HTMLDivElement> | undefined;
-  onChange?: FormEventHandler<HTMLDivElement> | undefined;
-  onClick?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseDown?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseEnter?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseLeave?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseMove?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseOut?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseOver?: MouseEventHandler<HTMLDivElement> | undefined;
-  onMouseUp?: MouseEventHandler<HTMLDivElement> | undefined;
+  onBlur?: FocusEventHandler<HTMLHeadingElement> | undefined;
+  onChange?: FormEventHandler<HTMLHeadingElement> | undefined;
+  onClick?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseDown?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseEnter?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseLeave?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseMove?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseOut?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseOver?: MouseEventHandler<HTMLHeadingElement> | undefined;
+  onMouseUp?: MouseEventHandler<HTMLHeadingElement> | undefined;
 }
 
-const Div = ({
+const H4 = ({
   children,
   className,
   contentEditable,
@@ -41,15 +41,15 @@ const Div = ({
   onMouseOver,
   onMouseUp,
   ...props
-}: DivInterface): JSX.Element => {
-  const propsClasses = useBlock(props);
+}: HeadingInterface): JSX.Element => {
+  const propsClasses = useText(props);
   const classes = useMemo(
     () => cn(propsClasses, className),
     [className, propsClasses]
   );
 
   return (
-    <div
+    <h4
       className={classes}
       contentEditable={contentEditable}
       onBlur={onBlur}
@@ -64,8 +64,8 @@ const Div = ({
       onMouseUp={onMouseUp}
     >
       {children}
-    </div>
+    </h4>
   );
 };
 
-export default Div;
+export default H4;

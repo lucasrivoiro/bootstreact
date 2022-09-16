@@ -1,3 +1,3 @@
 import { cnb } from 'cnbuilder';
 
-export const cx = cnb;
+export const cn = cnb;
