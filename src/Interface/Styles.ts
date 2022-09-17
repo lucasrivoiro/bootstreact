@@ -328,6 +328,13 @@ export interface TextDecorationInterface {
   textDecoration?: 'none' | 'underline' | 'line-through';
 }
 
+export interface TextExtrasInterface {
+  display?: 1 | 2 | 3 | 4 | 5 | 6;
+  lead?: boolean;
+  small?: boolean;
+  mark?: boolean;
+}
+
 export interface BlockInterface
   extends MarginInterface,
     BackgroundInterface,
@@ -358,4 +365,5 @@ export interface TextInterface
     LineHeightInterface,
     FontMonospaceInterface,
     TextResetInterface,
-    TextDecorationInterface {}
+    TextDecorationInterface,
+    TextExtrasInterface {}

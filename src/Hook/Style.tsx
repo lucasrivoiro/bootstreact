@@ -23,6 +23,7 @@ import {
   TextBreakInterface,
   TextColorInterface,
   TextDecorationInterface,
+  TextExtrasInterface,
   TextInterface,
   TextResetInterface,
   TextTransformInterface,
@@ -714,6 +715,21 @@ export const useTextDecoration = (props: TextDecorationInterface): string => {
   return classes;
 };
 
+export const useTextExtras = (props: TextExtrasInterface): string => {
+  const classes = useMemo(
+    () =>
+      cn({
+        [`display-${props.display}`]: props.display,
+        lead: props.lead,
+        small: props.small,
+        mark: props.mark,
+      }),
+    [props.display, props.lead, props.mark, props.small]
+  );
+
+  return classes;
+};
+
 export const useBlock = (props: BlockInterface): string => {
   const margin = useMargin(props);
   const padding = usePadding(props);
@@ -777,6 +793,7 @@ export const useText = (props: TextInterface): string => {
   const monospace = useFontMonospace(props);
   const textReset = useTextReset(props);
   const textDecoration = useTextDecoration(props);
+  const extras = useTextExtras(props);
 
   const classes = useMemo(
     () =>
@@ -796,15 +813,16 @@ export const useText = (props: TextInterface): string => {
         lineHeight,
         monospace,
         textReset,
-        textDecoration
+        textDecoration,
+        extras
       ),
     [
-      align,
+      margin,
+      padding,
       background,
       border,
       color,
-      margin,
-      padding,
+      align,
       wrap,
       textBreak,
       transform,
@@ -815,6 +833,7 @@ export const useText = (props: TextInterface): string => {
       monospace,
       textReset,
       textDecoration,
+      extras,
     ]
   );
 
