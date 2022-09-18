@@ -29,7 +29,7 @@ interface HeaderProps {
 }
 
 interface BodyProps {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | string | string[];
 }
 
 interface FooterProps {
