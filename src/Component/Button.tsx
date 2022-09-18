@@ -1,8 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 import { cn } from 'utils';
 
-import { TextInterface } from 'Interface/Styles';
-
 type ButtonThemeType =
   | 'primary'
   | 'secondary'
@@ -22,7 +20,7 @@ type ButtonThemeType =
   | 'outline-light'
   | 'transparent';
 
-interface IconInterface extends TextInterface {
+interface IconInterface {
   children?: string;
   className?: string | undefined;
   color: ButtonThemeType;
@@ -42,20 +40,18 @@ const Button = ({
   onClick,
   sm = false,
   type = 'button',
-}: IconInterface): JSX.Element => {
-  return (
-    <button
-      className={cn(`btn btn-${color}`, className, {
-        'btn-sm': sm,
-        'btn-lg': lg,
-      })}
-      disabled={disabled}
-      onClick={onClick}
-      type={type}
-    >
-      {children}
-    </button>
-  );
-};
+}: IconInterface): JSX.Element => (
+  <button
+    className={cn(`btn btn-${color}`, className, {
+      'btn-sm': sm,
+      'btn-lg': lg,
+    })}
+    disabled={disabled}
+    onClick={onClick}
+    type={type}
+  >
+    {children}
+  </button>
+);
 
 export default Button;
