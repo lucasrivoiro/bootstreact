@@ -14,11 +14,11 @@ if (!container) {
 }
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
-const AppendBody = ({ children }: Props): JSX.Element => {
+const AppendToBody = ({ children }: Props): JSX.Element => {
   return createPortal(children, container as HTMLElement);
 };
 
-export default AppendBody;
+export default AppendToBody;
