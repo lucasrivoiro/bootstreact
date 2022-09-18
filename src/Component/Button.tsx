@@ -23,7 +23,7 @@ type ButtonThemeType =
 interface IconInterface {
   children?: string;
   className?: string | undefined;
-  color: ButtonThemeType;
+  color?: ButtonThemeType;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   type?: 'button' | 'submit' | 'reset';
   lg?: boolean;
@@ -34,7 +34,7 @@ interface IconInterface {
 const Button = ({
   children,
   className,
-  color,
+  color = 'primary',
   disabled = false,
   lg = false,
   onClick,
