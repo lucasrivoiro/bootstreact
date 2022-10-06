@@ -12367,10 +12367,87 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
-/***/ "./src/Component/Div/index.tsx":
-/*!*************************************!*\
-  !*** ./src/Component/Div/index.tsx ***!
-  \*************************************/
+/***/ "./src/Component/AppendToBody.tsx":
+/*!****************************************!*\
+  !*** ./src/Component/AppendToBody.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+var container = document.getElementById('appended-elements');
+
+if (!container) {
+  var body = document.querySelectorAll('body')[0];
+  var div = document.createElement('div');
+  div.id = 'appended-elements';
+  body.append(div);
+  container = document.getElementById('appended-elements');
+}
+
+var AppendToBody = function AppendToBody(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/(0,react_dom__WEBPACK_IMPORTED_MODULE_0__.createPortal)(children, container);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppendToBody);
+
+/***/ }),
+
+/***/ "./src/Component/Button.tsx":
+/*!**********************************!*\
+  !*** ./src/Component/Button.tsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+
+
+
+var Button = function Button(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'primary' : _ref$color,
+      _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+      _ref$lg = _ref.lg,
+      lg = _ref$lg === void 0 ? false : _ref$lg,
+      onClick = _ref.onClick,
+      _ref$sm = _ref.sm,
+      sm = _ref$sm === void 0 ? false : _ref$sm,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'button' : _ref$type;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)("btn btn-".concat(color), className, {
+      'btn-sm': sm,
+      'btn-lg': lg
+    }),
+    disabled: disabled,
+    onClick: onClick,
+    type: type
+  }, children);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./src/Component/Div.tsx":
+/*!*******************************!*\
+  !*** ./src/Component/Div.tsx ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12380,7 +12457,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var Hook_Style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Hook/Style */ "./src/Hook/Style.tsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var _excluded = ["children"];
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+var _excluded = ["children", "className", "contentEditable", "onBlur", "onChange", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseOut", "onMouseOver", "onMouseUp"];
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -12389,17 +12467,453 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
+
 var Div = function Div(_ref) {
   var children = _ref.children,
+      className = _ref.className,
+      contentEditable = _ref.contentEditable,
+      onBlur = _ref.onBlur,
+      onChange = _ref.onChange,
+      onClick = _ref.onClick,
+      onMouseDown = _ref.onMouseDown,
+      onMouseEnter = _ref.onMouseEnter,
+      onMouseLeave = _ref.onMouseLeave,
+      onMouseMove = _ref.onMouseMove,
+      onMouseOut = _ref.onMouseOut,
+      onMouseOver = _ref.onMouseOver,
+      onMouseUp = _ref.onMouseUp,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var classes = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useBlock)(props);
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useBlock)(props);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
+  }, [className, propsClasses]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: classes
+    className: classes,
+    contentEditable: contentEditable,
+    onBlur: onBlur,
+    onChange: onChange,
+    onClick: onClick,
+    onMouseDown: onMouseDown,
+    onMouseEnter: onMouseEnter,
+    onMouseLeave: onMouseLeave,
+    onMouseMove: onMouseMove,
+    onMouseOut: onMouseOut,
+    onMouseOver: onMouseOver,
+    onMouseUp: onMouseUp
   }, children);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Div);
+
+/***/ }),
+
+/***/ "./src/Component/Icon.tsx":
+/*!********************************!*\
+  !*** ./src/Component/Icon.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Hook_Style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Hook/Style */ "./src/Hook/Style.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+var _excluded = ["className", "name"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var Icon = function Icon(_ref) {
+  var className = _ref.className,
+      name = _ref.name,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)('bi', "bi-".concat(name), propsClasses, className);
+  }, [className, name, propsClasses]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
+    className: classes
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
+
+/***/ }),
+
+/***/ "./src/Component/Modal.tsx":
+/*!*********************************!*\
+  !*** ./src/Component/Modal.tsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+/* harmony import */ var _AppendToBody__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AppendToBody */ "./src/Component/AppendToBody.tsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var numberOfModals = 0;
+var Context = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({});
+
+var Modal = function Modal(_ref) {
+  var _ref$backdrop = _ref.backdrop,
+      backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop,
+      _ref$centered = _ref.centered,
+      centered = _ref$centered === void 0 ? true : _ref$centered,
+      children = _ref.children,
+      _ref$fullscreen = _ref.fullscreen,
+      fullscreen = _ref$fullscreen === void 0 ? false : _ref$fullscreen,
+      _ref$keyboard = _ref.keyboard,
+      keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard,
+      lg = _ref.lg,
+      onClose = _ref.onClose,
+      _ref$scrollable = _ref.scrollable,
+      scrollable = _ref$scrollable === void 0 ? false : _ref$scrollable,
+      _ref$show = _ref.show,
+      show = _ref$show === void 0 ? false : _ref$show,
+      sm = _ref.sm,
+      xl = _ref.xl;
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      zIndex = _useState2[0],
+      setZIndex = _useState2[1];
+
+  var modal = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    if (ref.current) {
+      ref.current.addEventListener('hide.bs.modal', function (event) {
+        console.log(event);
+        onClose(false);
+      });
+      return new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Modal(ref.current, {
+        backdrop: backdrop,
+        keyboard: keyboard
+      });
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [backdrop, keyboard, ref.current]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (modal) {
+      if (show) {
+        modal.show(); // document.querySelectorAll<HTMLDivElement>(
+        //   'div.modal-backdrop:last-child'
+        // )[0].style.zIndex = (1050 + zIndex).toString();
+      } else {
+        modal.hide();
+      }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [modal, show]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)(function () {
+    numberOfModals++;
+    setZIndex(10 * numberOfModals);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppendToBody__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Context.Provider, {
+    value: {
+      onClose: onClose
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    ref: ref,
+    className: "modal fade",
+    style: {
+      zIndex: 1055 + zIndex
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)('modal-dialog', _defineProperty({
+      'modal-dialog-scrollable': scrollable,
+      'modal-dialog-centered': centered,
+      'modal-xl': xl,
+      'modal-lg': lg,
+      'modal-sm': sm
+    }, "modal-fullscreen".concat(typeof fullscreen !== 'boolean' ? "-".concat(fullscreen, "-down") : ''), fullscreen))
+  }, children))));
+};
+
+var Content = function Content(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "modal-content"
+  }, children);
+};
+
+var Header = function Header(_ref3) {
+  var children = _ref3.children;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(Context),
+      onClose = _useContext.onClose;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h5", {
+    className: "modal-title"
+  }, children), onClose && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    onClick: function onClick() {
+      return onClose(false);
+    }
+  }));
+};
+
+var Body = function Body(_ref4) {
+  var children = _ref4.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "modal-body"
+  }, children);
+};
+
+var Footer = function Footer(_ref5) {
+  var children = _ref5.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "modal-footer"
+  }, children);
+};
+
+Modal.Content = Content;
+Modal.Header = Header;
+Modal.Body = Body;
+Modal.Footer = Footer;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./src/Component/Offcanvas.tsx":
+/*!*************************************!*\
+  !*** ./src/Component/Offcanvas.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+/* harmony import */ var _AppendToBody__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppendToBody */ "./src/Component/AppendToBody.tsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var numberOfOffcanvas = 0;
+var Context = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+
+var Offcanvas = function Offcanvas(_ref) {
+  var children = _ref.children,
+      onClose = _ref.onClose,
+      _ref$show = _ref.show,
+      show = _ref$show === void 0 ? false : _ref$show,
+      _ref$placement = _ref.placement,
+      placement = _ref$placement === void 0 ? 'end' : _ref$placement;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      zIndex = _useState2[0],
+      setZIndex = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
+    numberOfOffcanvas++;
+    setZIndex(10 * numberOfOffcanvas);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AppendToBody__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Context.Provider, {
+    value: {
+      onClose: onClose
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)('offcanvas', "offcanvas-".concat(placement), 'show'),
+    style: {
+      zIndex: 1045 + zIndex
+    }
+  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "offcanvas-backdrop fade show",
+    onClick: function onClick() {
+      return onClose(false);
+    },
+    style: {
+      zIndex: 1040 + zIndex
+    }
+  }))));
+};
+
+var Header = function Header(_ref2) {
+  var children = _ref2.children;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(Context),
+      onClose = _useContext.onClose;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "offcanvas-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+    className: "offcanvas-title"
+  }, children), onClose && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    onClick: function onClick() {
+      return onClose(false);
+    }
+  }));
+};
+
+var Body = function Body(_ref3) {
+  var children = _ref3.children;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "offcanvas-body"
+  }, children);
+};
+
+Offcanvas.Header = Header;
+Offcanvas.Body = Body;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Offcanvas);
+
+/***/ }),
+
+/***/ "./src/Component/P.tsx":
+/*!*****************************!*\
+  !*** ./src/Component/P.tsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Hook_Style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Hook/Style */ "./src/Hook/Style.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+var _excluded = ["children", "className", "contentEditable", "onBlur", "onChange", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseOut", "onMouseOver", "onMouseUp"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var P = function P(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      contentEditable = _ref.contentEditable,
+      onBlur = _ref.onBlur,
+      onChange = _ref.onChange,
+      onClick = _ref.onClick,
+      onMouseDown = _ref.onMouseDown,
+      onMouseEnter = _ref.onMouseEnter,
+      onMouseLeave = _ref.onMouseLeave,
+      onMouseMove = _ref.onMouseMove,
+      onMouseOut = _ref.onMouseOut,
+      onMouseOver = _ref.onMouseOver,
+      onMouseUp = _ref.onMouseUp,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
+  }, [className, propsClasses]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
+    className: classes,
+    contentEditable: contentEditable,
+    onBlur: onBlur,
+    onChange: onChange,
+    onClick: onClick,
+    onMouseDown: onMouseDown,
+    onMouseEnter: onMouseEnter,
+    onMouseLeave: onMouseLeave,
+    onMouseMove: onMouseMove,
+    onMouseOut: onMouseOut,
+    onMouseOver: onMouseOver,
+    onMouseUp: onMouseUp
+  }, children);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (P);
+
+/***/ }),
+
+/***/ "./src/Component/Tooltip.tsx":
+/*!***********************************!*\
+  !*** ./src/Component/Tooltip.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Tooltip": () => (/* binding */ Tooltip)
+/* harmony export */ });
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Tooltip = function Tooltip(_ref) {
+  var children = _ref.children,
+      _ref$placement = _ref.placement,
+      placement = _ref$placement === void 0 ? 'top' : _ref$placement,
+      _ref$trigger = _ref.trigger,
+      trigger = _ref$trigger === void 0 ? 'hover' : _ref$trigger,
+      title = _ref.title;
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (ref.current) {
+      var t = new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Tooltip(ref.current, {
+        title: title,
+        placement: placement,
+        trigger: trigger
+      });
+      return function () {
+        return t.dispose();
+      };
+    }
+  }, [placement, title, trigger]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+    ref: ref
+  }, children);
+};
 
 /***/ }),
 
@@ -12417,50 +12931,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "useBorder": () => (/* binding */ useBorder),
 /* harmony export */   "useDisplay": () => (/* binding */ useDisplay),
 /* harmony export */   "useFlex": () => (/* binding */ useFlex),
+/* harmony export */   "useFontMonospace": () => (/* binding */ useFontMonospace),
+/* harmony export */   "useFontSize": () => (/* binding */ useFontSize),
+/* harmony export */   "useFontStyle": () => (/* binding */ useFontStyle),
+/* harmony export */   "useFontWeight": () => (/* binding */ useFontWeight),
+/* harmony export */   "useLineHeight": () => (/* binding */ useLineHeight),
 /* harmony export */   "useMargin": () => (/* binding */ useMargin),
 /* harmony export */   "useOpacity": () => (/* binding */ useOpacity),
 /* harmony export */   "useOverflow": () => (/* binding */ useOverflow),
 /* harmony export */   "usePadding": () => (/* binding */ usePadding),
 /* harmony export */   "usePosition": () => (/* binding */ usePosition),
 /* harmony export */   "useShadow": () => (/* binding */ useShadow),
-/* harmony export */   "useSize": () => (/* binding */ useSize)
+/* harmony export */   "useSize": () => (/* binding */ useSize),
+/* harmony export */   "useText": () => (/* binding */ useText),
+/* harmony export */   "useTextAlignment": () => (/* binding */ useTextAlignment),
+/* harmony export */   "useTextBreak": () => (/* binding */ useTextBreak),
+/* harmony export */   "useTextColor": () => (/* binding */ useTextColor),
+/* harmony export */   "useTextDecoration": () => (/* binding */ useTextDecoration),
+/* harmony export */   "useTextExtras": () => (/* binding */ useTextExtras),
+/* harmony export */   "useTextReset": () => (/* binding */ useTextReset),
+/* harmony export */   "useTextTransform": () => (/* binding */ useTextTransform),
+/* harmony export */   "useTextWrap": () => (/* binding */ useTextWrap)
 /* harmony export */ });
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils.ts");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 var useMargin = function useMargin(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames = {}, _defineProperty(_classNames, "m-".concat(props.m), props.m), _defineProperty(_classNames, "m-sm-".concat(props.mSm), props.mSm), _defineProperty(_classNames, "m-md-".concat(props.mMd), props.mMd), _defineProperty(_classNames, "m-lg-".concat(props.mLg), props.mLg), _defineProperty(_classNames, "m-xl-".concat(props.mXl), props.mXl), _defineProperty(_classNames, "m-xxl-".concat(props.mXxl), props.mXxl), _defineProperty(_classNames, "my-".concat(props.my), props.my), _defineProperty(_classNames, "my-sm-".concat(props.mySm), props.mySm), _defineProperty(_classNames, "my-md-".concat(props.myMd), props.myMd), _defineProperty(_classNames, "my-lg-".concat(props.myLg), props.myLg), _defineProperty(_classNames, "my-xl-".concat(props.myXl), props.myXl), _defineProperty(_classNames, "my-xxl-".concat(props.mXxl), props.myXxl), _defineProperty(_classNames, "mx-".concat(props.mx), props.mx), _defineProperty(_classNames, "mx-sm-".concat(props.mxSm), props.mxSm), _defineProperty(_classNames, "mx-md-".concat(props.mxMd), props.mxMd), _defineProperty(_classNames, "mx-lg-".concat(props.mxLg), props.mxLg), _defineProperty(_classNames, "mx-xl-".concat(props.mxXl), props.mxXl), _defineProperty(_classNames, "mx-xxl-".concat(props.mxXxl), props.mxXxl), _defineProperty(_classNames, "mt-".concat(props.mt), props.mt), _defineProperty(_classNames, "mt-sm-".concat(props.mtSm), props.mtSm), _defineProperty(_classNames, "mt-md-".concat(props.mtMd), props.mtMd), _defineProperty(_classNames, "mt-lg-".concat(props.mtLg), props.mtLg), _defineProperty(_classNames, "mt-xl-".concat(props.mtXl), props.mtXl), _defineProperty(_classNames, "mt-xxl-".concat(props.mtXxl), props.mtXxl), _defineProperty(_classNames, "mb-".concat(props.mb), props.mb), _defineProperty(_classNames, "mb-sm-".concat(props.mbSm), props.mbSm), _defineProperty(_classNames, "mb-md-".concat(props.mbMd), props.mbMd), _defineProperty(_classNames, "mb-lg-".concat(props.mbLg), props.mbLg), _defineProperty(_classNames, "mb-xl-".concat(props.mbXl), props.mbXl), _defineProperty(_classNames, "mb-xxl-".concat(props.mbXxl), props.mbXxl), _defineProperty(_classNames, "ms-".concat(props.ms), props.ms), _defineProperty(_classNames, "ms-sm-".concat(props.msSm), props.msSm), _defineProperty(_classNames, "ms-md-".concat(props.msMd), props.msMd), _defineProperty(_classNames, "ms-lg-".concat(props.msLg), props.msLg), _defineProperty(_classNames, "ms-xl-".concat(props.msXl), props.msXl), _defineProperty(_classNames, "ms-xxl-".concat(props.msXxl), props.msXxl), _defineProperty(_classNames, "me-".concat(props.me), props.me), _defineProperty(_classNames, "me-sm-".concat(props.meSm), props.meSm), _defineProperty(_classNames, "me-md-".concat(props.meMd), props.meMd), _defineProperty(_classNames, "me-lg-".concat(props.meLg), props.meLg), _defineProperty(_classNames, "me-xl-".concat(props.meXl), props.meXl), _defineProperty(_classNames, "me-xxl-".concat(props.meXxl), props.meXxl), _classNames));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn = {}, _defineProperty(_cn, "m-".concat(props.m), props.m), _defineProperty(_cn, "m-sm-".concat(props.mSm), props.mSm), _defineProperty(_cn, "m-md-".concat(props.mMd), props.mMd), _defineProperty(_cn, "m-lg-".concat(props.mLg), props.mLg), _defineProperty(_cn, "m-xl-".concat(props.mXl), props.mXl), _defineProperty(_cn, "m-xxl-".concat(props.mXxl), props.mXxl), _defineProperty(_cn, "my-".concat(props.my), props.my), _defineProperty(_cn, "my-sm-".concat(props.mySm), props.mySm), _defineProperty(_cn, "my-md-".concat(props.myMd), props.myMd), _defineProperty(_cn, "my-lg-".concat(props.myLg), props.myLg), _defineProperty(_cn, "my-xl-".concat(props.myXl), props.myXl), _defineProperty(_cn, "my-xxl-".concat(props.mXxl), props.myXxl), _defineProperty(_cn, "mx-".concat(props.mx), props.mx), _defineProperty(_cn, "mx-sm-".concat(props.mxSm), props.mxSm), _defineProperty(_cn, "mx-md-".concat(props.mxMd), props.mxMd), _defineProperty(_cn, "mx-lg-".concat(props.mxLg), props.mxLg), _defineProperty(_cn, "mx-xl-".concat(props.mxXl), props.mxXl), _defineProperty(_cn, "mx-xxl-".concat(props.mxXxl), props.mxXxl), _defineProperty(_cn, "mt-".concat(props.mt), props.mt), _defineProperty(_cn, "mt-sm-".concat(props.mtSm), props.mtSm), _defineProperty(_cn, "mt-md-".concat(props.mtMd), props.mtMd), _defineProperty(_cn, "mt-lg-".concat(props.mtLg), props.mtLg), _defineProperty(_cn, "mt-xl-".concat(props.mtXl), props.mtXl), _defineProperty(_cn, "mt-xxl-".concat(props.mtXxl), props.mtXxl), _defineProperty(_cn, "mb-".concat(props.mb), props.mb), _defineProperty(_cn, "mb-sm-".concat(props.mbSm), props.mbSm), _defineProperty(_cn, "mb-md-".concat(props.mbMd), props.mbMd), _defineProperty(_cn, "mb-lg-".concat(props.mbLg), props.mbLg), _defineProperty(_cn, "mb-xl-".concat(props.mbXl), props.mbXl), _defineProperty(_cn, "mb-xxl-".concat(props.mbXxl), props.mbXxl), _defineProperty(_cn, "ms-".concat(props.ms), props.ms), _defineProperty(_cn, "ms-sm-".concat(props.msSm), props.msSm), _defineProperty(_cn, "ms-md-".concat(props.msMd), props.msMd), _defineProperty(_cn, "ms-lg-".concat(props.msLg), props.msLg), _defineProperty(_cn, "ms-xl-".concat(props.msXl), props.msXl), _defineProperty(_cn, "ms-xxl-".concat(props.msXxl), props.msXxl), _defineProperty(_cn, "me-".concat(props.me), props.me), _defineProperty(_cn, "me-sm-".concat(props.meSm), props.meSm), _defineProperty(_cn, "me-md-".concat(props.meMd), props.meMd), _defineProperty(_cn, "me-lg-".concat(props.meLg), props.meLg), _defineProperty(_cn, "me-xl-".concat(props.meXl), props.meXl), _defineProperty(_cn, "me-xxl-".concat(props.meXxl), props.meXxl), _cn));
   }, [props.m, props.mLg, props.mMd, props.mSm, props.mXl, props.mXxl, props.mb, props.mbLg, props.mbMd, props.mbSm, props.mbXl, props.mbXxl, props.me, props.meLg, props.meMd, props.meSm, props.meXl, props.meXxl, props.ms, props.msLg, props.msMd, props.msSm, props.msXl, props.msXxl, props.mt, props.mtLg, props.mtMd, props.mtSm, props.mtXl, props.mtXxl, props.mx, props.mxLg, props.mxMd, props.mxSm, props.mxXl, props.mxXxl, props.my, props.myLg, props.myMd, props.mySm, props.myXl, props.myXxl]);
   return classes;
 };
 var usePadding = function usePadding(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames2;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn2;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames2 = {}, _defineProperty(_classNames2, "p-".concat(props.p), props.p), _defineProperty(_classNames2, "p-sm-".concat(props.pSm), props.pSm), _defineProperty(_classNames2, "p-md-".concat(props.pMd), props.pMd), _defineProperty(_classNames2, "p-lg-".concat(props.pLg), props.pLg), _defineProperty(_classNames2, "p-xl-".concat(props.pXl), props.pXl), _defineProperty(_classNames2, "p-xxl-".concat(props.pXxl), props.pXxl), _defineProperty(_classNames2, "py-".concat(props.py), props.py), _defineProperty(_classNames2, "py-sm-".concat(props.pySm), props.pySm), _defineProperty(_classNames2, "py-md-".concat(props.pyMd), props.pyMd), _defineProperty(_classNames2, "py-lg-".concat(props.pyLg), props.pyLg), _defineProperty(_classNames2, "py-xl-".concat(props.pyXl), props.pyXl), _defineProperty(_classNames2, "py-xxl-".concat(props.pXxl), props.pyXxl), _defineProperty(_classNames2, "px-".concat(props.px), props.px), _defineProperty(_classNames2, "px-sm-".concat(props.pxSm), props.pxSm), _defineProperty(_classNames2, "px-md-".concat(props.pxMd), props.pxMd), _defineProperty(_classNames2, "px-lg-".concat(props.pxLg), props.pxLg), _defineProperty(_classNames2, "px-xl-".concat(props.pxXl), props.pxXl), _defineProperty(_classNames2, "px-xxl-".concat(props.pxXxl), props.pxXxl), _defineProperty(_classNames2, "pt-".concat(props.pt), props.pt), _defineProperty(_classNames2, "pt-sm-".concat(props.ptSm), props.ptSm), _defineProperty(_classNames2, "pt-md-".concat(props.ptMd), props.ptMd), _defineProperty(_classNames2, "pt-lg-".concat(props.ptLg), props.ptLg), _defineProperty(_classNames2, "pt-xl-".concat(props.ptXl), props.ptXl), _defineProperty(_classNames2, "pt-xxl-".concat(props.ptXxl), props.ptXxl), _defineProperty(_classNames2, "pb-".concat(props.pb), props.pb), _defineProperty(_classNames2, "pb-sm-".concat(props.pbSm), props.pbSm), _defineProperty(_classNames2, "pb-md-".concat(props.pbMd), props.pbMd), _defineProperty(_classNames2, "pb-lg-".concat(props.pbLg), props.pbLg), _defineProperty(_classNames2, "pb-xl-".concat(props.pbXl), props.pbXl), _defineProperty(_classNames2, "pb-xxl-".concat(props.pbXxl), props.pbXxl), _defineProperty(_classNames2, "ps-".concat(props.ps), props.ps), _defineProperty(_classNames2, "ps-sm-".concat(props.psSm), props.psSm), _defineProperty(_classNames2, "ps-md-".concat(props.psMd), props.psMd), _defineProperty(_classNames2, "ps-lg-".concat(props.psLg), props.psLg), _defineProperty(_classNames2, "ps-xl-".concat(props.psXl), props.psXl), _defineProperty(_classNames2, "ps-xxl-".concat(props.psXxl), props.psXxl), _defineProperty(_classNames2, "pe-".concat(props.pe), props.pe), _defineProperty(_classNames2, "pe-sm-".concat(props.peSm), props.peSm), _defineProperty(_classNames2, "pe-md-".concat(props.peMd), props.peMd), _defineProperty(_classNames2, "pe-lg-".concat(props.peLg), props.peLg), _defineProperty(_classNames2, "pe-xl-".concat(props.peXl), props.peXl), _defineProperty(_classNames2, "pe-xxl-".concat(props.peXxl), props.peXxl), _classNames2));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn2 = {}, _defineProperty(_cn2, "p-".concat(props.p), props.p), _defineProperty(_cn2, "p-sm-".concat(props.pSm), props.pSm), _defineProperty(_cn2, "p-md-".concat(props.pMd), props.pMd), _defineProperty(_cn2, "p-lg-".concat(props.pLg), props.pLg), _defineProperty(_cn2, "p-xl-".concat(props.pXl), props.pXl), _defineProperty(_cn2, "p-xxl-".concat(props.pXxl), props.pXxl), _defineProperty(_cn2, "py-".concat(props.py), props.py), _defineProperty(_cn2, "py-sm-".concat(props.pySm), props.pySm), _defineProperty(_cn2, "py-md-".concat(props.pyMd), props.pyMd), _defineProperty(_cn2, "py-lg-".concat(props.pyLg), props.pyLg), _defineProperty(_cn2, "py-xl-".concat(props.pyXl), props.pyXl), _defineProperty(_cn2, "py-xxl-".concat(props.pXxl), props.pyXxl), _defineProperty(_cn2, "px-".concat(props.px), props.px), _defineProperty(_cn2, "px-sm-".concat(props.pxSm), props.pxSm), _defineProperty(_cn2, "px-md-".concat(props.pxMd), props.pxMd), _defineProperty(_cn2, "px-lg-".concat(props.pxLg), props.pxLg), _defineProperty(_cn2, "px-xl-".concat(props.pxXl), props.pxXl), _defineProperty(_cn2, "px-xxl-".concat(props.pxXxl), props.pxXxl), _defineProperty(_cn2, "pt-".concat(props.pt), props.pt), _defineProperty(_cn2, "pt-sm-".concat(props.ptSm), props.ptSm), _defineProperty(_cn2, "pt-md-".concat(props.ptMd), props.ptMd), _defineProperty(_cn2, "pt-lg-".concat(props.ptLg), props.ptLg), _defineProperty(_cn2, "pt-xl-".concat(props.ptXl), props.ptXl), _defineProperty(_cn2, "pt-xxl-".concat(props.ptXxl), props.ptXxl), _defineProperty(_cn2, "pb-".concat(props.pb), props.pb), _defineProperty(_cn2, "pb-sm-".concat(props.pbSm), props.pbSm), _defineProperty(_cn2, "pb-md-".concat(props.pbMd), props.pbMd), _defineProperty(_cn2, "pb-lg-".concat(props.pbLg), props.pbLg), _defineProperty(_cn2, "pb-xl-".concat(props.pbXl), props.pbXl), _defineProperty(_cn2, "pb-xxl-".concat(props.pbXxl), props.pbXxl), _defineProperty(_cn2, "ps-".concat(props.ps), props.ps), _defineProperty(_cn2, "ps-sm-".concat(props.psSm), props.psSm), _defineProperty(_cn2, "ps-md-".concat(props.psMd), props.psMd), _defineProperty(_cn2, "ps-lg-".concat(props.psLg), props.psLg), _defineProperty(_cn2, "ps-xl-".concat(props.psXl), props.psXl), _defineProperty(_cn2, "ps-xxl-".concat(props.psXxl), props.psXxl), _defineProperty(_cn2, "pe-".concat(props.pe), props.pe), _defineProperty(_cn2, "pe-sm-".concat(props.peSm), props.peSm), _defineProperty(_cn2, "pe-md-".concat(props.peMd), props.peMd), _defineProperty(_cn2, "pe-lg-".concat(props.peLg), props.peLg), _defineProperty(_cn2, "pe-xl-".concat(props.peXl), props.peXl), _defineProperty(_cn2, "pe-xxl-".concat(props.peXxl), props.peXxl), _cn2));
   }, [props.p, props.pLg, props.pMd, props.pSm, props.pXl, props.pXxl, props.pb, props.pbLg, props.pbMd, props.pbSm, props.pbXl, props.pbXxl, props.pe, props.peLg, props.peMd, props.peSm, props.peXl, props.peXxl, props.ps, props.psLg, props.psMd, props.psSm, props.psXl, props.psXxl, props.pt, props.ptLg, props.ptMd, props.ptSm, props.ptXl, props.ptXxl, props.px, props.pxLg, props.pxMd, props.pxSm, props.pxXl, props.pxXxl, props.py, props.pyLg, props.pyMd, props.pySm, props.pyXl, props.pyXxl]);
   return classes;
 };
 var useBackground = function useBackground(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames3;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn3;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames3 = {}, _defineProperty(_classNames3, "bg-".concat(props.bgColor), props.bgColor), _defineProperty(_classNames3, "bg-opacity-".concat(props.bgOpacity), props.bgOpacity), _classNames3));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn3 = {}, _defineProperty(_cn3, "bg-".concat(props.bgColor), props.bgColor), _defineProperty(_cn3, "bg-opacity-".concat(props.bgOpacity), props.bgOpacity), _cn3));
   }, [props.bgColor, props.bgOpacity]);
   return classes;
 };
 var useBorder = function useBorder(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames4;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn4;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames4 = {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn4 = {
       border: props.border,
       'border-top': props.borderTop,
       'border-bottom': props.borderBottom,
@@ -12471,58 +12998,148 @@ var useBorder = function useBorder(props) {
       'border-bottom-0': props.borderBottom0,
       'border-start-0': props.borderStart0,
       'border-end-0': props.borderEnd0
-    }, _defineProperty(_classNames4, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_classNames4, "border-".concat(props.borderWidth), props.borderWidth), _defineProperty(_classNames4, "rounded", props.rounded), _defineProperty(_classNames4, 'rounded-top', props.roundedTop), _defineProperty(_classNames4, 'rounded-bottom', props.roundedBottom), _defineProperty(_classNames4, 'rounded-start', props.roundedStart), _defineProperty(_classNames4, 'rounded-end', props.roundedEnd), _defineProperty(_classNames4, 'rounded-circle', props.roundedCircle), _defineProperty(_classNames4, 'rounded-pill', props.roundedPill), _defineProperty(_classNames4, "rounded-".concat(props.roundedSize), props.roundedSize), _defineProperty(_classNames4, "border-opacity-".concat(props.borderOpacity), props.borderOpacity), _classNames4));
+    }, _defineProperty(_cn4, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_cn4, "border-".concat(props.borderWidth), props.borderWidth), _defineProperty(_cn4, "rounded", props.rounded), _defineProperty(_cn4, 'rounded-top', props.roundedTop), _defineProperty(_cn4, 'rounded-bottom', props.roundedBottom), _defineProperty(_cn4, 'rounded-start', props.roundedStart), _defineProperty(_cn4, 'rounded-end', props.roundedEnd), _defineProperty(_cn4, 'rounded-circle', props.roundedCircle), _defineProperty(_cn4, 'rounded-pill', props.roundedPill), _defineProperty(_cn4, "rounded-".concat(props.roundedSize), props.roundedSize), _defineProperty(_cn4, "border-opacity-".concat(props.borderOpacity), props.borderOpacity), _cn4));
   }, [props.border, props.border0, props.borderBottom, props.borderBottom0, props.borderColor, props.borderEnd, props.borderEnd0, props.borderOpacity, props.borderStart, props.borderStart0, props.borderTop, props.borderTop0, props.borderWidth, props.rounded, props.roundedBottom, props.roundedCircle, props.roundedEnd, props.roundedPill, props.roundedSize, props.roundedStart, props.roundedTop]);
   return classes;
 };
 var useDisplay = function useDisplay(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames5;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn5;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames5 = {}, _defineProperty(_classNames5, "d-".concat(props.d), props.d), _defineProperty(_classNames5, "d-sm-".concat(props.dSm), props.dSm), _defineProperty(_classNames5, "d-md-".concat(props.dMd), props.dMd), _defineProperty(_classNames5, "d-lg-".concat(props.dLg), props.dLg), _defineProperty(_classNames5, "d-xl-".concat(props.dXl), props.dXl), _defineProperty(_classNames5, "d-xxl-".concat(props.dXxl), props.dXxl), _classNames5));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn5 = {}, _defineProperty(_cn5, "d-".concat(props.d), props.d), _defineProperty(_cn5, "d-sm-".concat(props.dSm), props.dSm), _defineProperty(_cn5, "d-md-".concat(props.dMd), props.dMd), _defineProperty(_cn5, "d-lg-".concat(props.dLg), props.dLg), _defineProperty(_cn5, "d-xl-".concat(props.dXl), props.dXl), _defineProperty(_cn5, "d-xxl-".concat(props.dXxl), props.dXxl), _cn5));
   }, [props.d, props.dLg, props.dMd, props.dSm, props.dXl, props.dXxl]);
   return classes;
 };
 var useFlex = function useFlex(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames6;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn6;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames6 = {}, _defineProperty(_classNames6, "flex-".concat(props.flex), props.flex), _defineProperty(_classNames6, "flex-sm-".concat(props.flexSm), props.flexSm), _defineProperty(_classNames6, "flex-md-".concat(props.flexMd), props.flexMd), _defineProperty(_classNames6, "flex-lg-".concat(props.flexLg), props.flexLg), _defineProperty(_classNames6, "flex-xl-".concat(props.flexXl), props.flexXl), _defineProperty(_classNames6, "flex-xxl-".concat(props.flexXxl), props.flexXxl), _defineProperty(_classNames6, "justify-content-".concat(props.justifyContent), props.justifyContent), _defineProperty(_classNames6, "justify-content-sm-".concat(props.justifyContentSm), props.justifyContentSm), _defineProperty(_classNames6, "justify-content-md-".concat(props.justifyContentMd), props.justifyContentMd), _defineProperty(_classNames6, "justify-content-lg-".concat(props.justifyContentLg), props.justifyContentLg), _defineProperty(_classNames6, "justify-content-xl-".concat(props.justifyContentXl), props.justifyContentXl), _defineProperty(_classNames6, "justify-content-xxl-".concat(props.justifyContentXxl), props.justifyContentXxl), _defineProperty(_classNames6, "align-items-".concat(props.alignItems), props.alignItems), _defineProperty(_classNames6, "align-items-sm-".concat(props.alignItemsSm), props.alignItemsSm), _defineProperty(_classNames6, "align-items-md-".concat(props.alignItemsMd), props.alignItemsMd), _defineProperty(_classNames6, "align-items-lg-".concat(props.alignItemsLg), props.alignItemsLg), _defineProperty(_classNames6, "align-items-xl-".concat(props.alignItemsXl), props.alignItemsXl), _defineProperty(_classNames6, "align-items-xxl-".concat(props.alignItemsXxl), props.alignItemsXxl), _defineProperty(_classNames6, "align-content-".concat(props.alignContent), props.alignContent), _defineProperty(_classNames6, "align-content-sm-".concat(props.alignContentSm), props.alignContentSm), _defineProperty(_classNames6, "align-content-md-".concat(props.alignContentMd), props.alignContentMd), _defineProperty(_classNames6, "align-content-lg-".concat(props.alignContentLg), props.alignContentLg), _defineProperty(_classNames6, "align-content-xl-".concat(props.alignContentXl), props.alignContentXl), _defineProperty(_classNames6, "align-content-xxl-".concat(props.alignContentXxl), props.alignContentXxl), _defineProperty(_classNames6, "align-self-".concat(props.alignSelf), props.alignSelf), _defineProperty(_classNames6, "align-self-sm-".concat(props.alignSelfSm), props.alignSelfSm), _defineProperty(_classNames6, "align-self-md-".concat(props.alignSelfMd), props.alignSelfMd), _defineProperty(_classNames6, "align-self-lg-".concat(props.alignSelfLg), props.alignSelfLg), _defineProperty(_classNames6, "align-self-xl-".concat(props.alignSelfXl), props.alignSelfXl), _defineProperty(_classNames6, "align-self-xxl-".concat(props.alignSelfXxl), props.alignSelfXxl), _defineProperty(_classNames6, 'flex-fill', props.flexFill), _defineProperty(_classNames6, 'flex-sm-fill', props.flexSmFill), _defineProperty(_classNames6, 'flex-md-fill', props.flexMdFill), _defineProperty(_classNames6, 'flex-lg-fill', props.flexLgFill), _defineProperty(_classNames6, 'flex-xl-fill', props.flexXlFill), _defineProperty(_classNames6, 'flex-xxl-fill', props.flexXxlFill), _defineProperty(_classNames6, "flex-grow-".concat(props.flexGrow), props.flexGrow), _defineProperty(_classNames6, "flex-sm-grow-".concat(props.flexSmGrow), props.flexSmGrow), _defineProperty(_classNames6, "flex-md-grow-".concat(props.flexMdGrow), props.flexMdGrow), _defineProperty(_classNames6, "flex-lg-grow-".concat(props.flexLgGrow), props.flexLgGrow), _defineProperty(_classNames6, "flex-xl-grow-".concat(props.flexXlGrow), props.flexXlGrow), _defineProperty(_classNames6, "flex-xxl-grow-".concat(props.flexXxlGrow), props.flexXxlGrow), _defineProperty(_classNames6, "flex-shrink-".concat(props.flexShrink), props.flexShrink), _defineProperty(_classNames6, "flex-sm-shrink-".concat(props.flexSmShrink), props.flexSmShrink), _defineProperty(_classNames6, "flex-md-shrink-".concat(props.flexMdShrink), props.flexMdShrink), _defineProperty(_classNames6, "flex-lg-shrink-".concat(props.flexLgShrink), props.flexLgShrink), _defineProperty(_classNames6, "flex-xl-shrink-".concat(props.flexXlShrink), props.flexXlShrink), _defineProperty(_classNames6, "flex-xxl-shrink-".concat(props.flexXxlShrink), props.flexXxlShrink), _defineProperty(_classNames6, "flex-wrap-".concat(props.flexWrap), props.flexWrap), _defineProperty(_classNames6, "flex-sm-wrap-".concat(props.flexSmWrap), props.flexSmWrap), _defineProperty(_classNames6, "flex-md-wrap-".concat(props.flexMdWrap), props.flexMdWrap), _defineProperty(_classNames6, "flex-lg-wrap-".concat(props.flexLgWrap), props.flexLgWrap), _defineProperty(_classNames6, "flex-xl-wrap-".concat(props.flexXlWrap), props.flexXlWrap), _defineProperty(_classNames6, "flex-xxl-wrap-".concat(props.flexXxlWrap), props.flexXxlWrap), _defineProperty(_classNames6, "order-".concat(props.order), props.order), _defineProperty(_classNames6, "order-sm-".concat(props.orderSm), props.orderSm), _defineProperty(_classNames6, "order-md-".concat(props.orderMd), props.orderMd), _defineProperty(_classNames6, "order-lg-".concat(props.orderLg), props.orderLg), _defineProperty(_classNames6, "order-xl-".concat(props.orderXl), props.orderXl), _defineProperty(_classNames6, "order-xxl-".concat(props.orderXxl), props.orderXxl), _classNames6));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn6 = {}, _defineProperty(_cn6, "flex-".concat(props.flex), props.flex), _defineProperty(_cn6, "flex-sm-".concat(props.flexSm), props.flexSm), _defineProperty(_cn6, "flex-md-".concat(props.flexMd), props.flexMd), _defineProperty(_cn6, "flex-lg-".concat(props.flexLg), props.flexLg), _defineProperty(_cn6, "flex-xl-".concat(props.flexXl), props.flexXl), _defineProperty(_cn6, "flex-xxl-".concat(props.flexXxl), props.flexXxl), _defineProperty(_cn6, "justify-content-".concat(props.justifyContent), props.justifyContent), _defineProperty(_cn6, "justify-content-sm-".concat(props.justifyContentSm), props.justifyContentSm), _defineProperty(_cn6, "justify-content-md-".concat(props.justifyContentMd), props.justifyContentMd), _defineProperty(_cn6, "justify-content-lg-".concat(props.justifyContentLg), props.justifyContentLg), _defineProperty(_cn6, "justify-content-xl-".concat(props.justifyContentXl), props.justifyContentXl), _defineProperty(_cn6, "justify-content-xxl-".concat(props.justifyContentXxl), props.justifyContentXxl), _defineProperty(_cn6, "align-items-".concat(props.alignItems), props.alignItems), _defineProperty(_cn6, "align-items-sm-".concat(props.alignItemsSm), props.alignItemsSm), _defineProperty(_cn6, "align-items-md-".concat(props.alignItemsMd), props.alignItemsMd), _defineProperty(_cn6, "align-items-lg-".concat(props.alignItemsLg), props.alignItemsLg), _defineProperty(_cn6, "align-items-xl-".concat(props.alignItemsXl), props.alignItemsXl), _defineProperty(_cn6, "align-items-xxl-".concat(props.alignItemsXxl), props.alignItemsXxl), _defineProperty(_cn6, "align-content-".concat(props.alignContent), props.alignContent), _defineProperty(_cn6, "align-content-sm-".concat(props.alignContentSm), props.alignContentSm), _defineProperty(_cn6, "align-content-md-".concat(props.alignContentMd), props.alignContentMd), _defineProperty(_cn6, "align-content-lg-".concat(props.alignContentLg), props.alignContentLg), _defineProperty(_cn6, "align-content-xl-".concat(props.alignContentXl), props.alignContentXl), _defineProperty(_cn6, "align-content-xxl-".concat(props.alignContentXxl), props.alignContentXxl), _defineProperty(_cn6, "align-self-".concat(props.alignSelf), props.alignSelf), _defineProperty(_cn6, "align-self-sm-".concat(props.alignSelfSm), props.alignSelfSm), _defineProperty(_cn6, "align-self-md-".concat(props.alignSelfMd), props.alignSelfMd), _defineProperty(_cn6, "align-self-lg-".concat(props.alignSelfLg), props.alignSelfLg), _defineProperty(_cn6, "align-self-xl-".concat(props.alignSelfXl), props.alignSelfXl), _defineProperty(_cn6, "align-self-xxl-".concat(props.alignSelfXxl), props.alignSelfXxl), _defineProperty(_cn6, 'flex-fill', props.flexFill), _defineProperty(_cn6, 'flex-sm-fill', props.flexSmFill), _defineProperty(_cn6, 'flex-md-fill', props.flexMdFill), _defineProperty(_cn6, 'flex-lg-fill', props.flexLgFill), _defineProperty(_cn6, 'flex-xl-fill', props.flexXlFill), _defineProperty(_cn6, 'flex-xxl-fill', props.flexXxlFill), _defineProperty(_cn6, "flex-grow-".concat(props.flexGrow), props.flexGrow), _defineProperty(_cn6, "flex-sm-grow-".concat(props.flexSmGrow), props.flexSmGrow), _defineProperty(_cn6, "flex-md-grow-".concat(props.flexMdGrow), props.flexMdGrow), _defineProperty(_cn6, "flex-lg-grow-".concat(props.flexLgGrow), props.flexLgGrow), _defineProperty(_cn6, "flex-xl-grow-".concat(props.flexXlGrow), props.flexXlGrow), _defineProperty(_cn6, "flex-xxl-grow-".concat(props.flexXxlGrow), props.flexXxlGrow), _defineProperty(_cn6, "flex-shrink-".concat(props.flexShrink), props.flexShrink), _defineProperty(_cn6, "flex-sm-shrink-".concat(props.flexSmShrink), props.flexSmShrink), _defineProperty(_cn6, "flex-md-shrink-".concat(props.flexMdShrink), props.flexMdShrink), _defineProperty(_cn6, "flex-lg-shrink-".concat(props.flexLgShrink), props.flexLgShrink), _defineProperty(_cn6, "flex-xl-shrink-".concat(props.flexXlShrink), props.flexXlShrink), _defineProperty(_cn6, "flex-xxl-shrink-".concat(props.flexXxlShrink), props.flexXxlShrink), _defineProperty(_cn6, "flex-wrap-".concat(props.flexWrap), props.flexWrap), _defineProperty(_cn6, "flex-sm-wrap-".concat(props.flexSmWrap), props.flexSmWrap), _defineProperty(_cn6, "flex-md-wrap-".concat(props.flexMdWrap), props.flexMdWrap), _defineProperty(_cn6, "flex-lg-wrap-".concat(props.flexLgWrap), props.flexLgWrap), _defineProperty(_cn6, "flex-xl-wrap-".concat(props.flexXlWrap), props.flexXlWrap), _defineProperty(_cn6, "flex-xxl-wrap-".concat(props.flexXxlWrap), props.flexXxlWrap), _defineProperty(_cn6, "order-".concat(props.order), props.order), _defineProperty(_cn6, "order-sm-".concat(props.orderSm), props.orderSm), _defineProperty(_cn6, "order-md-".concat(props.orderMd), props.orderMd), _defineProperty(_cn6, "order-lg-".concat(props.orderLg), props.orderLg), _defineProperty(_cn6, "order-xl-".concat(props.orderXl), props.orderXl), _defineProperty(_cn6, "order-xxl-".concat(props.orderXxl), props.orderXxl), _cn6));
   }, [props.alignContent, props.alignContentLg, props.alignContentMd, props.alignContentSm, props.alignContentXl, props.alignContentXxl, props.alignItems, props.alignItemsLg, props.alignItemsMd, props.alignItemsSm, props.alignItemsXl, props.alignItemsXxl, props.alignSelf, props.alignSelfLg, props.alignSelfMd, props.alignSelfSm, props.alignSelfXl, props.alignSelfXxl, props.flex, props.flexFill, props.flexGrow, props.flexLg, props.flexLgFill, props.flexLgGrow, props.flexLgShrink, props.flexLgWrap, props.flexMd, props.flexMdFill, props.flexMdGrow, props.flexMdShrink, props.flexMdWrap, props.flexShrink, props.flexSm, props.flexSmFill, props.flexSmGrow, props.flexSmShrink, props.flexSmWrap, props.flexWrap, props.flexXl, props.flexXlFill, props.flexXlGrow, props.flexXlShrink, props.flexXlWrap, props.flexXxl, props.flexXxlFill, props.flexXxlGrow, props.flexXxlShrink, props.flexXxlWrap, props.justifyContent, props.justifyContentLg, props.justifyContentMd, props.justifyContentSm, props.justifyContentXl, props.justifyContentXxl, props.order, props.orderLg, props.orderMd, props.orderSm, props.orderXl, props.orderXxl]);
   return classes;
 };
 var useOpacity = function useOpacity(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()(_defineProperty({}, "opacity-".concat(props.opacity), props.opacity));
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "opacity-".concat(props.opacity), props.opacity));
   }, [props.opacity]);
   return classes;
 };
 var useOverflow = function useOverflow(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()(_defineProperty({}, "overflow-".concat(props.overflow), props.overflow));
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "overflow-".concat(props.overflow), props.overflow));
   }, [props.overflow]);
   return classes;
 };
 var useShadow = function useShadow(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()(_defineProperty({}, "shadow".concat(typeof props.shadow != 'boolean' ? "-".concat(props.shadow) : ''), props.shadow));
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "shadow".concat(typeof props.shadow != 'boolean' ? "-".concat(props.shadow) : ''), props.shadow));
   }, [props.shadow]);
   return classes;
 };
 var useSize = function useSize(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames10;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn10;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames10 = {}, _defineProperty(_classNames10, "w-".concat(props.w), props.w), _defineProperty(_classNames10, "mw-".concat(props.mw), props.mw), _defineProperty(_classNames10, "vw-".concat(props.vw), props.vw), _defineProperty(_classNames10, "min-vw-".concat(props.minVw), props.minVw), _defineProperty(_classNames10, "h-".concat(props.h), props.h), _defineProperty(_classNames10, "mh-".concat(props.mh), props.mh), _defineProperty(_classNames10, "vh-".concat(props.vh), props.vh), _defineProperty(_classNames10, "min-vh-".concat(props.minVh), props.minVh), _classNames10));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn10 = {}, _defineProperty(_cn10, "w-".concat(props.w), props.w), _defineProperty(_cn10, "mw-".concat(props.mw), props.mw), _defineProperty(_cn10, "vw-".concat(props.vw), props.vw), _defineProperty(_cn10, "min-vw-".concat(props.minVw), props.minVw), _defineProperty(_cn10, "h-".concat(props.h), props.h), _defineProperty(_cn10, "mh-".concat(props.mh), props.mh), _defineProperty(_cn10, "vh-".concat(props.vh), props.vh), _defineProperty(_cn10, "min-vh-".concat(props.minVh), props.minVh), _cn10));
   }, [props.h, props.mh, props.minVh, props.minVw, props.mw, props.vh, props.vw, props.w]);
   return classes;
 };
 var usePosition = function usePosition(props) {
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    var _classNames11;
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn11;
 
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()((_classNames11 = {}, _defineProperty(_classNames11, "position-".concat(props.position), props.position), _defineProperty(_classNames11, "top-".concat(props.top), typeof props.top == 'number'), _defineProperty(_classNames11, "bottom-".concat(props.bottom), typeof props.bottom == 'number'), _defineProperty(_classNames11, "start-".concat(props.start), typeof props.start == 'number'), _defineProperty(_classNames11, "end-".concat(props.end), typeof props.end == 'number'), _defineProperty(_classNames11, "translate-middle".concat(typeof props.translateMiddle != 'boolean' ? "-".concat(props.translateMiddle) : ''), props.translateMiddle), _classNames11));
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn11 = {}, _defineProperty(_cn11, "position-".concat(props.position), props.position), _defineProperty(_cn11, "top-".concat(props.top), typeof props.top == 'number'), _defineProperty(_cn11, "bottom-".concat(props.bottom), typeof props.bottom == 'number'), _defineProperty(_cn11, "start-".concat(props.start), typeof props.start == 'number'), _defineProperty(_cn11, "end-".concat(props.end), typeof props.end == 'number'), _defineProperty(_cn11, "translate-middle".concat(typeof props.translateMiddle != 'boolean' ? "-".concat(props.translateMiddle) : ''), props.translateMiddle), _cn11));
   }, [props.bottom, props.end, props.position, props.start, props.top, props.translateMiddle]);
+  return classes;
+};
+var useTextColor = function useTextColor(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn12;
+
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn12 = {}, _defineProperty(_cn12, "text-".concat(props.textColor), props.textColor), _defineProperty(_cn12, "text-opacity-".concat(props.textColorOpacity), props.textColorOpacity), _cn12));
+  }, [props.textColor, props.textColorOpacity]);
+  return classes;
+};
+var useTextAlignment = function useTextAlignment(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn13;
+
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn13 = {}, _defineProperty(_cn13, "text-".concat(props.align), props.align), _defineProperty(_cn13, "text-sm-".concat(props.alignSm), props.alignSm), _defineProperty(_cn13, "text-md-".concat(props.alignMd), props.alignMd), _defineProperty(_cn13, "text-lg-".concat(props.alignLg), props.alignLg), _defineProperty(_cn13, "text-xl-".concat(props.alignXl), props.alignXl), _defineProperty(_cn13, "text-xxl-".concat(props.alignXxl), props.alignXxl), _cn13));
+  }, [props.align, props.alignLg, props.alignMd, props.alignSm, props.alignXl, props.alignXxl]);
+  return classes;
+};
+var useTextWrap = function useTextWrap(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "text".concat(typeof props.wrap != 'boolean' ? "-".concat(props.wrap) : ''), props.wrap));
+  }, [props.wrap]);
+  return classes;
+};
+var useTextBreak = function useTextBreak(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)({
+      'text-break': props.textBreak
+    });
+  }, [props.textBreak]);
+  return classes;
+};
+var useTextTransform = function useTextTransform(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "text-".concat(props.textTransform), props.textTransform));
+  }, [props.textTransform]);
+  return classes;
+};
+var useFontSize = function useFontSize(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "fs-".concat(props.fs), props.fs));
+  }, [props.fs]);
+  return classes;
+};
+var useFontWeight = function useFontWeight(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "fw-".concat(props.fw), props.fw));
+  }, [props.fw]);
+  return classes;
+};
+var useFontStyle = function useFontStyle(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "fst-".concat(props.fst), props.fst));
+  }, [props.fst]);
+  return classes;
+};
+var useLineHeight = function useLineHeight(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "lh-".concat(props.lh), props.lh));
+  }, [props.lh]);
+  return classes;
+};
+var useFontMonospace = function useFontMonospace(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)({
+      'font-monospace': props.fontMonospace
+    });
+  }, [props.fontMonospace]);
+  return classes;
+};
+var useTextReset = function useTextReset(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)({
+      'text-reset': props.textReset
+    });
+  }, [props.textReset]);
+  return classes;
+};
+var useTextDecoration = function useTextDecoration(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(_defineProperty({}, "text-decoration-".concat(props.textDecoration), props.textDecoration));
+  }, [props.textDecoration]);
+  return classes;
+};
+var useTextExtras = function useTextExtras(props) {
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var _cn21;
+
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)((_cn21 = {}, _defineProperty(_cn21, "display-".concat(props.display), props.display), _defineProperty(_cn21, "lead", props.lead), _defineProperty(_cn21, "small", props.small), _defineProperty(_cn21, "mark", props.mark), _cn21));
+  }, [props.display, props.lead, props.mark, props.small]);
   return classes;
 };
 var useBlock = function useBlock(props) {
@@ -12537,11 +13154,51 @@ var useBlock = function useBlock(props) {
   var shadow = useShadow(props);
   var size = useSize(props);
   var position = usePosition(props);
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
-    return classnames__WEBPACK_IMPORTED_MODULE_0___default()(margin, padding, background, border, display, flex, opacity, overflow, shadow, size, position);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(margin, padding, background, border, display, flex, opacity, overflow, shadow, size, position);
   }, [background, border, display, flex, margin, opacity, overflow, padding, position, shadow, size]);
   return classes;
 };
+var useText = function useText(props) {
+  var margin = useMargin(props);
+  var padding = usePadding(props);
+  var background = useBackground(props);
+  var border = useBorder(props);
+  var color = useTextColor(props);
+  var align = useTextAlignment(props);
+  var wrap = useTextWrap(props);
+  var textBreak = useTextBreak(props);
+  var transform = useTextTransform(props);
+  var size = useFontSize(props);
+  var weight = useFontWeight(props);
+  var style = useFontStyle(props);
+  var lineHeight = useLineHeight(props);
+  var monospace = useFontMonospace(props);
+  var textReset = useTextReset(props);
+  var textDecoration = useTextDecoration(props);
+  var extras = useTextExtras(props);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(margin, padding, background, border, color, align, wrap, textBreak, transform, size, weight, style, lineHeight, monospace, textReset, textDecoration, extras);
+  }, [margin, padding, background, border, color, align, wrap, textBreak, transform, size, weight, style, lineHeight, monospace, textReset, textDecoration, extras]);
+  return classes;
+};
+
+/***/ }),
+
+/***/ "./src/utils.ts":
+/*!**********************!*\
+  !*** ./src/utils.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cn": () => (/* binding */ cn)
+/* harmony export */ });
+/* harmony import */ var cnbuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cnbuilder */ "./node_modules/cnbuilder/esm/cnb.js");
+
+var cn = cnbuilder__WEBPACK_IMPORTED_MODULE_0__.cnb;
 
 /***/ }),
 
@@ -17777,69 +18434,71 @@ defineJQueryPlugin(Toast);
 
 /***/ }),
 
-/***/ "./node_modules/classnames/index.js":
-/*!******************************************!*\
-  !*** ./node_modules/classnames/index.js ***!
-  \******************************************/
-/***/ ((module, exports) => {
+/***/ "./node_modules/cnbuilder/esm/cnb.js":
+/*!*******************************************!*\
+  !*** ./node_modules/cnbuilder/esm/cnb.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames() {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				if (arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
-					}
-				}
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				} else {
-					classes.push(arg.toString());
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if ( true && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-			return classNames;
-		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {}
-}());
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cnb": () => (/* binding */ cnb)
+/* harmony export */ });
+var isArray = Array.isArray;
+var toClassName = function (val) {
+    var str = '';
+    if (typeof val === 'string')
+        str += val;
+    else if (typeof val === 'object') {
+        var tmp = void 0;
+        if (isArray(val)) {
+            var i = 0;
+            var l = val.length;
+            while (i < l) {
+                tmp = toClassName(val[i++]);
+                if (tmp) {
+                    if (str) {
+                        str += ' ';
+                    }
+                    str += tmp;
+                }
+            }
+        }
+        else {
+            // eslint-disable-next-line guard-for-in
+            for (tmp in val) {
+                if (tmp && val[tmp]) {
+                    if (str) {
+                        str += ' ';
+                    }
+                    str += tmp;
+                }
+            }
+        }
+    }
+    return str;
+};
+function cnb() {
+    var l = arguments.length;
+    var i = 0;
+    var n;
+    var tmp;
+    var str = '';
+    while (i < l) {
+        n = arguments[i++];
+        if (n) {
+            tmp = toClassName(n);
+            if (tmp) {
+                if (str) {
+                    str += ' ';
+                }
+                str += tmp;
+            }
+        }
+    }
+    return str;
+}
 
 
 /***/ }),
@@ -50788,13 +51447,29 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/polyfill */ "./node_modules/@babel/polyfill/lib/index.js");
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
-/* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var Component_Div__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Component/Div */ "./src/Component/Div/index.tsx");
-/* harmony import */ var Style_app_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! Style/app.scss */ "./src/Style/app.scss");
+/* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var Component_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Component/Button */ "./src/Component/Button.tsx");
+/* harmony import */ var Component_Div__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Component/Div */ "./src/Component/Div.tsx");
+/* harmony import */ var Component_Icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! Component/Icon */ "./src/Component/Icon.tsx");
+/* harmony import */ var Component_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! Component/Modal */ "./src/Component/Modal.tsx");
+/* harmony import */ var Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! Component/Offcanvas */ "./src/Component/Offcanvas.tsx");
+/* harmony import */ var Component_P__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! Component/P */ "./src/Component/P.tsx");
+/* harmony import */ var Component_Tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! Component/Tooltip */ "./src/Component/Tooltip.tsx");
+/* harmony import */ var Style_app_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! Style/app.scss */ "./src/Style/app.scss");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -50803,39 +51478,106 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,react_dom__WEBPACK_IMPORTED_MODULE_4__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  bgColor: "primary",
-  bgOpacity: 25,
-  m: 'auto',
-  border: true,
-  borderWidth: 5,
-  borderColor: "success",
-  borderOpacity: 25,
-  rounded: true,
-  d: "flex",
-  justifyContent: "center",
-  justifyContentMd: "end",
-  shadow: "lg",
-  position: "relative",
-  mt: 5
-}, "Teste", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  bgColor: "danger",
-  roundedCircle: true,
-  position: "absolute",
-  top: 0,
-  end: 0,
-  translateMiddle: true,
-  p: 2
-})), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  bgColor: "danger",
-  p: 5,
-  d: "flex",
-  justifyContent: "center"
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-  bgColor: "dark",
-  p: 3,
-  roundedCircle: true
-}, "Ol\xE1")))), document.getElementById('app'));
+
+
+
+
+
+
+
+var App = function App() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      modal = _useState2[0],
+      setModal = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      modal2 = _useState4[0],
+      setModal2 = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      offcanvas = _useState6[0],
+      setOffcanvas = _useState6[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    bgColor: "primary",
+    bgOpacity: 25,
+    m: 'auto',
+    border: true,
+    borderWidth: 5,
+    borderColor: "success",
+    borderOpacity: 25,
+    rounded: true,
+    shadow: "lg",
+    position: "relative",
+    mt: 5
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    d: "flex",
+    justifyContent: "center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Tooltip__WEBPACK_IMPORTED_MODULE_10__.Tooltip, {
+    title: "Isso \xE9 um teste de tooltip"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    sm: true,
+    color: "outline-danger",
+    onClick: function onClick() {
+      return setModal(true);
+    }
+  }, "Modal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    sm: true,
+    color: "outline-danger",
+    onClick: function onClick() {
+      return setOffcanvas(true);
+    }
+  }, "Offcanvas")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    show: modal,
+    onClose: setModal,
+    backdrop: "static"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    sm: true,
+    color: "outline-danger",
+    onClick: function onClick() {
+      return setModal2(true);
+    }
+  }, "Modal")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    show: modal2,
+    onClose: setModal2
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    show: false,
+    onClose: setModal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, "Teste"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    show: offcanvas,
+    onClose: setOffcanvas
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("h1", null, "Teste"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    textColor: "success",
+    textColorOpacity: 25,
+    align: "center"
+  }, "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit asperiores recusandae nobis, cum at aut alias rem a minus dolores? Dolore repudiandae praesentium labore eum, laudantium soluta aliquam at sint?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    bgColor: "danger",
+    roundedCircle: true,
+    position: "absolute",
+    top: 0,
+    end: 0,
+    translateMiddle: true,
+    p: 2
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    bgColor: "danger",
+    p: 5,
+    d: "flex",
+    justifyContent: "center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    name: "instagram",
+    fs: 1,
+    textColor: "success"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    bgColor: "dark",
+    p: 3,
+    roundedCircle: true
+  }, "Ol\xE1"))));
+};
+
+(0,react_dom__WEBPACK_IMPORTED_MODULE_3__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(App, null), document.getElementById('app'));
 })();
 
 /******/ })()

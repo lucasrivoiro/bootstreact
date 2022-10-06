@@ -1,7 +1,11 @@
+import { Modal as BsModal } from 'bootstrap';
 import React, {
   createContext,
   useContext,
+  useEffect,
   useLayoutEffect,
+  useMemo,
+  useRef,
   useState,
 } from 'react';
 import { cn } from 'utils';
@@ -9,9 +13,11 @@ import { cn } from 'utils';
 import AppendToBody from './AppendToBody';
 
 interface ModalProps {
+  backdrop?: boolean | 'static';
   centered?: boolean;
   children: JSX.Element;
   fullscreen?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  keyboard?: boolean;
   lg?: boolean;
   onClose: (state: boolean) => void;
   scrollable?: boolean;
@@ -45,17 +51,55 @@ let numberOfModals = 0;
 const Context = createContext<ContextInterface>({});
 
 const Modal = ({
+  backdrop = true,
+  centered = true,
   children,
+  fullscreen = false,
+  keyboard = true,
   lg,
   onClose,
+  scrollable = false,
+  show = false,
   sm,
   xl,
-  centered = true,
-  scrollable = false,
-  fullscreen = false,
-  show = false,
 }: ModalProps): JSX.Element => {
+  const ref = useRef<HTMLDivElement>(null);
   const [zIndex, setZIndex] = useState<number>(0);
+
+  const modal = useMemo(() => {
+    if (ref.current) {
+      ref.current.addEventListener('hide.bs.modal', () => {
+        onClose(false);
+      });
+
+      return new BsModal(ref.current, {
+        backdrop,
+        keyboard,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [backdrop, keyboard, ref.current]);
+
+  useEffect(() => {
+    if (modal) {
+      if (show) {
+        modal.show();
+
+        if (backdrop) {
+          const backdropElement = document.querySelectorAll<HTMLDivElement>(
+            'div.modal-backdrop:last-child'
+          );
+
+          if (backdropElement.length) {
+            backdropElement[0].style.zIndex = (1050 + zIndex).toString();
+          }
+        }
+      } else {
+        modal.hide();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal, show]);
 
   useLayoutEffect(() => {
     numberOfModals++;
@@ -63,38 +107,26 @@ const Modal = ({
   }, []);
 
   return (
-    <React.Fragment>
-      {show && (
-        <AppendToBody>
-          <Context.Provider value={{ onClose }}>
-            <div
-              className="modal fade show d-block"
-              style={{ zIndex: 1055 + zIndex }}
-            >
-              <div
-                className={cn('modal-dialog', {
-                  'modal-dialog-scrollable': scrollable,
-                  'modal-dialog-centered': centered,
-                  'modal-xl': xl,
-                  'modal-lg': lg,
-                  'modal-sm': sm,
-                  [`modal-fullscreen${
-                    typeof fullscreen !== 'boolean' ? `-${fullscreen}-down` : ''
-                  }`]: fullscreen,
-                })}
-              >
-                {children}
-              </div>
-            </div>
-            <div
-              className="modal-backdrop fade show"
-              onClick={() => onClose(false)}
-              style={{ zIndex: 1050 + zIndex }}
-            ></div>
-          </Context.Provider>
-        </AppendToBody>
-      )}
-    </React.Fragment>
+    <AppendToBody>
+      <Context.Provider value={{ onClose }}>
+        <div ref={ref} className="modal fade" style={{ zIndex: 1055 + zIndex }}>
+          <div
+            className={cn('modal-dialog', {
+              'modal-dialog-scrollable': scrollable,
+              'modal-dialog-centered': centered,
+              'modal-xl': xl,
+              'modal-lg': lg,
+              'modal-sm': sm,
+              [`modal-fullscreen${
+                typeof fullscreen !== 'boolean' ? `-${fullscreen}-down` : ''
+              }`]: fullscreen,
+            })}
+          >
+            {children}
+          </div>
+        </div>
+      </Context.Provider>
+    </AppendToBody>
   );
 };
 
