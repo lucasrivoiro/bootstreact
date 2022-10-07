@@ -4,19 +4,24 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import Accordion from 'Component/Accordion';
 import Button from 'Component/Button';
 import Div from 'Component/Div';
 import Icon from 'Component/Icon';
 import Modal from 'Component/Modal';
 import Offcanvas from 'Component/Offcanvas';
 import P from 'Component/P';
+import { Popover } from 'Component/Popover';
+import Strong from 'Component/Strong';
 import { Tooltip } from 'Component/Tooltip';
+
 import 'Style/app.scss';
 
 const App = (): JSX.Element => {
   const [modal, setModal] = useState<boolean>(false);
   const [modal2, setModal2] = useState<boolean>(false);
   const [offcanvas, setOffcanvas] = useState<boolean>(false);
+  const [offcanvas2, setOffcanvas2] = useState<boolean>(false);
 
   return (
     <React.StrictMode>
@@ -24,7 +29,7 @@ const App = (): JSX.Element => {
         <Div
           bgColor="primary"
           bgOpacity={25}
-          m={'auto'}
+          m={3}
           border
           borderWidth={5}
           borderColor="success"
@@ -32,80 +37,87 @@ const App = (): JSX.Element => {
           rounded
           shadow="lg"
           position="relative"
-          mt={5}
         >
-          <Div d="flex" justifyContent="center">
-            <Tooltip title="Isso é um teste de tooltip">
-              <Button sm color="outline-danger" onClick={() => setModal(true)}>
-                Modal
+          <Div d="flex" justifyContent="center" p={3}>
+            <Tooltip  placement="left" title="Isso é um teste de tooltip">
+              <Button  sm color="primary">
+                Tooltip
               </Button>
             </Tooltip>
-            <Button
-              sm
-              color="outline-danger"
-              onClick={() => setOffcanvas(true)}
-            >
+            <Button sm color="warning" onClick={() => setModal(true)}>
+              Modal
+            </Button>
+            <Button sm color="danger" onClick={() => setOffcanvas(true)}>
               Offcanvas
             </Button>
-          </Div>
-          <Modal show={modal} onClose={setModal} backdrop="static">
-            <Modal.Content>
-              <Modal.Header>Teste</Modal.Header>
-              <Modal.Body>
-                <p>adadadas</p>
-                <p>adadadas</p>
-                <p>adadadas</p>
-                <p>adadadas</p>
-                <Button sm color="outline-danger" onClick={() => setModal2(true)}>
-                Modal
+            <Popover placement="bottom" title="Popover" content="Isso é um teste de popover">
+              <Button sm color="success">
+                Popover
               </Button>
-              </Modal.Body>
-            </Modal.Content>
-          </Modal>
-          <Modal show={modal2} onClose={setModal2}>
-            <Modal.Content>
-              <Modal.Header>Teste 2</Modal.Header>
-              <Modal.Body>
-                <p>adadadas</p>
-                <p>adadadas</p>
-                <p>adadadas</p>
-                <p>adadadas</p>
-              </Modal.Body>
-            </Modal.Content>
-          </Modal>
-          <Modal show={false} onClose={setModal}>
-            <Modal.Content>
-              <Modal.Header>Teste</Modal.Header>
-              <Modal.Body>Teste</Modal.Body>
-            </Modal.Content>
-          </Modal>
-          <Offcanvas show={offcanvas} onClose={setOffcanvas}>
-            <Offcanvas.Header>Teste</Offcanvas.Header>
-            <Offcanvas.Body>
-              <h1>Teste</h1>
-            </Offcanvas.Body>
-          </Offcanvas>
-          <P textColor="success" textColorOpacity={25} align="center">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit
-            asperiores recusandae nobis, cum at aut alias rem a minus dolores?
-            Dolore repudiandae praesentium labore eum, laudantium soluta aliquam
-            at sint?
-          </P>
-          <Div
-            bgColor="danger"
-            roundedCircle
-            position="absolute"
-            top={0}
-            end={0}
-            translateMiddle
-            p={2}
-          />
-        </Div>
-        <Div bgColor="danger" p={5} d="flex" justifyContent="center">
-          <Icon name="instagram" fs={1} textColor="success" />
-          <Div bgColor="dark" p={3} roundedCircle>
-            Olá
+            </Popover>
+            <Modal show={modal} onClose={setModal} backdrop="static">
+              <Modal.Content>
+                <Modal.Header>Modal</Modal.Header>
+                <Modal.Body>
+                  <P>
+                    <Icon name="info-circle-fill" fs={5} me={2} />
+                    Isso é um teste de modal
+                  </P>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button sm color="outline-danger" onClick={() => setModal2(true)}>
+                    Abrir outro modal
+                  </Button>
+                </Modal.Footer>
+              </Modal.Content>
+            </Modal>
+            <Modal show={modal2} onClose={setModal2}>
+              <Modal.Content>
+                <Modal.Header>Modal 2</Modal.Header>
+                <Modal.Body>
+                  <P>
+                    <Icon name="info-circle-fill" fs={5} me={2} />
+                    Isso é um novo teste de modal
+                  </P>
+                </Modal.Body>
+              </Modal.Content>
+            </Modal>
+            <Offcanvas show={offcanvas} onClose={setOffcanvas} backdrop="static">
+              <Offcanvas.Header>Offcanvas</Offcanvas.Header>
+              <Offcanvas.Body>
+                <P>Isso é um teste de offcanvas</P>
+                <Button sm color="outline-danger" onClick={() => setOffcanvas2(true)}>
+                  Abrir outro offcanvas
+                </Button>
+              </Offcanvas.Body>
+            </Offcanvas>
+            <Offcanvas show={offcanvas2} onClose={setOffcanvas2}>
+              <Offcanvas.Header>Offcanvas 2</Offcanvas.Header>
+              <Offcanvas.Body>
+                <P>Isso é um novo teste de offcanvas</P>
+              </Offcanvas.Body>
+            </Offcanvas>
           </Div>
+        </Div>
+        <Div
+          bgOpacity={25}
+          m={3}
+          position="relative"
+        >
+          <Accordion alwaysOpen>
+            <Accordion.Item show>
+              <Accordion.Header>
+                <Strong>Clique para visualizar #1</Strong>
+              </Accordion.Header>
+              <Accordion.Body>Isso é um teste do accordion 1</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item>
+              <Accordion.Header>
+                <Strong>Clique para visualizar #2</Strong>
+              </Accordion.Header>
+              <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </Div>
       </BrowserRouter>
     </React.StrictMode>
