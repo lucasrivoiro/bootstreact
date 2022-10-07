@@ -12367,6 +12367,136 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
+/***/ "./src/Component/Accordion.tsx":
+/*!*************************************!*\
+  !*** ./src/Component/Accordion.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var ContextAccordion = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+  alwaysOpen: false,
+  accordionId: null
+});
+var ContextItem = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+  headerId: null,
+  show: false
+});
+
+var Accordion = function Accordion(_ref) {
+  var _ref$alwaysOpen = _ref.alwaysOpen,
+      alwaysOpen = _ref$alwaysOpen === void 0 ? false : _ref$alwaysOpen,
+      _ref$flush = _ref.flush,
+      flush = _ref$flush === void 0 ? false : _ref$flush,
+      children = _ref.children;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.performance.now().toString().replace('.', '')),
+      _useState2 = _slicedToArray(_useState, 1),
+      accordionId = _useState2[0];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ContextAccordion.Provider, {
+    value: {
+      accordionId: accordionId,
+      alwaysOpen: alwaysOpen
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)('accordion', "".concat(flush ? 'accordion-flush' : '')),
+    id: "accordion-".concat(accordionId)
+  }, children));
+};
+
+var Item = function Item(_ref2) {
+  var children = _ref2.children,
+      _ref2$show = _ref2.show,
+      show = _ref2$show === void 0 ? false : _ref2$show;
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.performance.now().toString().replace('.', '')),
+      _useState4 = _slicedToArray(_useState3, 1),
+      headerId = _useState4[0];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ContextItem.Provider, {
+    value: {
+      headerId: headerId,
+      show: show
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "accordion-item"
+  }, children));
+};
+
+var Header = function Header(_ref3) {
+  var children = _ref3.children;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ContextItem),
+      headerId = _useContext.headerId,
+      show = _useContext.show;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ContextItem.Provider, {
+    value: {
+      headerId: headerId,
+      show: show
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "accordion-header",
+    id: "heading-".concat(headerId)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    "aria-expanded": "true",
+    "aria-controls": "#collapse-".concat(headerId),
+    className: "accordion-button collapsed",
+    "data-bs-toggle": "collapse",
+    "data-bs-target": "#collapse-".concat(headerId),
+    type: "button"
+  }, children)));
+};
+
+var Body = function Body(_ref4) {
+  var children = _ref4.children;
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ContextAccordion),
+      accordionId = _useContext2.accordionId,
+      alwaysOpen = _useContext2.alwaysOpen;
+
+  var _useContext3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ContextItem),
+      headerId = _useContext3.headerId,
+      show = _useContext3.show;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    "aria-labelledby": "heading-".concat(headerId),
+    "data-bs-parent": "".concat(!alwaysOpen ? "#accordion-".concat(accordionId) : false),
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)('accordion-collapse', 'collapse', show ? 'show' : ''),
+    id: "collapse-".concat(headerId)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "accordion-body"
+  }, children));
+};
+
+Accordion.Item = Item;
+Accordion.Header = Header;
+Accordion.Body = Body;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Accordion);
+
+/***/ }),
+
 /***/ "./src/Component/AppendToBody.tsx":
 /*!****************************************!*\
   !*** ./src/Component/AppendToBody.tsx ***!
@@ -12614,8 +12744,7 @@ var Modal = function Modal(_ref) {
 
   var modal = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     if (ref.current) {
-      ref.current.addEventListener('hide.bs.modal', function (event) {
-        console.log(event);
+      ref.current.addEventListener('hide.bs.modal', function () {
         onClose(false);
       });
       return new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Modal(ref.current, {
@@ -12628,9 +12757,15 @@ var Modal = function Modal(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (modal) {
       if (show) {
-        modal.show(); // document.querySelectorAll<HTMLDivElement>(
-        //   'div.modal-backdrop:last-child'
-        // )[0].style.zIndex = (1050 + zIndex).toString();
+        modal.show();
+
+        if (backdrop) {
+          var backdropElement = document.querySelectorAll('div.modal-backdrop:last-child');
+
+          if (backdropElement.length) {
+            backdropElement[0].style.zIndex = (1050 + zIndex).toString();
+          }
+        }
       } else {
         modal.hide();
       }
@@ -12721,9 +12856,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! utils */ "./src/utils.ts");
-/* harmony import */ var _AppendToBody__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppendToBody */ "./src/Component/AppendToBody.tsx");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+/* harmony import */ var _AppendToBody__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AppendToBody */ "./src/Component/AppendToBody.tsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -12739,57 +12875,100 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var numberOfOffcanvas = 0;
-var Context = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+var Context = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({});
 
 var Offcanvas = function Offcanvas(_ref) {
-  var children = _ref.children,
+  var _ref$backdrop = _ref.backdrop,
+      backdrop = _ref$backdrop === void 0 ? true : _ref$backdrop,
+      children = _ref.children,
+      _ref$keyboard = _ref.keyboard,
+      keyboard = _ref$keyboard === void 0 ? true : _ref$keyboard,
+      lg = _ref.lg,
+      md = _ref.md,
       onClose = _ref.onClose,
+      _ref$placement = _ref.placement,
+      placement = _ref$placement === void 0 ? 'start' : _ref$placement,
+      _ref$scroll = _ref.scroll,
+      scroll = _ref$scroll === void 0 ? false : _ref$scroll,
       _ref$show = _ref.show,
       show = _ref$show === void 0 ? false : _ref$show,
-      _ref$placement = _ref.placement,
-      placement = _ref$placement === void 0 ? 'end' : _ref$placement;
+      sm = _ref.sm,
+      xl = _ref.xl,
+      xxl = _ref.xxl;
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       zIndex = _useState2[0],
       setZIndex = _useState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
+  var offcanvas = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    if (ref.current) {
+      ref.current.addEventListener('hide.bs.offcanvas', function () {
+        onClose(false);
+      });
+      return new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Offcanvas(ref.current, {
+        backdrop: backdrop,
+        scroll: scroll,
+        keyboard: keyboard
+      });
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [backdrop, scroll, keyboard, ref.current]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (offcanvas) {
+      if (show) {
+        offcanvas.show();
+
+        if (backdrop) {
+          var backdropElement = document.querySelectorAll('div.offcanvas-backdrop:last-child');
+
+          if (backdropElement.length) {
+            backdropElement[0].style.zIndex = (1055 + zIndex).toString();
+          }
+        }
+      } else {
+        offcanvas.hide();
+      }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  }, [offcanvas, show]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)(function () {
     numberOfOffcanvas++;
     setZIndex(10 * numberOfOffcanvas);
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AppendToBody__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Context.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AppendToBody__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(Context.Provider, {
     value: {
       onClose: onClose
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)('offcanvas', "offcanvas-".concat(placement), 'show'),
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    ref: ref,
+    className: (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)('offcanvas', "offcanvas-".concat(placement), {
+      'offcanvas-xxl': xxl,
+      'offcanvas-xl': xl,
+      'offcanvas-lg': lg,
+      'offcanvas-md': md,
+      'offcanvas-sm': sm
+    }),
     style: {
-      zIndex: 1045 + zIndex
+      zIndex: 1065 + zIndex
     }
-  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "offcanvas-backdrop fade show",
-    onClick: function onClick() {
-      return onClose(false);
-    },
-    style: {
-      zIndex: 1040 + zIndex
-    }
-  }))));
+  }, children)));
 };
 
 var Header = function Header(_ref2) {
   var children = _ref2.children;
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(Context),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(Context),
       onClose = _useContext.onClose;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "offcanvas-header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h5", {
     className: "offcanvas-title"
-  }, children), onClose && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, children), onClose && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     type: "button",
     className: "btn-close",
     onClick: function onClick() {
@@ -12800,7 +12979,7 @@ var Header = function Header(_ref2) {
 
 var Body = function Body(_ref3) {
   var children = _ref3.children;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "offcanvas-body"
   }, children);
 };
@@ -12875,6 +13054,114 @@ var P = function P(_ref) {
 
 /***/ }),
 
+/***/ "./src/Component/Popover.tsx":
+/*!***********************************!*\
+  !*** ./src/Component/Popover.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Popover": () => (/* binding */ Popover)
+/* harmony export */ });
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Popover = function Popover(_ref) {
+  var children = _ref.children,
+      content = _ref.content,
+      _ref$placement = _ref.placement,
+      placement = _ref$placement === void 0 ? 'top' : _ref$placement,
+      _ref$trigger = _ref.trigger,
+      trigger = _ref$trigger === void 0 ? 'focus' : _ref$trigger,
+      title = _ref.title;
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (ref.current) {
+      var t = new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Popover(ref.current, {
+        content: content,
+        placement: placement,
+        title: title,
+        trigger: trigger
+      });
+      return function () {
+        return t.dispose();
+      };
+    }
+  }, [content, placement, title, trigger]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+    ref: ref
+  }, children);
+};
+
+/***/ }),
+
+/***/ "./src/Component/Strong.tsx":
+/*!**********************************!*\
+  !*** ./src/Component/Strong.tsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Hook_Style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Hook/Style */ "./src/Hook/Style.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! utils */ "./src/utils.ts");
+var _excluded = ["children", "className", "contentEditable", "onBlur", "onChange", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseOut", "onMouseOver", "onMouseUp"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var Strong = function Strong(_ref) {
+  var children = _ref.children,
+      className = _ref.className,
+      contentEditable = _ref.contentEditable,
+      onBlur = _ref.onBlur,
+      onChange = _ref.onChange,
+      onClick = _ref.onClick,
+      onMouseDown = _ref.onMouseDown,
+      onMouseEnter = _ref.onMouseEnter,
+      onMouseLeave = _ref.onMouseLeave,
+      onMouseMove = _ref.onMouseMove,
+      onMouseOut = _ref.onMouseOut,
+      onMouseOver = _ref.onMouseOver,
+      onMouseUp = _ref.onMouseUp,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
+  }, [className, propsClasses]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("strong", {
+    className: classes,
+    contentEditable: contentEditable,
+    onBlur: onBlur,
+    onChange: onChange,
+    onClick: onClick,
+    onMouseDown: onMouseDown,
+    onMouseEnter: onMouseEnter,
+    onMouseLeave: onMouseLeave,
+    onMouseMove: onMouseMove,
+    onMouseOut: onMouseOut,
+    onMouseOver: onMouseOver,
+    onMouseUp: onMouseUp
+  }, children);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Strong);
+
+/***/ }),
+
 /***/ "./src/Component/Tooltip.tsx":
 /*!***********************************!*\
   !*** ./src/Component/Tooltip.tsx ***!
@@ -12901,8 +13188,8 @@ var Tooltip = function Tooltip(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (ref.current) {
       var t = new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Tooltip(ref.current, {
-        title: title,
         placement: placement,
+        title: title,
         trigger: trigger
       });
       return function () {
@@ -51450,15 +51737,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var animate_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animate.css */ "./node_modules/animate.css/animate.css");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var Component_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Component/Button */ "./src/Component/Button.tsx");
-/* harmony import */ var Component_Div__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Component/Div */ "./src/Component/Div.tsx");
-/* harmony import */ var Component_Icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! Component/Icon */ "./src/Component/Icon.tsx");
-/* harmony import */ var Component_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! Component/Modal */ "./src/Component/Modal.tsx");
-/* harmony import */ var Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! Component/Offcanvas */ "./src/Component/Offcanvas.tsx");
-/* harmony import */ var Component_P__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! Component/P */ "./src/Component/P.tsx");
-/* harmony import */ var Component_Tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! Component/Tooltip */ "./src/Component/Tooltip.tsx");
-/* harmony import */ var Style_app_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! Style/app.scss */ "./src/Style/app.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var Component_Accordion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Component/Accordion */ "./src/Component/Accordion.tsx");
+/* harmony import */ var Component_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Component/Button */ "./src/Component/Button.tsx");
+/* harmony import */ var Component_Div__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! Component/Div */ "./src/Component/Div.tsx");
+/* harmony import */ var Component_Icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! Component/Icon */ "./src/Component/Icon.tsx");
+/* harmony import */ var Component_Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! Component/Modal */ "./src/Component/Modal.tsx");
+/* harmony import */ var Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! Component/Offcanvas */ "./src/Component/Offcanvas.tsx");
+/* harmony import */ var Component_P__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! Component/P */ "./src/Component/P.tsx");
+/* harmony import */ var Component_Popover__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! Component/Popover */ "./src/Component/Popover.tsx");
+/* harmony import */ var Component_Strong__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! Component/Strong */ "./src/Component/Strong.tsx");
+/* harmony import */ var Component_Tooltip__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! Component/Tooltip */ "./src/Component/Tooltip.tsx");
+/* harmony import */ var Style_app_scss__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! Style/app.scss */ "./src/Style/app.scss");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -51470,6 +51760,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -51501,80 +51794,94 @@ var App = function App() {
       offcanvas = _useState6[0],
       setOffcanvas = _useState6[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      offcanvas2 = _useState8[0],
+      setOffcanvas2 = _useState8[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react__WEBPACK_IMPORTED_MODULE_2__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_6__["default"], {
     bgColor: "primary",
     bgOpacity: 25,
-    m: 'auto',
+    m: 3,
     border: true,
     borderWidth: 5,
     borderColor: "success",
     borderOpacity: 25,
     rounded: true,
     shadow: "lg",
-    position: "relative",
-    mt: 5
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    position: "relative"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_6__["default"], {
     d: "flex",
-    justifyContent: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Tooltip__WEBPACK_IMPORTED_MODULE_10__.Tooltip, {
+    justifyContent: "center",
+    p: 3
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Tooltip__WEBPACK_IMPORTED_MODULE_13__.Tooltip, {
+    placement: "left",
     title: "Isso \xE9 um teste de tooltip"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     sm: true,
-    color: "outline-danger",
+    color: "primary"
+  }, "Tooltip")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    sm: true,
+    color: "warning",
     onClick: function onClick() {
       return setModal(true);
     }
-  }, "Modal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Modal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     sm: true,
-    color: "outline-danger",
+    color: "danger",
     onClick: function onClick() {
       return setOffcanvas(true);
     }
-  }, "Offcanvas")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "Offcanvas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Popover__WEBPACK_IMPORTED_MODULE_11__.Popover, {
+    placement: "bottom",
+    title: "Popover",
+    content: "Isso \xE9 um teste de popover"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    sm: true,
+    color: "success"
+  }, "Popover")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
     show: modal,
     onClose: setModal,
     backdrop: "static"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Header, null, "Modal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Icon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    name: "info-circle-fill",
+    fs: 5,
+    me: 2
+  }), "Isso \xE9 um teste de modal")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
     sm: true,
     color: "outline-danger",
     onClick: function onClick() {
       return setModal2(true);
     }
-  }, "Modal")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "Abrir outro modal")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
     show: modal2,
     onClose: setModal2
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "adadadas")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    show: false,
-    onClose: setModal
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_7__["default"].Body, null, "Teste"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Header, null, "Modal 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Modal__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Icon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    name: "info-circle-fill",
+    fs: 5,
+    me: 2
+  }), "Isso \xE9 um novo teste de modal")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"], {
     show: offcanvas,
-    onClose: setOffcanvas
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"].Header, null, "Teste"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("h1", null, "Teste"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    textColor: "success",
-    textColorOpacity: 25,
-    align: "center"
-  }, "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit asperiores recusandae nobis, cum at aut alias rem a minus dolores? Dolore repudiandae praesentium labore eum, laudantium soluta aliquam at sint?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    bgColor: "danger",
-    roundedCircle: true,
-    position: "absolute",
-    top: 0,
-    end: 0,
-    translateMiddle: true,
-    p: 2
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    bgColor: "danger",
-    p: 5,
-    d: "flex",
-    justifyContent: "center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    name: "instagram",
-    fs: 1,
-    textColor: "success"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    bgColor: "dark",
-    p: 3,
-    roundedCircle: true
-  }, "Ol\xE1"))));
+    onClose: setOffcanvas,
+    backdrop: "static"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"].Header, null, "Offcanvas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, "Isso \xE9 um teste de offcanvas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    sm: true,
+    color: "outline-danger",
+    onClick: function onClick() {
+      return setOffcanvas2(true);
+    }
+  }, "Abrir outro offcanvas"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    show: offcanvas2,
+    onClose: setOffcanvas2
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"].Header, null, "Offcanvas 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Offcanvas__WEBPACK_IMPORTED_MODULE_9__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, "Isso \xE9 um novo teste de offcanvas"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Div__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    bgOpacity: 25,
+    m: 3,
+    position: "relative"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    alwaysOpen: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
+    show: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Strong__WEBPACK_IMPORTED_MODULE_12__["default"], null, "Clique para visualizar #1")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, "Isso \xE9 um teste do accordion 1")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Strong__WEBPACK_IMPORTED_MODULE_12__["default"], null, "Clique para visualizar #2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component_Accordion__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, "Isso \xE9 um teste do accordion 2"))))));
 };
 
 (0,react_dom__WEBPACK_IMPORTED_MODULE_3__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(App, null), document.getElementById('app'));

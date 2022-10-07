@@ -1,12 +1,12 @@
 {
   "name": "bootstreact",
   "version": "1.0.0",
-  "description": "A list of Cootstrap components with utility props based in Bootstrap API system",
+  "description": "A list of Bootstrap components with utility props based in Bootstrap API system",
   "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "./node_modules/.bin/webpack --env=debug --watch --progress",
-    "build": "./node_modules/.bin/webpack"
+    "watch": "webpack --env=debug --watch --progress",
+    "build": "webpack"
   },
   "keywords": [
     "react",
