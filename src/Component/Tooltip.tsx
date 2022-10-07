@@ -27,8 +27,8 @@ export const Tooltip = ({
   useEffect(() => {
     if (ref.current) {
       const t = new BsTooltip(ref.current, {
-        title,
         placement,
+        title,
         trigger,
       });
       return () => t.dispose();
