@@ -104,16 +104,22 @@ const App = (): JSX.Element => {
           m={3}
           position="relative"
         >
-          <Accordion alwaysOpen>
+          <Accordion>
             <Accordion.Item show>
               <Accordion.Header>
-                <Strong>Clique para visualizar #1</Strong>
+                <Strong>Accordion #1</Strong>
               </Accordion.Header>
               <Accordion.Body>Isso é um teste do accordion 1</Accordion.Body>
             </Accordion.Item>
             <Accordion.Item>
               <Accordion.Header>
-                <Strong>Clique para visualizar #2</Strong>
+                <Strong>Accordion #2</Strong>
+              </Accordion.Header>
+              <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item>
+              <Accordion.Header>
+                <Strong>Accordion #3</Strong>
               </Accordion.Header>
               <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
             </Accordion.Item>
