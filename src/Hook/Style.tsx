@@ -3,8 +3,8 @@ import { cn } from 'utils';
 
 import {
   BackgroundInterface,
-  BlockInterface,
   BorderInterface,
+  ClassesInterface,
   DisplayInterface,
   FlexInterface,
   FontMonospaceInterface,
@@ -24,7 +24,6 @@ import {
   TextColorInterface,
   TextDecorationInterface,
   TextExtrasInterface,
-  TextInterface,
   TextResetInterface,
   TextTransformInterface,
   TextWrapInterface,
@@ -730,7 +729,7 @@ export const useTextExtras = (props: TextExtrasInterface): string => {
   return classes;
 };
 
-export const useBlock = (props: BlockInterface): string => {
+export const useClasses = (props: ClassesInterface): string => {
   const margin = useMargin(props);
   const padding = usePadding(props);
   const background = useBackground(props);
@@ -742,51 +741,11 @@ export const useBlock = (props: BlockInterface): string => {
   const shadow = useShadow(props);
   const size = useSize(props);
   const position = usePosition(props);
-
-  const classes = useMemo(
-    () =>
-      cn(
-        margin,
-        padding,
-        background,
-        border,
-        display,
-        flex,
-        opacity,
-        overflow,
-        shadow,
-        size,
-        position
-      ),
-    [
-      background,
-      border,
-      display,
-      flex,
-      margin,
-      opacity,
-      overflow,
-      padding,
-      position,
-      shadow,
-      size,
-    ]
-  );
-
-  return classes;
-};
-
-export const useText = (props: TextInterface): string => {
-  const margin = useMargin(props);
-  const padding = usePadding(props);
-  const background = useBackground(props);
-  const border = useBorder(props);
   const color = useTextColor(props);
   const align = useTextAlignment(props);
   const wrap = useTextWrap(props);
   const textBreak = useTextBreak(props);
   const transform = useTextTransform(props);
-  const size = useFontSize(props);
   const weight = useFontWeight(props);
   const style = useFontStyle(props);
   const lineHeight = useLineHeight(props);
@@ -802,12 +761,18 @@ export const useText = (props: TextInterface): string => {
         padding,
         background,
         border,
+        display,
+        flex,
+        opacity,
+        overflow,
+        shadow,
+        size,
+        position,
         color,
         align,
         wrap,
         textBreak,
         transform,
-        size,
         weight,
         style,
         lineHeight,
@@ -817,23 +782,29 @@ export const useText = (props: TextInterface): string => {
         extras
       ),
     [
-      margin,
-      padding,
+      align,
       background,
       border,
       color,
-      align,
-      wrap,
-      textBreak,
-      transform,
-      size,
-      weight,
-      style,
-      lineHeight,
-      monospace,
-      textReset,
-      textDecoration,
+      display,
       extras,
+      flex,
+      lineHeight,
+      margin,
+      monospace,
+      opacity,
+      overflow,
+      padding,
+      position,
+      shadow,
+      size,
+      style,
+      textBreak,
+      textDecoration,
+      textReset,
+      transform,
+      weight,
+      wrap,
     ]
   );
 

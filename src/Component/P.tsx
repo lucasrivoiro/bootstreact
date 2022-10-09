@@ -1,4 +1,4 @@
-import { useText } from 'Hook/Style';
+import { useClasses } from 'Hook/Style';
 import React, {
   FocusEventHandler,
   FormEventHandler,
@@ -8,9 +8,9 @@ import React, {
 } from 'react';
 import { cn } from 'utils';
 
-import { TextInterface } from 'Interface/Styles';
+import { ClassesInterface } from 'Interface/Styles';
 
-interface ParagraphInterface extends TextInterface {
+interface ParagraphInterface extends ClassesInterface {
   children?: ReactNode | undefined;
   className?: string | undefined;
   contentEditable?: boolean | 'inherit' | undefined;
@@ -42,7 +42,8 @@ const P = ({
   onMouseUp,
   ...props
 }: ParagraphInterface): JSX.Element => {
-  const propsClasses = useText(props);
+  const propsClasses = useClasses(props);
+
   const classes = useMemo(
     () => cn(propsClasses, className),
     [className, propsClasses]

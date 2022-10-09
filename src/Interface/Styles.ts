@@ -335,7 +335,7 @@ export interface TextExtrasInterface {
   mark?: boolean;
 }
 
-export interface BlockInterface
+export interface ClassesInterface
   extends MarginInterface,
     BackgroundInterface,
     BorderInterface,
@@ -346,14 +346,7 @@ export interface BlockInterface
     OverflowInterface,
     ShadowInterface,
     SizeInterface,
-    PositionInterface {}
-
-export interface TextInterface
-  extends MarginInterface,
-    BackgroundInterface,
-    BorderInterface,
-    PaddingInterface,
-    OpacityInterface,
+    PositionInterface,
     TextColorInterface,
     TextAlignmentInterface,
     TextWrapInterface,

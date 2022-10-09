@@ -12615,7 +12615,7 @@ var Div = function Div(_ref) {
       onMouseUp = _ref.onMouseUp,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useBlock)(props);
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useClasses)(props);
   var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
   }, [className, propsClasses]);
@@ -12668,7 +12668,7 @@ var Icon = function Icon(_ref) {
       name = _ref.name,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useClasses)(props);
   var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)('bi', "bi-".concat(name), propsClasses, className);
   }, [className, name, propsClasses]);
@@ -13030,7 +13030,7 @@ var P = function P(_ref) {
       onMouseUp = _ref.onMouseUp,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useClasses)(props);
   var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
   }, [className, propsClasses]);
@@ -13138,7 +13138,7 @@ var Strong = function Strong(_ref) {
       onMouseUp = _ref.onMouseUp,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useText)(props);
+  var propsClasses = (0,Hook_Style__WEBPACK_IMPORTED_MODULE_0__.useClasses)(props);
   var classes = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
     return (0,utils__WEBPACK_IMPORTED_MODULE_2__.cn)(propsClasses, className);
   }, [className, propsClasses]);
@@ -13214,8 +13214,8 @@ var Tooltip = function Tooltip(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useBackground": () => (/* binding */ useBackground),
-/* harmony export */   "useBlock": () => (/* binding */ useBlock),
 /* harmony export */   "useBorder": () => (/* binding */ useBorder),
+/* harmony export */   "useClasses": () => (/* binding */ useClasses),
 /* harmony export */   "useDisplay": () => (/* binding */ useDisplay),
 /* harmony export */   "useFlex": () => (/* binding */ useFlex),
 /* harmony export */   "useFontMonospace": () => (/* binding */ useFontMonospace),
@@ -13230,7 +13230,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "usePosition": () => (/* binding */ usePosition),
 /* harmony export */   "useShadow": () => (/* binding */ useShadow),
 /* harmony export */   "useSize": () => (/* binding */ useSize),
-/* harmony export */   "useText": () => (/* binding */ useText),
 /* harmony export */   "useTextAlignment": () => (/* binding */ useTextAlignment),
 /* harmony export */   "useTextBreak": () => (/* binding */ useTextBreak),
 /* harmony export */   "useTextColor": () => (/* binding */ useTextColor),
@@ -13429,7 +13428,7 @@ var useTextExtras = function useTextExtras(props) {
   }, [props.display, props.lead, props.mark, props.small]);
   return classes;
 };
-var useBlock = function useBlock(props) {
+var useClasses = function useClasses(props) {
   var margin = useMargin(props);
   var padding = usePadding(props);
   var background = useBackground(props);
@@ -13441,22 +13440,11 @@ var useBlock = function useBlock(props) {
   var shadow = useShadow(props);
   var size = useSize(props);
   var position = usePosition(props);
-  var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(margin, padding, background, border, display, flex, opacity, overflow, shadow, size, position);
-  }, [background, border, display, flex, margin, opacity, overflow, padding, position, shadow, size]);
-  return classes;
-};
-var useText = function useText(props) {
-  var margin = useMargin(props);
-  var padding = usePadding(props);
-  var background = useBackground(props);
-  var border = useBorder(props);
   var color = useTextColor(props);
   var align = useTextAlignment(props);
   var wrap = useTextWrap(props);
   var textBreak = useTextBreak(props);
   var transform = useTextTransform(props);
-  var size = useFontSize(props);
   var weight = useFontWeight(props);
   var style = useFontStyle(props);
   var lineHeight = useLineHeight(props);
@@ -13465,8 +13453,8 @@ var useText = function useText(props) {
   var textDecoration = useTextDecoration(props);
   var extras = useTextExtras(props);
   var classes = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(margin, padding, background, border, color, align, wrap, textBreak, transform, size, weight, style, lineHeight, monospace, textReset, textDecoration, extras);
-  }, [margin, padding, background, border, color, align, wrap, textBreak, transform, size, weight, style, lineHeight, monospace, textReset, textDecoration, extras]);
+    return (0,utils__WEBPACK_IMPORTED_MODULE_1__.cn)(margin, padding, background, border, display, flex, opacity, overflow, shadow, size, position, color, align, wrap, textBreak, transform, weight, style, lineHeight, monospace, textReset, textDecoration, extras);
+  }, [align, background, border, color, display, extras, flex, lineHeight, margin, monospace, opacity, overflow, padding, position, shadow, size, style, textBreak, textDecoration, textReset, transform, weight, wrap]);
   return classes;
 };
 

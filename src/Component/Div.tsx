@@ -1,4 +1,4 @@
-import { useBlock } from 'Hook/Style';
+import { useClasses } from 'Hook/Style';
 import React, {
   FocusEventHandler,
   FormEventHandler,
@@ -8,9 +8,9 @@ import React, {
 import { useMemo } from 'react';
 import { cn } from 'utils';
 
-import { BlockInterface } from 'Interface/Styles';
+import { ClassesInterface } from 'Interface/Styles';
 
-interface DivInterface extends BlockInterface {
+interface DivInterface extends ClassesInterface {
   children?: ReactNode | undefined;
   className?: string | undefined;
   contentEditable?: boolean | 'inherit' | undefined;
@@ -42,7 +42,8 @@ const Div = ({
   onMouseUp,
   ...props
 }: DivInterface): JSX.Element => {
-  const propsClasses = useBlock(props);
+  const propsClasses = useClasses(props);
+
   const classes = useMemo(
     () => cn(propsClasses, className),
     [className, propsClasses]
