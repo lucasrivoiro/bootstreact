@@ -6,12 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Accordion from 'Component/Accordion';
 import Button from 'Component/Button';
+import Column from 'Component/Column';
+import Container from 'Component/Container';
 import Div from 'Component/Div';
 import Icon from 'Component/Icon';
 import Modal from 'Component/Modal';
 import Offcanvas from 'Component/Offcanvas';
 import P from 'Component/P';
 import { Popover } from 'Component/Popover';
+import Row from 'Component/Row';
 import Strong from 'Component/Strong';
 import { Tooltip } from 'Component/Tooltip';
 
@@ -39,8 +42,8 @@ const App = (): JSX.Element => {
           position="relative"
         >
           <Div d="flex" justifyContent="center" p={3}>
-            <Tooltip  placement="left" title="Isso é um teste de tooltip">
-              <Button  sm color="primary">
+            <Tooltip placement="left" title="Isso é um teste de tooltip">
+              <Button sm color="primary">
                 Tooltip
               </Button>
             </Tooltip>
@@ -50,7 +53,11 @@ const App = (): JSX.Element => {
             <Button sm color="danger" onClick={() => setOffcanvas(true)}>
               Offcanvas
             </Button>
-            <Popover placement="bottom" title="Popover" content="Isso é um teste de popover">
+            <Popover
+              placement="bottom"
+              title="Popover"
+              content="Isso é um teste de popover"
+            >
               <Button sm color="success">
                 Popover
               </Button>
@@ -65,7 +72,11 @@ const App = (): JSX.Element => {
                   </P>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button sm color="outline-danger" onClick={() => setModal2(true)}>
+                  <Button
+                    sm
+                    color="outline-danger"
+                    onClick={() => setModal2(true)}
+                  >
                     Abrir outro modal
                   </Button>
                 </Modal.Footer>
@@ -82,11 +93,19 @@ const App = (): JSX.Element => {
                 </Modal.Body>
               </Modal.Content>
             </Modal>
-            <Offcanvas show={offcanvas} onClose={setOffcanvas} backdrop="static">
+            <Offcanvas
+              show={offcanvas}
+              onClose={setOffcanvas}
+              backdrop="static"
+            >
               <Offcanvas.Header>Offcanvas</Offcanvas.Header>
               <Offcanvas.Body>
                 <P>Isso é um teste de offcanvas</P>
-                <Button sm color="outline-danger" onClick={() => setOffcanvas2(true)}>
+                <Button
+                  sm
+                  color="outline-danger"
+                  onClick={() => setOffcanvas2(true)}
+                >
                   Abrir outro offcanvas
                 </Button>
               </Offcanvas.Body>
@@ -99,11 +118,7 @@ const App = (): JSX.Element => {
             </Offcanvas>
           </Div>
         </Div>
-        <Div
-          bgOpacity={25}
-          m={3}
-          position="relative"
-        >
+        <Div bgOpacity={25} m={3} position="relative">
           <Accordion>
             <Accordion.Item show>
               <Accordion.Header>
@@ -125,6 +140,14 @@ const App = (): JSX.Element => {
             </Accordion.Item>
           </Accordion>
         </Div>
+        <Container fluid>
+          <Row justifyContent="center">
+            <Column>Column 1</Column>
+            <Column>Column 2</Column>
+            <Column>Column 3</Column>
+            <Column>Column 4</Column>
+          </Row>
+        </Container>
       </BrowserRouter>
     </React.StrictMode>
   );
