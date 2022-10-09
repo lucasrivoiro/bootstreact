@@ -7,14 +7,20 @@ import { ClassesInterface } from 'Interface/Styles';
 interface Props extends ClassesInterface {
   children?: JSX.Element | JSX.Element[] | string | string[];
   className?: string | undefined;
+  fluid?: boolean;
 }
 
-const Container = ({ children, className, ...props }: Props): JSX.Element => {
+const Container = ({
+  children,
+  className,
+  fluid,
+  ...props
+}: Props): JSX.Element => {
   const propsClasses = useClasses(props);
 
   const classes = useMemo(
-    () => cn('container', propsClasses, className),
-    [className, propsClasses]
+    () => cn(`container${fluid ? '-fluid' : ''}`, propsClasses, className),
+    [className, fluid, propsClasses]
   );
 
   return <div className={classes}>{children}</div>;
