@@ -2,7 +2,9 @@ import { useClasses } from 'Hook/Style';
 import React, { useMemo } from 'react';
 import { cn } from 'utils';
 
-interface Props {
+import { ClassesInterface } from 'Interface/Styles';
+
+interface Props extends ClassesInterface {
   children?: JSX.Element | JSX.Element[] | string | string[];
   className?: string | undefined;
 }
