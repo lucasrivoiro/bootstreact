@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 interface Props {
   children?: JSX.Element;
   content: string;
-  title: string;
+  title?: string;
   placement?: 'top' | 'bottom' | 'right' | 'left';
   trigger?:
     | 'click'
@@ -21,8 +21,8 @@ export const Popover = ({
   children,
   content,
   placement = 'top',
-  trigger = 'focus',
-  title,
+  trigger = 'click',
+  title = '',
 }: Props) => {
   const ref = useRef<HTMLSpanElement>(null);
 

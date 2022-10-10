@@ -20,7 +20,7 @@ type ButtonThemeType =
   | 'outline-light'
   | 'transparent';
 
-interface IconInterface {
+interface ButtonInterface {
   children?: string;
   className?: string | undefined;
   color?: ButtonThemeType;
@@ -40,7 +40,7 @@ const Button = ({
   onClick,
   sm = false,
   type = 'button',
-}: IconInterface): JSX.Element => (
+}: ButtonInterface): JSX.Element => (
   <button
     className={cn(`btn btn-${color}`, className, {
       'btn-sm': sm,

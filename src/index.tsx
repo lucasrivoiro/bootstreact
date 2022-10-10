@@ -36,96 +36,94 @@ const App = (): JSX.Element => {
           fluid
           shadow
         >
-          <Container>
-            <Row py={3}>
-              <Column xs={1} sm={2} offsetSm={1}>
-                <H3 lead mb={3}>Tooltip (resolver bugs)</H3>
-                <Tooltip placement="bottom" title="Isso é um teste de tooltip">
-                  <Button className="w-100" color="primary">
-                    Passe o mouse
-                  </Button>
-                </Tooltip>
-              </Column>
-              <Column sm={2} offsetSm={1}>
-                <H3 lead mb={3}>Modal</H3>
-                <Button className="w-100" color="warning" onClick={() => setModal(true)}>
-                  Clique
+          <Row py={3}>
+            <Column xs={12} sm={3} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Tooltip (ver bugs de exibição - Ex: ao passar cursor por baixo)</H3>
+              <Tooltip placement="bottom" title="Isso é um teste de tooltip">
+                <Button className="w-100" color="primary">
+                  Passe o mouse
                 </Button>
-                <Modal show={modal} onClose={setModal} backdrop="static">
-                  <Modal.Content>
-                    <Modal.Header>Modal</Modal.Header>
-                    <Modal.Body>
-                      <P>
-                        <Icon name="info-circle-fill" fs={5} me={2} />
-                        Isso é um teste de modal
-                      </P>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button
-                        sm
-                        color="outline-danger"
-                        onClick={() => setModal2(true)}
-                      >
-                        Abrir outro modal
-                      </Button>
-                    </Modal.Footer>
-                  </Modal.Content>
-                </Modal>
-                <Modal show={modal2} onClose={setModal2}>
-                  <Modal.Content>
-                    <Modal.Header>Modal 2</Modal.Header>
-                    <Modal.Body>
-                      <P>
-                        <Icon name="info-circle-fill" fs={5} me={2} />
-                        Isso é um novo teste de modal
-                      </P>
-                    </Modal.Body>
-                  </Modal.Content>
-                </Modal>
-              </Column>
-              <Column>
-                <H3 lead mb={3}>Offcanvas</H3>
-                <Button className="w-100" color="danger" onClick={() => setOffcanvas(true)}>
-                  Clique
-                </Button>
-                <Offcanvas
-                  show={offcanvas}
-                  onClose={setOffcanvas}
-                  backdrop="static"
-                >
-                  <Offcanvas.Header>Offcanvas</Offcanvas.Header>
-                  <Offcanvas.Body>
-                    <P>Isso é um teste de offcanvas</P>
+              </Tooltip>
+            </Column>
+            <Column xs={12} sm={3} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Modal<br />Ok</H3>
+              <Button className="w-100" color="warning" onClick={() => setModal(true)}>
+                Clique
+              </Button>
+              <Modal show={modal} onClose={setModal} backdrop="static">
+                <Modal.Content>
+                  <Modal.Header>Modal</Modal.Header>
+                  <Modal.Body>
+                    <P>
+                      <Icon name="info-circle-fill" fs={5} me={2} />
+                      Isso é um teste de modal
+                    </P>
+                  </Modal.Body>
+                  <Modal.Footer>
                     <Button
                       sm
                       color="outline-danger"
-                      onClick={() => setOffcanvas2(true)}
+                      onClick={() => setModal2(true)}
                     >
-                      Abrir outro offcanvas
+                      Abrir outro modal
                     </Button>
-                  </Offcanvas.Body>
-                </Offcanvas>
-                <Offcanvas show={offcanvas2} onClose={setOffcanvas2}>
-                  <Offcanvas.Header>Offcanvas 2</Offcanvas.Header>
-                  <Offcanvas.Body>
-                    <P>Isso é um novo teste de offcanvas</P>
-                  </Offcanvas.Body>
-                </Offcanvas>
-              </Column>
-              <Column>
-                <H3 lead mb={3}>Popover (resolver bugs)</H3>
-                <Popover
-                  placement="bottom"
-                  title="Popover"
-                  content="Isso é um teste de popover"
-                >
-                  <Button className="w-100" color="success">
-                    Clique
+                  </Modal.Footer>
+                </Modal.Content>
+              </Modal>
+              <Modal show={modal2} onClose={setModal2}>
+                <Modal.Content>
+                  <Modal.Header>Modal 2</Modal.Header>
+                  <Modal.Body>
+                    <P>
+                      <Icon name="info-circle-fill" fs={5} me={2} />
+                      Isso é um novo teste de modal
+                    </P>
+                  </Modal.Body>
+                </Modal.Content>
+              </Modal>
+            </Column>
+            <Column xs={12} sm={3} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Offcanvas<br />Ok</H3>
+              <Button className="w-100" color="danger" onClick={() => setOffcanvas(true)}>
+                Clique
+              </Button>
+              <Offcanvas
+                show={offcanvas}
+                onClose={setOffcanvas}
+                backdrop="static"
+              >
+                <Offcanvas.Header>Offcanvas</Offcanvas.Header>
+                <Offcanvas.Body>
+                  <P>Isso é um teste de offcanvas</P>
+                  <Button
+                    sm
+                    color="outline-danger"
+                    onClick={() => setOffcanvas2(true)}
+                  >
+                    Abrir outro offcanvas
                   </Button>
-                </Popover>
-              </Column>
-            </Row>
-          </Container>
+                </Offcanvas.Body>
+              </Offcanvas>
+              <Offcanvas show={offcanvas2} onClose={setOffcanvas2}>
+                <Offcanvas.Header>Offcanvas 2</Offcanvas.Header>
+                <Offcanvas.Body>
+                  <P>Isso é um novo teste de offcanvas</P>
+                </Offcanvas.Body>
+              </Offcanvas>
+            </Column>
+            <Column xs={12} sm={3} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Popover (ver bugs de espaçamento - Ex: placement top e bottom)</H3>
+              <Popover
+                placement="bottom"
+                title="Popover"
+                content="Isso é um teste de popover"
+              >
+                <Button className="w-100" color="success">
+                  Clique
+                </Button>
+              </Popover>
+            </Column>
+          </Row>
         </Container>
         <Container
           bgColor="primary"
@@ -135,8 +133,8 @@ const App = (): JSX.Element => {
           shadow
         >
           <Row py={3}>
-            <Column>
-              <H3 lead mb={3}>Accordion (resolver bugs)</H3>
+            <Column xs={12} xl={6} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Accordion (ver bugs)</H3>
               <Accordion>
                 <Accordion.Item show>
                   <Accordion.Header>
@@ -158,31 +156,42 @@ const App = (): JSX.Element => {
                 </Accordion.Item>
               </Accordion>
             </Column>
-            <Column>
-              Teste
+            <Column xs={12} xl={6} mb={3} mbLg={0}>
+              <H3 lead mb={3}>Collapse</H3>
             </Column>
           </Row>
         </Container>
-        <Container fluid mt={3}>
-          <Row justifyContent="center">
+        <Container
+          bgColor="primary"
+          bgOpacity={25}
+          fluid
+          mt={3}
+          shadow
+        >
+          <Row justifyContent="center" py={3}>
+            <H3 lead mb={3}>Container / Row / Columns / Offsets (ver bugs de margin e paddings - Ex: mb-3 mb-lg-0)</H3>
             <Column lg={3}>
               <Div bgColor="light" border p={3}>
-                Column 1
+                Column 1<br />
+                <i>(col-lg-3)</i>
               </Div>
             </Column>
-            <Column lg={1}>
+            <Column lg={2}>
               <Div bgColor="light" border p={3}>
-                Column 2
+                Column 2<br />
+                <i>(col-lg-2)</i>
               </Div>
             </Column>
-            <Column lg={5}>
+            <Column lg={4}>
               <Div bgColor="light" border p={3}>
-                Column 3
+                Column 3<br />
+                <i>(col-lg-4)</i>
               </Div>
             </Column>
-            <Column lg={3}>
+            <Column lg={2} offsetLg={1}>
               <Div bgColor="light" border p={3}>
-                Column 4
+                Column 4<br />
+                <i>(col-lg-3 offset-lg-1)</i>
               </Div>
             </Column>
           </Row>
