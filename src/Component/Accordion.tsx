@@ -50,12 +50,12 @@ const Accordion = ({
   children,
 }: AccordionProps) => {
   const [accordionId] = useState<string>(
-    (window.performance.now()).toString().replace('.', '')
+    (Math.random()).toString().replace('.', '')
   );
 
   return (
     <ContextAccordion.Provider value={{accordionId, alwaysOpen}}>
-      <div 
+      <div
         className={cn(
           'accordion',
           `${flush ? 'accordion-flush' : ''}`
@@ -70,7 +70,7 @@ const Accordion = ({
 
 const Item = ({ children, show = false }: ItemProps): JSX.Element => {
   const [headerId] = useState<string>(
-    (window.performance.now()).toString().replace('.', '')
+    (Math.random()).toString().replace('.', '')
   );
 
   return (
@@ -122,7 +122,7 @@ const Body = ({ children }: BodyProps): JSX.Element => {
     </div>
   )
 };
-  
+
 Accordion.Item = Item;
 Accordion.Header = Header;
 Accordion.Body = Body;
