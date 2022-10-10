@@ -15,6 +15,12 @@ interface Props extends ClassesInterface {
   lg?: Size;
   xl?: Size;
   xxl?: Size;
+  offsetXs?: Size;
+  offsetSm?: Size;
+  offsetMd?: Size;
+  offsetLg?: Size;
+  offsetXl?: Size;
+  offsetXxl?: Size;
 }
 
 const Column = ({
@@ -26,26 +32,54 @@ const Column = ({
   lg,
   xl,
   xxl,
+  offsetXs,
+  offsetSm,
+  offsetMd,
+  offsetLg,
+  offsetXl,
+  offsetXxl,
   ...props
 }: Props): JSX.Element => {
   const propsClasses = useClasses(props);
+
+  console.log(lg)
 
   const classes = useMemo(
     () =>
       cn(
         {
-          [`col${xs ? `-${xs}` : ''}`]:
-            !xs || (!xs && !sm && !md && !lg && !xl && !xxl),
+          [`${xs ? `col-${xs}` : 'col'}`]: xs ? xs : 'col',
           [`col-sm-${sm}`]: sm,
-          [`col-md-${sm}`]: md,
-          [`col-lg-${sm}`]: lg,
-          [`col-xl-${sm}`]: xl,
-          [`col-xxl-${sm}`]: xxl,
+          [`col-md-${md}`]: md,
+          [`col-lg-${lg}`]: lg,
+          [`col-xl-${xl}`]: xl,
+          [`col-xxl-${xxl}`]: xxl,
+          [`offset-${offsetXs}`]: offsetXs,
+          [`offset-sm-${offsetSm}`]: offsetSm,
+          [`offset-md-${offsetMd}`]: offsetMd,
+          [`offset-lg-${offsetLg}`]: offsetLg,
+          [`offset-xl-${offsetXl}`]: offsetXl,
+          [`offset-xxl-${offsetXxl}`]: offsetXxl,
         },
         propsClasses,
         className
       ),
-    [className, lg, md, propsClasses, sm, xl, xs, xxl]
+    [
+      className,
+      lg,
+      md,
+      propsClasses,
+      sm,
+      xl,
+      xs,
+      xxl,
+      offsetXs,
+      offsetSm,
+      offsetMd,
+      offsetLg,
+      offsetXl,
+      offsetXxl,
+    ]
   );
 
   return <div className={classes}>{children}</div>;
