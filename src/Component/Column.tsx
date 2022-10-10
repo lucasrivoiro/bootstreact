@@ -48,7 +48,8 @@ const Column = ({
     () =>
       cn(
         {
-          [`${xs ? `col-${xs}` : 'col'}`]: xs ? xs : 'col',
+          [`${!xs && !sm && !md && !lg && !xl && !xxl ? 'col' : ''}`]: true,
+          [`col-${xs}`]: xs,
           [`col-sm-${sm}`]: sm,
           [`col-md-${md}`]: md,
           [`col-lg-${lg}`]: lg,

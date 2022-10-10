@@ -9,6 +9,7 @@ import Button from 'Component/Button';
 import Column from 'Component/Column';
 import Container from 'Component/Container';
 import Div from 'Component/Div';
+import H3 from 'Component/H3';
 import Icon from 'Component/Icon';
 import Modal from 'Component/Modal';
 import Offcanvas from 'Component/Offcanvas';
@@ -29,123 +30,161 @@ const App = (): JSX.Element => {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <Div
+        <Container
           bgColor="primary"
           bgOpacity={25}
-          m={3}
-          border
-          borderWidth={5}
-          borderColor="success"
-          borderOpacity={25}
-          rounded
-          shadow="lg"
-          position="relative"
+          fluid
+          shadow
         >
-          <Div d="flex" justifyContent="center" p={3}>
-            <Tooltip placement="left" title="Isso é um teste de tooltip">
-              <Button sm color="primary">
-                Tooltip
-              </Button>
-            </Tooltip>
-            <Button sm color="warning" onClick={() => setModal(true)}>
-              Modal
-            </Button>
-            <Button sm color="danger" onClick={() => setOffcanvas(true)}>
-              Offcanvas
-            </Button>
-            <Popover
-              placement="bottom"
-              title="Popover"
-              content="Isso é um teste de popover"
-            >
-              <Button sm color="success">
-                Popover
-              </Button>
-            </Popover>
-            <Modal show={modal} onClose={setModal} backdrop="static">
-              <Modal.Content>
-                <Modal.Header>Modal</Modal.Header>
-                <Modal.Body>
-                  <P>
-                    <Icon name="info-circle-fill" fs={5} me={2} />
-                    Isso é um teste de modal
-                  </P>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    sm
-                    color="outline-danger"
-                    onClick={() => setModal2(true)}
-                  >
-                    Abrir outro modal
+          <Container>
+            <Row py={3}>
+              <Column xs={1} sm={2} offsetSm={1}>
+                <H3 lead mb={3}>Tooltip (resolver bugs)</H3>
+                <Tooltip placement="bottom" title="Isso é um teste de tooltip">
+                  <Button className="w-100" color="primary">
+                    Passe o mouse
                   </Button>
-                </Modal.Footer>
-              </Modal.Content>
-            </Modal>
-            <Modal show={modal2} onClose={setModal2}>
-              <Modal.Content>
-                <Modal.Header>Modal 2</Modal.Header>
-                <Modal.Body>
-                  <P>
-                    <Icon name="info-circle-fill" fs={5} me={2} />
-                    Isso é um novo teste de modal
-                  </P>
-                </Modal.Body>
-              </Modal.Content>
-            </Modal>
-            <Offcanvas
-              show={offcanvas}
-              onClose={setOffcanvas}
-              backdrop="static"
-            >
-              <Offcanvas.Header>Offcanvas</Offcanvas.Header>
-              <Offcanvas.Body>
-                <P>Isso é um teste de offcanvas</P>
-                <Button
-                  sm
-                  color="outline-danger"
-                  onClick={() => setOffcanvas2(true)}
-                >
-                  Abrir outro offcanvas
+                </Tooltip>
+              </Column>
+              <Column sm={2} offsetSm={1}>
+                <H3 lead mb={3}>Modal</H3>
+                <Button className="w-100" color="warning" onClick={() => setModal(true)}>
+                  Clique
                 </Button>
-              </Offcanvas.Body>
-            </Offcanvas>
-            <Offcanvas show={offcanvas2} onClose={setOffcanvas2}>
-              <Offcanvas.Header>Offcanvas 2</Offcanvas.Header>
-              <Offcanvas.Body>
-                <P>Isso é um novo teste de offcanvas</P>
-              </Offcanvas.Body>
-            </Offcanvas>
-          </Div>
-        </Div>
-        <Div bgOpacity={25} m={3} position="relative">
-          <Accordion>
-            <Accordion.Item show>
-              <Accordion.Header>
-                <Strong>Accordion #1</Strong>
-              </Accordion.Header>
-              <Accordion.Body>Isso é um teste do accordion 1</Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item>
-              <Accordion.Header>
-                <Strong>Accordion #2</Strong>
-              </Accordion.Header>
-              <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item>
-              <Accordion.Header>
-                <Strong>Accordion #3</Strong>
-              </Accordion.Header>
-              <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-        </Div>
-        <Container fluid>
+                <Modal show={modal} onClose={setModal} backdrop="static">
+                  <Modal.Content>
+                    <Modal.Header>Modal</Modal.Header>
+                    <Modal.Body>
+                      <P>
+                        <Icon name="info-circle-fill" fs={5} me={2} />
+                        Isso é um teste de modal
+                      </P>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button
+                        sm
+                        color="outline-danger"
+                        onClick={() => setModal2(true)}
+                      >
+                        Abrir outro modal
+                      </Button>
+                    </Modal.Footer>
+                  </Modal.Content>
+                </Modal>
+                <Modal show={modal2} onClose={setModal2}>
+                  <Modal.Content>
+                    <Modal.Header>Modal 2</Modal.Header>
+                    <Modal.Body>
+                      <P>
+                        <Icon name="info-circle-fill" fs={5} me={2} />
+                        Isso é um novo teste de modal
+                      </P>
+                    </Modal.Body>
+                  </Modal.Content>
+                </Modal>
+              </Column>
+              <Column>
+                <H3 lead mb={3}>Offcanvas</H3>
+                <Button className="w-100" color="danger" onClick={() => setOffcanvas(true)}>
+                  Clique
+                </Button>
+                <Offcanvas
+                  show={offcanvas}
+                  onClose={setOffcanvas}
+                  backdrop="static"
+                >
+                  <Offcanvas.Header>Offcanvas</Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <P>Isso é um teste de offcanvas</P>
+                    <Button
+                      sm
+                      color="outline-danger"
+                      onClick={() => setOffcanvas2(true)}
+                    >
+                      Abrir outro offcanvas
+                    </Button>
+                  </Offcanvas.Body>
+                </Offcanvas>
+                <Offcanvas show={offcanvas2} onClose={setOffcanvas2}>
+                  <Offcanvas.Header>Offcanvas 2</Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <P>Isso é um novo teste de offcanvas</P>
+                  </Offcanvas.Body>
+                </Offcanvas>
+              </Column>
+              <Column>
+                <H3 lead mb={3}>Popover (resolver bugs)</H3>
+                <Popover
+                  placement="bottom"
+                  title="Popover"
+                  content="Isso é um teste de popover"
+                >
+                  <Button className="w-100" color="success">
+                    Clique
+                  </Button>
+                </Popover>
+              </Column>
+            </Row>
+          </Container>
+        </Container>
+        <Container
+          bgColor="primary"
+          bgOpacity={25}
+          fluid
+          mt={3}
+          shadow
+        >
+          <Row py={3}>
+            <Column>
+              <H3 lead mb={3}>Accordion (resolver bugs)</H3>
+              <Accordion>
+                <Accordion.Item show>
+                  <Accordion.Header>
+                    <Strong>Accordion #1</Strong>
+                  </Accordion.Header>
+                  <Accordion.Body>Isso é um teste do accordion 1</Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item>
+                  <Accordion.Header>
+                    <Strong>Accordion #2</Strong>
+                  </Accordion.Header>
+                  <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item>
+                  <Accordion.Header>
+                    <Strong>Accordion #3</Strong>
+                  </Accordion.Header>
+                  <Accordion.Body>Isso é um teste do accordion 3</Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </Column>
+            <Column>
+              Teste
+            </Column>
+          </Row>
+        </Container>
+        <Container fluid mt={3}>
           <Row justifyContent="center">
-            <Column>Column 1</Column>
-            <Column>Column 2</Column>
-            <Column>Column 3</Column>
-            <Column>Column 4</Column>
+            <Column lg={3}>
+              <Div bgColor="light" border p={3}>
+                Column 1
+              </Div>
+            </Column>
+            <Column lg={1}>
+              <Div bgColor="light" border p={3}>
+                Column 2
+              </Div>
+            </Column>
+            <Column lg={5}>
+              <Div bgColor="light" border p={3}>
+                Column 3
+              </Div>
+            </Column>
+            <Column lg={3}>
+              <Div bgColor="light" border p={3}>
+                Column 4
+              </Div>
+            </Column>
           </Row>
         </Container>
       </BrowserRouter>
