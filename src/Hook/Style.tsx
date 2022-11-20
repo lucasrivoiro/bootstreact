@@ -5,12 +5,14 @@ import {
   BackgroundInterface,
   BorderInterface,
   ClassesInterface,
+  CursorInterface,
   DisplayInterface,
   FlexInterface,
   FontMonospaceInterface,
   FontSizeInterface,
   FontStyleInterface,
   FontWeightInterface,
+  GapInterface,
   LineHeightInterface,
   MarginInterface,
   OpacityInterface,
@@ -33,54 +35,54 @@ export const useMargin = (props: MarginInterface): string => {
   const classes = useMemo(
     () =>
       cn({
-        [`m-${props.m}`]: props.m,
-        [`m-sm-${props.mSm}`]: props.mSm,
-        [`m-md-${props.mMd}`]: props.mMd,
-        [`m-lg-${props.mLg}`]: props.mLg,
-        [`m-xl-${props.mXl}`]: props.mXl,
-        [`m-xxl-${props.mXxl}`]: props.mXxl,
+        [`m-${props.m}`]: props.m || props.m === 0,
+        [`m-sm-${props.mSm}`]: props.mSm || props.mSm === 0,
+        [`m-md-${props.mMd}`]: props.mMd || props.mMd === 0,
+        [`m-lg-${props.mLg}`]: props.mLg || props.mLg === 0,
+        [`m-xl-${props.mXl}`]: props.mXl || props.mXl === 0,
+        [`m-xxl-${props.mXxl}`]: props.mXxl || props.mXxl === 0,
 
-        [`my-${props.my}`]: props.my,
-        [`my-sm-${props.mySm}`]: props.mySm,
-        [`my-md-${props.myMd}`]: props.myMd,
-        [`my-lg-${props.myLg}`]: props.myLg,
-        [`my-xl-${props.myXl}`]: props.myXl,
-        [`my-xxl-${props.mXxl}`]: props.myXxl,
+        [`my-${props.my}`]: props.my || props.my === 0,
+        [`my-sm-${props.mySm}`]: props.mySm || props.mySm === 0,
+        [`my-md-${props.myMd}`]: props.myMd || props.myMd === 0,
+        [`my-lg-${props.myLg}`]: props.myLg || props.myLg === 0,
+        [`my-xl-${props.myXl}`]: props.myXl || props.myXl === 0,
+        [`my-xxl-${props.mXxl}`]: props.myXxl || props.myXxl === 0,
 
-        [`mx-${props.mx}`]: props.mx,
-        [`mx-sm-${props.mxSm}`]: props.mxSm,
-        [`mx-md-${props.mxMd}`]: props.mxMd,
-        [`mx-lg-${props.mxLg}`]: props.mxLg,
-        [`mx-xl-${props.mxXl}`]: props.mxXl,
-        [`mx-xxl-${props.mxXxl}`]: props.mxXxl,
+        [`mx-${props.mx}`]: props.mx || props.mx === 0,
+        [`mx-sm-${props.mxSm}`]: props.mxSm || props.mxSm === 0,
+        [`mx-md-${props.mxMd}`]: props.mxMd || props.mxMd === 0,
+        [`mx-lg-${props.mxLg}`]: props.mxLg || props.mxLg === 0,
+        [`mx-xl-${props.mxXl}`]: props.mxXl || props.mxXl === 0,
+        [`mx-xxl-${props.mxXxl}`]: props.mxXxl || props.mxXxl === 0,
 
-        [`mt-${props.mt}`]: props.mt,
-        [`mt-sm-${props.mtSm}`]: props.mtSm,
-        [`mt-md-${props.mtMd}`]: props.mtMd,
-        [`mt-lg-${props.mtLg}`]: props.mtLg,
-        [`mt-xl-${props.mtXl}`]: props.mtXl,
-        [`mt-xxl-${props.mtXxl}`]: props.mtXxl,
+        [`mt-${props.mt}`]: props.mt || props.mt === 0,
+        [`mt-sm-${props.mtSm}`]: props.mtSm || props.mtSm === 0,
+        [`mt-md-${props.mtMd}`]: props.mtMd || props.mtMd === 0,
+        [`mt-lg-${props.mtLg}`]: props.mtLg || props.mtLg === 0,
+        [`mt-xl-${props.mtXl}`]: props.mtXl || props.mtXl === 0,
+        [`mt-xxl-${props.mtXxl}`]: props.mtXxl || props.mtXxl === 0,
 
-        [`mb-${props.mb}`]: props.mb,
-        [`mb-sm-${props.mbSm}`]: props.mbSm,
-        [`mb-md-${props.mbMd}`]: props.mbMd,
-        [`mb-lg-${props.mbLg}`]: props.mbLg,
-        [`mb-xl-${props.mbXl}`]: props.mbXl,
-        [`mb-xxl-${props.mbXxl}`]: props.mbXxl,
+        [`mb-${props.mb}`]: props.mb || props.mb === 0,
+        [`mb-sm-${props.mbSm}`]: props.mbSm || props.mbSm === 0,
+        [`mb-md-${props.mbMd}`]: props.mbMd || props.mbMd === 0,
+        [`mb-lg-${props.mbLg}`]: props.mbLg || props.mbLg === 0,
+        [`mb-xl-${props.mbXl}`]: props.mbXl || props.mbXl === 0,
+        [`mb-xxl-${props.mbXxl}`]: props.mbXxl || props.mbXxl === 0,
 
-        [`ms-${props.ms}`]: props.ms,
-        [`ms-sm-${props.msSm}`]: props.msSm,
-        [`ms-md-${props.msMd}`]: props.msMd,
-        [`ms-lg-${props.msLg}`]: props.msLg,
-        [`ms-xl-${props.msXl}`]: props.msXl,
-        [`ms-xxl-${props.msXxl}`]: props.msXxl,
+        [`ms-${props.ms}`]: props.ms || props.ms === 0,
+        [`ms-sm-${props.msSm}`]: props.msSm || props.msSm === 0,
+        [`ms-md-${props.msMd}`]: props.msMd || props.msMd === 0,
+        [`ms-lg-${props.msLg}`]: props.msLg || props.msLg === 0,
+        [`ms-xl-${props.msXl}`]: props.msXl || props.msXl === 0,
+        [`ms-xxl-${props.msXxl}`]: props.msXxl || props.msXxl === 0,
 
-        [`me-${props.me}`]: props.me,
-        [`me-sm-${props.meSm}`]: props.meSm,
-        [`me-md-${props.meMd}`]: props.meMd,
-        [`me-lg-${props.meLg}`]: props.meLg,
-        [`me-xl-${props.meXl}`]: props.meXl,
-        [`me-xxl-${props.meXxl}`]: props.meXxl,
+        [`me-${props.me}`]: props.me || props.me === 0,
+        [`me-sm-${props.meSm}`]: props.meSm || props.meSm === 0,
+        [`me-md-${props.meMd}`]: props.meMd || props.meMd === 0,
+        [`me-lg-${props.meLg}`]: props.meLg || props.meLg === 0,
+        [`me-xl-${props.meXl}`]: props.meXl || props.meXl === 0,
+        [`me-xxl-${props.meXxl}`]: props.meXxl || props.meXxl === 0,
       }),
     [
       props.m,
@@ -135,54 +137,54 @@ export const usePadding = (props: PaddingInterface): string => {
   const classes = useMemo(
     () =>
       cn({
-        [`p-${props.p}`]: props.p,
-        [`p-sm-${props.pSm}`]: props.pSm,
-        [`p-md-${props.pMd}`]: props.pMd,
-        [`p-lg-${props.pLg}`]: props.pLg,
-        [`p-xl-${props.pXl}`]: props.pXl,
-        [`p-xxl-${props.pXxl}`]: props.pXxl,
+        [`p-${props.p}`]: props.p || props.p === 0,
+        [`p-sm-${props.pSm}`]: props.pSm || props.pSm === 0,
+        [`p-md-${props.pMd}`]: props.pMd || props.pMd === 0,
+        [`p-lg-${props.pLg}`]: props.pLg || props.pLg === 0,
+        [`p-xl-${props.pXl}`]: props.pXl || props.pXl === 0,
+        [`p-xxl-${props.pXxl}`]: props.pXxl || props.pXxl === 0,
 
-        [`py-${props.py}`]: props.py,
-        [`py-sm-${props.pySm}`]: props.pySm,
-        [`py-md-${props.pyMd}`]: props.pyMd,
-        [`py-lg-${props.pyLg}`]: props.pyLg,
-        [`py-xl-${props.pyXl}`]: props.pyXl,
-        [`py-xxl-${props.pXxl}`]: props.pyXxl,
+        [`py-${props.py}`]: props.py || props.py === 0,
+        [`py-sm-${props.pySm}`]: props.pySm || props.pySm === 0,
+        [`py-md-${props.pyMd}`]: props.pyMd || props.pyMd === 0,
+        [`py-lg-${props.pyLg}`]: props.pyLg || props.pyLg === 0,
+        [`py-xl-${props.pyXl}`]: props.pyXl || props.pyXl === 0,
+        [`py-xxl-${props.pXxl}`]: props.pyXxl || props.pyXxl === 0,
 
-        [`px-${props.px}`]: props.px,
-        [`px-sm-${props.pxSm}`]: props.pxSm,
-        [`px-md-${props.pxMd}`]: props.pxMd,
-        [`px-lg-${props.pxLg}`]: props.pxLg,
-        [`px-xl-${props.pxXl}`]: props.pxXl,
-        [`px-xxl-${props.pxXxl}`]: props.pxXxl,
+        [`px-${props.px}`]: props.px || props.px === 0,
+        [`px-sm-${props.pxSm}`]: props.pxSm || props.pxSm === 0,
+        [`px-md-${props.pxMd}`]: props.pxMd || props.pxMd === 0,
+        [`px-lg-${props.pxLg}`]: props.pxLg || props.pxLg === 0,
+        [`px-xl-${props.pxXl}`]: props.pxXl || props.pxXl === 0,
+        [`px-xxl-${props.pxXxl}`]: props.pxXxl || props.pxXxl === 0,
 
-        [`pt-${props.pt}`]: props.pt,
-        [`pt-sm-${props.ptSm}`]: props.ptSm,
-        [`pt-md-${props.ptMd}`]: props.ptMd,
-        [`pt-lg-${props.ptLg}`]: props.ptLg,
-        [`pt-xl-${props.ptXl}`]: props.ptXl,
-        [`pt-xxl-${props.ptXxl}`]: props.ptXxl,
+        [`pt-${props.pt}`]: props.pt || props.pt === 0,
+        [`pt-sm-${props.ptSm}`]: props.ptSm || props.ptSm === 0,
+        [`pt-md-${props.ptMd}`]: props.ptMd || props.ptMd === 0,
+        [`pt-lg-${props.ptLg}`]: props.ptLg || props.ptLg === 0,
+        [`pt-xl-${props.ptXl}`]: props.ptXl || props.ptXl === 0,
+        [`pt-xxl-${props.ptXxl}`]: props.ptXxl || props.ptXxl === 0,
 
-        [`pb-${props.pb}`]: props.pb,
-        [`pb-sm-${props.pbSm}`]: props.pbSm,
-        [`pb-md-${props.pbMd}`]: props.pbMd,
-        [`pb-lg-${props.pbLg}`]: props.pbLg,
-        [`pb-xl-${props.pbXl}`]: props.pbXl,
-        [`pb-xxl-${props.pbXxl}`]: props.pbXxl,
+        [`pb-${props.pb}`]: props.pb || props.pb === 0,
+        [`pb-sm-${props.pbSm}`]: props.pbSm || props.pbSm === 0,
+        [`pb-md-${props.pbMd}`]: props.pbMd || props.pbMd === 0,
+        [`pb-lg-${props.pbLg}`]: props.pbLg || props.pbLg === 0,
+        [`pb-xl-${props.pbXl}`]: props.pbXl || props.pbXl === 0,
+        [`pb-xxl-${props.pbXxl}`]: props.pbXxl || props.pbXxl === 0,
 
-        [`ps-${props.ps}`]: props.ps,
-        [`ps-sm-${props.psSm}`]: props.psSm,
-        [`ps-md-${props.psMd}`]: props.psMd,
-        [`ps-lg-${props.psLg}`]: props.psLg,
-        [`ps-xl-${props.psXl}`]: props.psXl,
-        [`ps-xxl-${props.psXxl}`]: props.psXxl,
+        [`ps-${props.ps}`]: props.ps || props.ps === 0,
+        [`ps-sm-${props.psSm}`]: props.psSm || props.psSm === 0,
+        [`ps-md-${props.psMd}`]: props.psMd || props.psMd === 0,
+        [`ps-lg-${props.psLg}`]: props.psLg || props.psLg === 0,
+        [`ps-xl-${props.psXl}`]: props.psXl || props.psXl === 0,
+        [`ps-xxl-${props.psXxl}`]: props.psXxl || props.psXxl === 0,
 
-        [`pe-${props.pe}`]: props.pe,
-        [`pe-sm-${props.peSm}`]: props.peSm,
-        [`pe-md-${props.peMd}`]: props.peMd,
-        [`pe-lg-${props.peLg}`]: props.peLg,
-        [`pe-xl-${props.peXl}`]: props.peXl,
-        [`pe-xxl-${props.peXxl}`]: props.peXxl,
+        [`pe-${props.pe}`]: props.pe || props.pe === 0,
+        [`pe-sm-${props.peSm}`]: props.peSm || props.peSm === 0,
+        [`pe-md-${props.peMd}`]: props.peMd || props.peMd === 0,
+        [`pe-lg-${props.peLg}`]: props.peLg || props.peLg === 0,
+        [`pe-xl-${props.peXl}`]: props.peXl || props.peXl === 0,
+        [`pe-xxl-${props.peXxl}`]: props.peXxl || props.peXxl === 0,
       }),
     [
       props.p,
@@ -463,6 +465,30 @@ export const useFlex = (props: FlexInterface): string => {
   return classes;
 };
 
+export const useGap = (props: GapInterface): string => {
+  const classes = useMemo(
+    () =>
+      cn({
+        [`gap-${props.gap}`]: props.gap || props.gap === 0,
+        [`gap-sm-${props.gapSm}`]: props.gapSm || props.gapSm === 0,
+        [`gap-md-${props.gapMd}`]: props.gapMd || props.gapMd === 0,
+        [`gap-lg-${props.gapLg}`]: props.gapLg || props.gapLg === 0,
+        [`gap-xl-${props.gapXl}`]: props.gapXl || props.gapXl === 0,
+        [`gap-xxl-${props.gapXxl}`]: props.gapXxl || props.gapXxl === 0,
+      }),
+    [
+      props.gap,
+      props.gapLg,
+      props.gapMd,
+      props.gapSm,
+      props.gapXl,
+      props.gapXxl,
+    ]
+  );
+
+  return classes;
+};
+
 export const useOpacity = (props: OpacityInterface): string => {
   const classes = useMemo(
     () =>
@@ -722,8 +748,21 @@ export const useTextExtras = (props: TextExtrasInterface): string => {
         lead: props.lead,
         small: props.small,
         mark: props.mark,
+        'text-truncate': props.truncate,
       }),
-    [props.display, props.lead, props.mark, props.small]
+    [props.display, props.lead, props.mark, props.small, props.truncate]
+  );
+
+  return classes;
+};
+
+export const useCursor = (props: CursorInterface): string => {
+  const classes = useMemo(
+    () =>
+      cn({
+        [`cursor-${props.cursor}`]: props.cursor,
+      }),
+    [props.cursor]
   );
 
   return classes;
@@ -736,6 +775,7 @@ export const useClasses = (props: ClassesInterface): string => {
   const border = useBorder(props);
   const display = useDisplay(props);
   const flex = useFlex(props);
+  const gap = useGap(props);
   const opacity = useOpacity(props);
   const overflow = useOverflow(props);
   const shadow = useShadow(props);
@@ -747,12 +787,14 @@ export const useClasses = (props: ClassesInterface): string => {
   const textBreak = useTextBreak(props);
   const transform = useTextTransform(props);
   const weight = useFontWeight(props);
+  const fontSize = useFontSize(props);
   const style = useFontStyle(props);
   const lineHeight = useLineHeight(props);
   const monospace = useFontMonospace(props);
   const textReset = useTextReset(props);
   const textDecoration = useTextDecoration(props);
   const extras = useTextExtras(props);
+  const cursor = useCursor(props);
 
   const classes = useMemo(
     () =>
@@ -763,6 +805,7 @@ export const useClasses = (props: ClassesInterface): string => {
         border,
         display,
         flex,
+        gap,
         opacity,
         overflow,
         shadow,
@@ -774,12 +817,14 @@ export const useClasses = (props: ClassesInterface): string => {
         textBreak,
         transform,
         weight,
+        fontSize,
         style,
         lineHeight,
         monospace,
         textReset,
         textDecoration,
-        extras
+        extras,
+        cursor
       ),
     [
       align,
@@ -789,6 +834,8 @@ export const useClasses = (props: ClassesInterface): string => {
       display,
       extras,
       flex,
+      gap,
+      fontSize,
       lineHeight,
       margin,
       monospace,
@@ -805,6 +852,7 @@ export const useClasses = (props: ClassesInterface): string => {
       transform,
       weight,
       wrap,
+      cursor,
     ]
   );
 

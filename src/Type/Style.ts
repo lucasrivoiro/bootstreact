@@ -45,6 +45,8 @@ export type FlexWrapType = 'wrap' | 'nowrap' | 'wrap-reverse';
 
 export type OrderType = 0 | 1 | 2 | 3 | 4 | 5 | 'first' | 'last';
 
+export type GapType = 0 | 1 | 2 | 3 | 4 | 5;
+
 export type JustifyContent =
   | 'start'
   | 'end'
@@ -104,6 +106,18 @@ export type TextColorType =
 export type TextColorOpacityType = 25 | 50 | 75;
 
 export type TextAlignmentType = 'start' | 'center' | 'end';
+
+export type CursorType =
+  | 'context-menu'
+  | 'copy'
+  | 'crosshair'
+  | 'grab'
+  | 'grabbing'
+  | 'help'
+  | 'move'
+  | 'pointer'
+  | 'progress'
+  | 'text';
 
 export type Icons =
   | '123'

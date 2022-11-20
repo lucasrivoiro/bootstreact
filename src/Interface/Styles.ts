@@ -3,11 +3,13 @@ import {
   AlignItems,
   BorderType,
   ColorOpacityType,
+  CursorType,
   DisplayType,
   FlexGrowType,
   FlexShrinkType,
   FlexType,
   FlexWrapType,
+  GapType,
   JustifyContent,
   MarginType,
   OpacityType,
@@ -242,6 +244,15 @@ export interface FlexInterface {
   orderXxl?: OrderType;
 }
 
+export interface GapInterface {
+  gap?: GapType;
+  gapSm?: GapType;
+  gapMd?: GapType;
+  gapLg?: GapType;
+  gapXl?: GapType;
+  gapXxl?: GapType;
+}
+
 export interface OpacityInterface {
   opacity?: OpacityType;
 }
@@ -333,6 +344,11 @@ export interface TextExtrasInterface {
   lead?: boolean;
   small?: boolean;
   mark?: boolean;
+  truncate?: boolean;
+}
+
+export interface CursorInterface {
+  cursor?: CursorType;
 }
 
 export interface ClassesInterface
@@ -342,6 +358,7 @@ export interface ClassesInterface
     DisplayInterface,
     PaddingInterface,
     FlexInterface,
+    GapInterface,
     OpacityInterface,
     OverflowInterface,
     ShadowInterface,
@@ -359,4 +376,5 @@ export interface ClassesInterface
     FontMonospaceInterface,
     TextResetInterface,
     TextDecorationInterface,
-    TextExtrasInterface {}
+    TextExtrasInterface,
+    CursorInterface {}

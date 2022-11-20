@@ -1,0 +1,10 @@
+@import "../../Style/variables";
+@import "~bootstrap/scss/mixins";
+
+.datalist {
+    @include border-radius(var(--bs-border-radius-lg));
+
+    & .datalist-item:last-child {
+        border-bottom: none !important;
+    }
+}
