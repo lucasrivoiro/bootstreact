@@ -1,48 +1,7 @@
-import { useContext, useMemo } from 'react';
-import { useLongPress } from 'use-long-press';
+import { useMemo } from 'react';
 import { cn } from 'utils';
 
-import {
-  useContextMenu,
-  useContextMenuItems,
-  useContextMenuTitle,
-} from 'Component/ContextMenu/hooks';
-
-import { DataListContext } from '.';
-import { DataListColumnProps, DataListItemProps } from './interfaces';
-
-export const useDataListaContext = () => {
-  const [contextMenu, setContextMenu] = useContextMenu();
-  const [contextMenuTitle, setContextMenuTitle] = useContextMenuTitle();
-  const [contextMenuItems, setContextMenuItems] = useContextMenuItems();
-
-  return {
-    hasContextMenu: !!contextMenuTitle,
-    contextMenu,
-    setContextMenu,
-    contextMenuTitle,
-    setContextMenuTitle,
-    contextMenuItems,
-    setContextMenuItems,
-  }
-};
-
-export const useDataListItemContextMenu = ({
-  contextMenuTitle,
-  contextMenuItems,
-}: Partial<DataListItemProps>) => {
-  const context = useContext(DataListContext);
-
-  const bind = useLongPress(() => {
-    if (contextMenuTitle && contextMenuItems) {
-      context.setContextMenu(true);
-      context.setContextMenuTitle(contextMenuTitle);
-      context.setContextMenuItems(contextMenuItems);
-    }
-  });
-
-  return bind;
-};
+import { DataListColumnProps } from './interfaces';
 
 export const useDataListColumnClasses = (
   defaultClass: string,

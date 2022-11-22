@@ -1,15 +1,14 @@
 import { useState } from 'react';
-
-import { ContextMenuItem } from './types';
+import { useLongPress } from 'use-long-press';
 
 export const useContextMenu = () => {
-  return useState<boolean>(false);
-};
+  const [show, setShow] = useState<boolean>(false);
 
-export const useContextMenuTitle = () => {
-  return useState<string>('');
-};
+  const longPress = useLongPress(() => setShow(true));
 
-export const useContextMenuItems = () => {
-  return useState<ContextMenuItem[]>([]);
+  return {
+    show,
+    setShow,
+    longPress,
+  };
 };

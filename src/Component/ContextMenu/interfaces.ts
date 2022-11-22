@@ -1,8 +1,7 @@
 import { ContextMenuItem } from './types';
 
 export interface ContextMenuProps {
+  children: JSX.Element | JSX.Element[] | string | string[];
   title: string;
-  show: boolean;
-  onClose: (state: boolean) => void;
   items: ContextMenuItem[];
 }

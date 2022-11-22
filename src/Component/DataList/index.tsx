@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 
 import ContextMenu from 'Component/ContextMenu';
 
@@ -7,14 +7,9 @@ import Div from '../Div';
 import Icon from '../Icon';
 import Small from '../Small';
 import Span from '../Span';
-import {
-  useDataListaContext,
-  useDataListColumnClasses,
-  useDataListItemContextMenu,
-} from './hooks';
+import { useDataListColumnClasses } from './hooks';
 import {
   DataListColumnProps,
-  DataListContext as DataListContextInterface,
   DataListItemProps,
   DataListProps,
   DataListSubtitleProps,
@@ -22,52 +17,40 @@ import {
 } from './interfaces';
 import './styles.scss';
 
-export const DataListContext = createContext<DataListContextInterface>({
-  hasContextMenu: false,
-  contextMenu: false,
-  setContextMenu: () => ({}),
-  setContextMenuTitle: () => ({}),
-  setContextMenuItems: () => ({}),
-});
+const DataList = ({ children }: DataListProps): JSX.Element => (
+  <Div className="datalist" bgColor="white" w={100}>
+    {children}
+  </Div>
+);
 
-const DataList = ({ children }: DataListProps): JSX.Element => {
-  const context = useDataListaContext();
-
-  return (
-    <DataListContext.Provider value={context}>
-      <Div className="datalist" bgColor="white" w={100}>
-        {children}
-      </Div>
-      {context.hasContextMenu ? (
-        <ContextMenu
-          title={context.contextMenuTitle}
-          show={context.contextMenu}
-          onClose={context.setContextMenu}
-          items={context.contextMenuItems}
-        />
-      ) : null}
-    </DataListContext.Provider>
-  );
-};
-
-const Item = ({ children, ...rest }: DataListItemProps): JSX.Element => {
-  const contextMenu = useDataListItemContextMenu(rest);
-
-  return (
+const Item = ({
+  children,
+  contextMenuTitle,
+  contextMenuItems,
+}: DataListItemProps): JSX.Element => {
+  const Item = (
     <Div
       className="datalist-item"
-      cursor="pointer"
       d="flex"
       alignItems="center"
       px={3}
       py={2}
       gap={3}
       borderBottom
-      {...contextMenu()}
     >
       {children}
     </Div>
   );
+
+  if (contextMenuTitle && contextMenuItems) {
+    return (
+      <ContextMenu title={contextMenuTitle} items={contextMenuItems}>
+        {Item}
+      </ContextMenu>
+    );
+  }
+
+  return Item;
 };
 
 const Column = ({

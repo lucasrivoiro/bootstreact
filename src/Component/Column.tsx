@@ -42,8 +42,6 @@ const Column = ({
 }: Props): JSX.Element => {
   const propsClasses = useClasses(props);
 
-  console.log(lg)
-
   const classes = useMemo(
     () =>
       cn(

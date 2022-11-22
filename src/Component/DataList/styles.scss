@@ -4,7 +4,7 @@
 .datalist {
     @include border-radius(var(--bs-border-radius-lg));
 
-    & .datalist-item:last-child {
+    & > div:last-child {
         border-bottom: none !important;
     }
 }
