@@ -1,14 +1,8 @@
 import { useClasses } from 'Hook/Style';
 import React, { useMemo } from 'react';
-import { Icons } from 'Type/Style';
 import { cn } from 'utils';
 
-import { ClassesInterface } from 'Interface/Styles';
-
-interface IconInterface extends ClassesInterface {
-  className?: string | undefined;
-  name: Icons;
-}
+import { IconInterface } from './interfaces';
 
 const Icon = ({ className, name, ...props }: IconInterface): JSX.Element => {
   const propsClasses = useClasses(props);
