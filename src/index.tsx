@@ -18,7 +18,7 @@ import P from 'Component/P';
 import { Popover } from 'Component/Popover';
 import Row from 'Component/Row';
 import Strong from 'Component/Strong';
-import { Tooltip } from 'Component/Tooltip';
+import Tooltip from 'Component/Tooltip';
 
 import 'Style/app.scss';
 
@@ -40,7 +40,7 @@ const App = (): JSX.Element => {
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
               <H3 lead mb={3}>Tooltip (ver bugs de exibição - Ex: ao passar cursor por baixo)</H3>
-              <Tooltip placement="bottom" title="Isso é um teste de tooltip">
+              <Tooltip block placement="top" title="Isso é um teste de tooltip">
                 <Button className="w-100" color="primary">
                   Passe o mouse
                 </Button>
