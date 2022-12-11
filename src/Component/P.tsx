@@ -10,7 +10,10 @@ import { cn } from 'utils';
 
 import { ClassesInterface } from 'Interface/Styles';
 
-interface ParagraphInterface extends ClassesInterface {
+import Placeholder from './Placeholder';
+import { PlaceholderInterface } from './Placeholder/interfaces';
+
+interface ParagraphInterface extends ClassesInterface, PlaceholderInterface {
   children?: ReactNode | undefined;
   className?: string | undefined;
   contentEditable?: boolean | 'inherit' | undefined;
@@ -40,12 +43,14 @@ const P = ({
   onMouseOut,
   onMouseOver,
   onMouseUp,
+  placeholderSize,
+  numberOfPlaceholders,
   ...props
 }: ParagraphInterface): JSX.Element => {
   const propsClasses = useClasses(props);
 
   const classes = useMemo(
-    () => cn(propsClasses, className),
+    () => cn(propsClasses, 'placeholder-glow', className),
     [className, propsClasses]
   );
 
@@ -64,7 +69,11 @@ const P = ({
       onMouseOver={onMouseOver}
       onMouseUp={onMouseUp}
     >
-      {children}
+      {children ? (
+        children
+      ) : (
+        <Placeholder size={placeholderSize} number={numberOfPlaceholders} />
+      )}
     </p>
   );
 };

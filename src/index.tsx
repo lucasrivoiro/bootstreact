@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import 'animate.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -23,23 +23,28 @@ import Tooltip from 'Component/Tooltip';
 import 'Style/app.scss';
 
 const App = (): JSX.Element => {
+  const [text, setText] = useState<string>();
   const [modal, setModal] = useState<boolean>(false);
   const [modal2, setModal2] = useState<boolean>(false);
   const [offcanvas, setOffcanvas] = useState<boolean>(false);
   const [offcanvas2, setOffcanvas2] = useState<boolean>(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setText('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat.');
+    }, 5000);
+  }, []);
+
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <Container
-          bgColor="primary"
-          bgOpacity={25}
-          fluid
-          shadow
-        >
+        <Container bgColor="primary" bgOpacity={25} fluid shadow>
+          <P numberOfPlaceholders={12}>{text}</P>
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Tooltip (ver bugs de exibição - Ex: ao passar cursor por baixo)</H3>
+              <H3 lead mb={3}>
+                Tooltip (ver bugs de exibição - Ex: ao passar cursor por baixo)
+              </H3>
               <Tooltip block placement="top" title="Isso é um teste de tooltip">
                 <Button className="w-100" color="primary">
                   Passe o mouse
@@ -47,8 +52,16 @@ const App = (): JSX.Element => {
               </Tooltip>
             </Column>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Modal<br />Ok</H3>
-              <Button className="w-100" color="warning" onClick={() => setModal(true)}>
+              <H3 lead mb={3}>
+                Modal
+                <br />
+                Ok
+              </H3>
+              <Button
+                className="w-100"
+                color="warning"
+                onClick={() => setModal(true)}
+              >
                 Clique
               </Button>
               <Modal show={modal} onClose={setModal} backdrop="static">
@@ -84,8 +97,16 @@ const App = (): JSX.Element => {
               </Modal>
             </Column>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Offcanvas<br />Ok</H3>
-              <Button className="w-100" color="danger" onClick={() => setOffcanvas(true)}>
+              <H3 lead mb={3}>
+                Offcanvas
+                <br />
+                Ok
+              </H3>
+              <Button
+                className="w-100"
+                color="danger"
+                onClick={() => setOffcanvas(true)}
+              >
                 Clique
               </Button>
               <Offcanvas
@@ -113,7 +134,9 @@ const App = (): JSX.Element => {
               </Offcanvas>
             </Column>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Popover (ver bugs de espaçamento - Ex: placement top e bottom)</H3>
+              <H3 lead mb={3}>
+                Popover (ver bugs de espaçamento - Ex: placement top e bottom)
+              </H3>
               <Popover
                 placement="bottom"
                 title="Popover"
@@ -126,51 +149,52 @@ const App = (): JSX.Element => {
             </Column>
           </Row>
         </Container>
-        <Container
-          bgColor="primary"
-          bgOpacity={25}
-          fluid
-          mt={3}
-          shadow
-        >
+        <Container bgColor="primary" bgOpacity={25} fluid mt={3} shadow>
           <Row py={3}>
             <Column xs={12} xl={6} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Accordion (ver bugs)</H3>
+              <H3 lead mb={3}>
+                Accordion (ver bugs)
+              </H3>
               <Accordion>
                 <Accordion.Item show>
                   <Accordion.Header>
                     <Strong>Accordion #1</Strong>
                   </Accordion.Header>
-                  <Accordion.Body>Isso é um teste do accordion 1</Accordion.Body>
+                  <Accordion.Body>
+                    Isso é um teste do accordion 1
+                  </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item>
                   <Accordion.Header>
                     <Strong>Accordion #2</Strong>
                   </Accordion.Header>
-                  <Accordion.Body>Isso é um teste do accordion 2</Accordion.Body>
+                  <Accordion.Body>
+                    Isso é um teste do accordion 2
+                  </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item>
                   <Accordion.Header>
                     <Strong>Accordion #3</Strong>
                   </Accordion.Header>
-                  <Accordion.Body>Isso é um teste do accordion 3</Accordion.Body>
+                  <Accordion.Body>
+                    Isso é um teste do accordion 3
+                  </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
             </Column>
             <Column xs={12} xl={6} mb={3} mbLg={0}>
-              <H3 lead mb={3}>Collapse</H3>
+              <H3 lead mb={3}>
+                Collapse
+              </H3>
             </Column>
           </Row>
         </Container>
-        <Container
-          bgColor="primary"
-          bgOpacity={25}
-          fluid
-          mt={3}
-          shadow
-        >
+        <Container bgColor="primary" bgOpacity={25} fluid mt={3} shadow>
           <Row justifyContent="center" py={3}>
-            <H3 lead mb={3}>Container / Row / Columns / Offsets (ver bugs de margin e paddings - Ex: mb-3 mb-lg-0)</H3>
+            <H3 lead mb={3}>
+              Container / Row / Columns / Offsets (ver bugs de margin e paddings
+              - Ex: mb-3 mb-lg-0)
+            </H3>
             <Column lg={3}>
               <Div bgColor="light" border p={3}>
                 Column 1<br />
