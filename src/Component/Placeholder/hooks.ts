@@ -6,9 +6,9 @@ export const usePlaceholder = ({
   size,
   number,
 }: PlaceholderProps): [number[], () => number] => {
-  const placeholders = useMemo(() => {
+  const generate = (): number[] => {
     return Array(number).fill(1, 0, number);
-  }, [number]);
+  }
 
   const calculateSize = (): number => {
     if (size && number == 1) {
@@ -17,6 +17,8 @@ export const usePlaceholder = ({
 
     return Math.floor(Math.random() * (3 - 1 + 1) + 1);
   };
+
+  const placeholders = useMemo(generate, [number]);
 
   return [placeholders, calculateSize];
 };
