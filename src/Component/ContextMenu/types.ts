@@ -1,6 +1,6 @@
 import { Icons } from 'Type/Style';
 
-export type ContextMenuItem = {
+export type ContextMenuItemType = {
   icon?: Icons;
   title: string;
   callback: () => void;

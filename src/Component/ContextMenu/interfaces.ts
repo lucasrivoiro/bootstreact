@@ -1,7 +1,7 @@
-import { ContextMenuItem } from './types';
+import { ContextMenuItemType } from './types';
 
 export interface ContextMenuProps {
   children: JSX.Element | JSX.Element[] | string | string[];
   title: string;
-  items: ContextMenuItem[];
+  items: ContextMenuItemType[];
 }
