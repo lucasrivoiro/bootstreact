@@ -35,6 +35,8 @@ interface ButtonInterface {
   sm?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  processing?: boolean;
+  processingText?: string;
   placeholderSize?: PlaceholderSizeType;
   icon?: IconType;
 }
@@ -49,6 +51,8 @@ const Button = ({
   sm,
   type,
   loading,
+  processing,
+  processingText,
   placeholderSize,
   icon,
 }: ButtonInterface): JSX.Element => {
@@ -62,12 +66,26 @@ const Button = ({
       className={cn(`btn btn-${color}`, className, {
         'btn-sm': sm,
         'btn-lg': lg,
-        disabled: loading,
+        disabled: loading || processing,
         [`${placeholder}`]: loading,
       })}
     >
-      {icon && !loading ? <Icon name={icon} me={children ? 2 : 0} /> : null}
-      {!loading ? children : ''}
+      {processing && !loading ? (
+        <>
+          <span
+            className={cn('spinner-grow spinner-grow-sm', {
+              'me-1': processingText,
+            })}
+          />{' '}
+          {processingText}
+        </>
+      ) : null}
+
+      {icon && !loading && !processing ? (
+        <Icon name={icon} me={children ? 2 : 0} />
+      ) : null}
+
+      {!loading && !processing ? children : ''}
     </button>
   );
 };
@@ -79,6 +97,7 @@ Button.defaultProps = {
   sm: false,
   type: 'button',
   loading: false,
+  processing: false,
   placeholderSize: 4,
 };
 

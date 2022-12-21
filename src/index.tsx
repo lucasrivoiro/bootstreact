@@ -24,6 +24,7 @@ import 'Style/app.scss';
 
 const App = (): JSX.Element => {
   const [text, setText] = useState<string>();
+  const [processing, setProcessing] = useState<boolean>(false);
   const [modal, setModal] = useState<boolean>(false);
   const [modal2, setModal2] = useState<boolean>(false);
   const [offcanvas, setOffcanvas] = useState<boolean>(false);
@@ -31,16 +32,34 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     setTimeout(() => {
-      setText('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat.');
-    }, 5000);
+      setText(
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nam itaque eius numquam velit vel repellendus perspiciatis minus sed adipisci perferendis soluta repellat dolore tempore, labore saepe neque suscipit. Fugiat.'
+      );
+    }, 2000);
   }, []);
+
+  useEffect(() => {
+    if (processing) {
+      setTimeout(() => {
+        setProcessing(false);
+      }, 2000);
+    }
+  }, [processing]);
 
   return (
     <React.StrictMode>
       <BrowserRouter>
         <Container bgColor="primary" bgOpacity={25} fluid shadow>
           <P numberOfPlaceholders={12}>{text}</P>
-          <Button icon="house" loading={!text}>Um botão qualquer</Button>
+          <Button
+            icon="house"
+            loading={!text}
+            processing={processing}
+            processingText="Aguarde..."
+            onClick={() => setProcessing(true)}
+          >
+            Um botão qualquer
+          </Button>
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
               <H3 lead mb={3}>
