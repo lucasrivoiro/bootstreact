@@ -12,7 +12,7 @@ export const usePlaceholder = ({
   };
 
   const calculateSize = (): number => {
-    if (size && number == 1) {
+    if (size && (!number || number <= 1)) {
       return size;
     }
 
