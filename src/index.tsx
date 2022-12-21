@@ -40,6 +40,7 @@ const App = (): JSX.Element => {
       <BrowserRouter>
         <Container bgColor="primary" bgOpacity={25} fluid shadow>
           <P numberOfPlaceholders={12}>{text}</P>
+          <Button loading={!text}>Teste</Button>
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
               <H3 lead mb={3}>

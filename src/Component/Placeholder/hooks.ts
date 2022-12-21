@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
 
 import { PlaceholderProps } from './interfaces';
+import { PlaceholderHookType, PlaceholderSizeType } from './types';
 
 export const usePlaceholder = ({
   size,
   number,
-}: PlaceholderProps): [number[], () => number] => {
+}: PlaceholderProps): PlaceholderHookType => {
   const generate = (): number[] => {
     return Array(number).fill(1, 0, number);
-  }
+  };
 
   const calculateSize = (): number => {
     if (size && number == 1) {
@@ -21,4 +22,8 @@ export const usePlaceholder = ({
   const placeholders = useMemo(generate, [number]);
 
   return [placeholders, calculateSize];
+};
+
+export const usePlaceholderClasses = (size?: PlaceholderSizeType): string => {
+  return `placeholder col-${size || 12}`;
 };
