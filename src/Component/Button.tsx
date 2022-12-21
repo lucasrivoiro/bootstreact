@@ -1,6 +1,8 @@
 import React, { MouseEventHandler } from 'react';
 import { cn } from 'utils';
 
+import Icon from './Icon';
+import { IconType } from './Icon/types';
 import { usePlaceholderClasses } from './Placeholder/hooks';
 import { PlaceholderSizeType } from './Placeholder/types';
 
@@ -34,6 +36,7 @@ interface ButtonInterface {
   disabled?: boolean;
   loading?: boolean;
   placeholderSize?: PlaceholderSizeType;
+  icon?: IconType;
 }
 
 const Button = ({
@@ -47,21 +50,23 @@ const Button = ({
   type,
   loading,
   placeholderSize,
+  icon,
 }: ButtonInterface): JSX.Element => {
   const placeholder = usePlaceholderClasses(placeholderSize);
 
   return (
     <button
-      className={cn(`btn btn-${color}`, className, {
-        'btn-sm': sm,
-        'btn-lg': lg,
-        'disabled': loading,
-        [`${placeholder}`]: loading,
-      })}
       disabled={disabled}
       onClick={onClick}
       type={type}
+      className={cn(`btn btn-${color}`, className, {
+        'btn-sm': sm,
+        'btn-lg': lg,
+        disabled: loading,
+        [`${placeholder}`]: loading,
+      })}
     >
+      {icon && !loading ? <Icon name={icon} me={children ? 2 : 0} /> : null}
       {!loading ? children : ''}
     </button>
   );
