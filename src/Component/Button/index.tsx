@@ -1,45 +1,10 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { cn } from 'utils';
 
-import Icon from './Icon';
-import { IconType } from './Icon/types';
-import { usePlaceholderClasses } from './Placeholder/hooks';
-import { PlaceholderSizeType } from './Placeholder/types';
+import Icon from 'Component/Icon';
+import { usePlaceholderClasses } from 'Component/Placeholder/hooks';
 
-type ButtonThemeType =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'dark'
-  | 'light'
-  | 'outline-primary'
-  | 'outline-secondary'
-  | 'outline-success'
-  | 'outline-danger'
-  | 'outline-warning'
-  | 'outline-info'
-  | 'outline-dark'
-  | 'outline-light'
-  | 'transparent';
-
-interface ButtonInterface {
-  children?: string;
-  className?: string;
-  color?: ButtonThemeType;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  type?: 'button' | 'submit' | 'reset';
-  lg?: boolean;
-  sm?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  processing?: boolean;
-  processingText?: string;
-  placeholderSize?: PlaceholderSizeType;
-  icon?: IconType;
-}
+import { ButtonProps } from './interfaces';
 
 const Button = ({
   children,
@@ -55,7 +20,7 @@ const Button = ({
   processingText,
   placeholderSize,
   icon,
-}: ButtonInterface): JSX.Element => {
+}: ButtonProps): JSX.Element => {
   const placeholder = usePlaceholderClasses(placeholderSize);
 
   return (
