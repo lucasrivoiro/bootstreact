@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from 'utils';
 
-import Div from 'Component/Div';
+import A from 'Component/A';
 import Icon from 'Component/Icon';
 import Offcanvas from 'Component/Offcanvas';
 
@@ -17,9 +17,15 @@ const ContextMenu = ({
 
   return (
     <>
-      <Div cursor="pointer" {...longPress()}>
+      <A
+        cursor="pointer"
+        textColor="body"
+        textDecoration="none"
+        className="user-select-none"
+        {...longPress()}
+      >
         {children}
-      </Div>
+      </A>
       <Offcanvas show={show} onClose={setShow} placement="bottom">
         <Offcanvas.Header>{title}</Offcanvas.Header>
         <Offcanvas.Body>

@@ -273,6 +273,7 @@ const App = (): JSX.Element => {
                   height={80}
                   style={{ objectFit: 'cover' }}
                   className="rounded-circle"
+                  onClick={() => alert('Teste')}
                 />
               </DataList.Column>
               <DataList.Column truncate>
