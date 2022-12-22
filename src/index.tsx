@@ -10,6 +10,7 @@ import Column from 'Component/Column';
 import Container from 'Component/Container';
 import DataList from 'Component/DataList';
 import Div from 'Component/Div';
+import FloatingButtons from 'Component/FloatingButton';
 import H3 from 'Component/H3';
 import Icon from 'Component/Icon';
 import Modal from 'Component/Modal';
@@ -49,6 +50,17 @@ const App = (): JSX.Element => {
   return (
     <React.StrictMode>
       <BrowserRouter>
+        <FloatingButtons>
+          <Tooltip title="Abrir alguma coisa">
+            <Button icon="house" color="danger" />
+          </Tooltip>
+          <Tooltip title="Abrir alguma coisa 2">
+            <Button icon="people" color="warning" />
+          </Tooltip>
+          <Tooltip title="Abrir alguma coisa 3">
+            <Button icon="cloud-fog" color="secondary" />
+          </Tooltip>
+        </FloatingButtons>
         <Container bgColor="primary" bgOpacity={25} fluid shadow>
           <P numberOfPlaceholders={12}>{text}</P>
           <Button

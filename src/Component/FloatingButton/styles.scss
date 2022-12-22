@@ -1,0 +1,51 @@
+.btn-floating {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  margin-bottom: env(safe-area-inset-bottom);
+  margin-right: env(safe-area-inset-right);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
+
+  &.btn-floating-start {
+    top: initial !important;
+    right: initial !important;
+    left: 20px !important;
+    bottom: 20px !important;
+    margin-bottom: env(safe-area-inset-bottom) !important;
+    margin-left: env(safe-area-inset-left) !important;
+  }
+  &.btn-floating-end {
+    top: initial !important;
+    left: initial !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    margin-bottom: env(safe-area-inset-bottom) !important;
+    margin-right: env(safe-area-inset-right) !important;
+  }
+
+  .btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:  0px 10px 20px -10px rgba(0,0,0, 0.7);
+  }
+  & > .btn:first-child {
+    width: 55px;
+    height: 55px;
+    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &.active {
+    & > .btn:first-child {
+      transform: rotate(-45deg);
+      transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+}
