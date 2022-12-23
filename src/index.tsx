@@ -16,7 +16,7 @@ import Icon from 'Component/Icon';
 import Modal from 'Component/Modal';
 import Offcanvas from 'Component/Offcanvas';
 import P from 'Component/P';
-import { Popover } from 'Component/Popover';
+import Popover from 'Component/Popover';
 import Row from 'Component/Row';
 import Strong from 'Component/Strong';
 import Tooltip from 'Component/Tooltip';
@@ -167,15 +167,18 @@ const App = (): JSX.Element => {
             </Column>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
               <H3 lead mb={3}>
-                Popover (ver bugs de espaçamento - Ex: placement top e bottom)
+                Popover
+                <br />
+                Ok
               </H3>
               <Popover
                 placement="bottom"
                 title="Popover"
                 content="Isso é um teste de popover"
+                block
               >
                 <Button className="w-100" color="success">
-                  Clique
+                  Passe o mouse
                 </Button>
               </Popover>
             </Column>
