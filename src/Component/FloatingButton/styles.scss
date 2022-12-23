@@ -27,6 +27,19 @@
     margin-right: env(safe-area-inset-right) !important;
   }
 
+  .btn-floating-container {
+    position: absolute;
+    bottom: 30px;
+    height: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 5px;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1010;
+  }
+
   .btn {
     border-radius: 50%;
     width: 40px;
@@ -40,9 +53,16 @@
     width: 55px;
     height: 55px;
     transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1020;
   }
 
   &.active {
+    .btn-floating-container {
+      bottom: 65px;
+      height: auto;
+      overflow: inherit;
+    }
+
     & > .btn:first-child {
       transform: rotate(-45deg);
       transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);

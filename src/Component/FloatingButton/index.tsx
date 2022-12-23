@@ -21,7 +21,7 @@ const FloatingButtons = ({
       })}
     >
       <Button icon="plus-lg" onClick={() => setShowButtons(!showButtons)} />
-      {showButtons && children}
+      <div className="btn-floating-container">{children}</div>
     </div>
   );
 };
