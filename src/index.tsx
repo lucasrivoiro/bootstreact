@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import Accordion from 'Component/Accordion';
+import Badge from 'Component/Badge';
 import Button from 'Component/Button';
 import Column from 'Component/Column';
 import Container from 'Component/Container';
@@ -62,6 +63,7 @@ const App = (): JSX.Element => {
           </Tooltip>
         </FloatingButtons>
         <Container bgColor="primary" bgOpacity={25} fluid shadow>
+          <H3>Placeholder</H3>
           <P numberOfPlaceholders={2}>{text}</P>
           <Button
             icon="house"
@@ -72,6 +74,17 @@ const App = (): JSX.Element => {
           >
             Um botão qualquer
           </Button>
+          <hr />
+          <H3>Badge</H3>
+          <Div d="flex" gap={2}>
+            <Badge bgColor="primary">Badge 1</Badge>
+            <Badge bgColor="secondary">Badge 2</Badge>
+            <Badge bgColor="danger">Badge 3</Badge>
+            <Badge bgColor="danger" roundedPill>
+              Badge 4
+            </Badge>
+          </Div>
+          <hr />
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>
               <H3 lead mb={3}>
