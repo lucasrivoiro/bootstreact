@@ -11,6 +11,7 @@ import Column from 'Component/Column';
 import Container from 'Component/Container';
 import DataList from 'Component/DataList';
 import Div from 'Component/Div';
+import Flex from 'Component/Flex';
 import FloatingButtons from 'Component/FloatingButton';
 import H3 from 'Component/H3';
 import Icon from 'Component/Icon';
@@ -76,14 +77,14 @@ const App = (): JSX.Element => {
           </Button>
           <hr />
           <H3>Badge</H3>
-          <Div d="flex" gap={2}>
+          <Flex center>
             <Badge bgColor="primary">Badge 1</Badge>
             <Badge bgColor="secondary">Badge 2</Badge>
             <Badge bgColor="danger">Badge 3</Badge>
             <Badge bgColor="danger" roundedPill>
               Badge 4
             </Badge>
-          </Div>
+          </Flex>
           <hr />
           <Row py={3}>
             <Column xs={12} sm={3} mb={3} mbLg={0}>

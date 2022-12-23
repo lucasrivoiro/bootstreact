@@ -41,7 +41,7 @@ export type FlexGrowType = 0 | 1;
 
 export type FlexShrinkType = 0 | 1;
 
-export type FlexWrapType = 'wrap' | 'nowrap' | 'wrap-reverse';
+export type FlexWrapType = 'wrap' | 'nowrap' | 'wrap-reverse' | boolean;
 
 export type OrderType = 0 | 1 | 2 | 3 | 4 | 5 | 'first' | 'last';
 

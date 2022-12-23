@@ -384,12 +384,24 @@ export const useFlex = (props: FlexInterface): string => {
         [`flex-xl-shrink-${props.flexXlShrink}`]: props.flexXlShrink,
         [`flex-xxl-shrink-${props.flexXxlShrink}`]: props.flexXxlShrink,
 
-        [`flex-wrap-${props.flexWrap}`]: props.flexWrap,
-        [`flex-sm-wrap-${props.flexSmWrap}`]: props.flexSmWrap,
-        [`flex-md-wrap-${props.flexMdWrap}`]: props.flexMdWrap,
-        [`flex-lg-wrap-${props.flexLgWrap}`]: props.flexLgWrap,
-        [`flex-xl-wrap-${props.flexXlWrap}`]: props.flexXlWrap,
-        [`flex-xxl-wrap-${props.flexXxlWrap}`]: props.flexXxlWrap,
+        [`flex-${
+          typeof props.flexWrap == 'boolean' ? 'wrap' : props.flexWrap
+        }`]: props.flexWrap,
+        [`flex-sm-${
+          typeof props.flexSmWrap == 'boolean' ? 'wrap' : props.flexSmWrap
+        }`]: props.flexSmWrap,
+        [`flex-md-${
+          typeof props.flexMdWrap == 'boolean' ? 'wrap' : props.flexMdWrap
+        }`]: props.flexMdWrap,
+        [`flex-lg-${
+          typeof props.flexLgWrap == 'boolean' ? 'wrap' : props.flexLgWrap
+        }`]: props.flexLgWrap,
+        [`flex-xl-${
+          typeof props.flexXlWrap == 'boolean' ? 'wrap' : props.flexXlWrap
+        }`]: props.flexXlWrap,
+        [`flex-xxl-${
+          typeof props.flexXxlWrap == 'boolean' ? 'wrap' : props.flexXxlWrap
+        }`]: props.flexXxlWrap,
 
         [`order-${props.order}`]: props.order,
         [`order-sm-${props.orderSm}`]: props.orderSm,
