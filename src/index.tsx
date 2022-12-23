@@ -62,7 +62,7 @@ const App = (): JSX.Element => {
           </Tooltip>
         </FloatingButtons>
         <Container bgColor="primary" bgOpacity={25} fluid shadow>
-          <P numberOfPlaceholders={12}>{text}</P>
+          <P numberOfPlaceholders={2}>{text}</P>
           <Button
             icon="house"
             loading={!text}

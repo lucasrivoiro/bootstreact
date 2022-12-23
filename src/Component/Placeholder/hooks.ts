@@ -16,7 +16,7 @@ export const usePlaceholder = ({
       return size;
     }
 
-    return Math.floor(Math.random() * (3 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (12 - 8 + 1) + 8);
   };
 
   const placeholders = useMemo(generate, [number]);
