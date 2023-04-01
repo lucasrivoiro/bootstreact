@@ -1,0 +1,99 @@
+.navigation {
+  width: 280px;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity));
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+  padding: 1rem;
+
+  .navigation-brand {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity));
+    font-weight: bold;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    & {
+      width: 100%;
+      top: initial;
+      padding: 0;
+      height: 60px;
+    }
+    .navigation-brand {
+      display: none;
+    }
+  }
+}
+
+.navigation-container,
+.navigation-container-list-mode {
+  margin-top: 3rem;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+
+  .nav-item {
+    list-style: none;
+
+    .nav-link {
+      padding: 10px 10px;
+      color: var(--bs-primary);
+      border-radius: var(--bs-border-radius-lg);
+
+      .bi {
+        margin-right: 8px;
+      }
+      &.active {
+        background-color: rgba(var(--bs-primary-rgb), 1);
+        color: var(--bs-white);
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .navigation-container-list-mode {
+    margin-top: 0 !important;
+  }
+  .navigation-container {
+    margin-top: initial;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 60px;
+
+    .nav-link {
+      text-align: center;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--bs-body-color) !important;
+
+      .bi {
+        margin-right: 0px !important;
+      }
+      &.active {
+        border-radius: 0;
+        background-color: inherit !important;
+        color: var(--bs-primary) !important;
+      }
+    }
+  }
+}
